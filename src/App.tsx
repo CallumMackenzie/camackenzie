@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
-import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
@@ -19,17 +18,9 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-const firestore = getFirestore(app);
-const auth = getAuth();
 
 const App = () => {
 	return (<>
-		<BrowserRouter>
-			<Routes>
-				<Route path="/" >
-				</Route>
-			</Routes>
-		</BrowserRouter >
 	</>);
 }
 
