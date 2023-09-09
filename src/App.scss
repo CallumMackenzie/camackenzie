@@ -1,0 +1,19 @@
+
+@import "./index.scss";
+
+body {
+	background-color: $bg-color;
+	color: $fg-color;
+	accent-color: $accent-1;
+
+	scrollbar-color: $accent-2;
+	scrollbar-base-color: $accent-3;
+}
+
+.title {
+	min-height: 100vh;
+}
+
+.summary {
+	@include rounded;
+}

@@ -1,0 +1,15 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+$linkedin: "https://www.linkedin.com/in/callum-mackenzie-704854212/";
+$github: "https://github.com/CallumMackenzie";
+
+$bg-color: #031926;
+$fg-color: #F4E9CD;
+$accent-1: #468189;
+$accent-2: #77ACA2;
+$accent-3: #9DBEBB;
+
+@mixin rounded {
+	border-radius: 1rem;
+	background-color: $accent-1;
+}
