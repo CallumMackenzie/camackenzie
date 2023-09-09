@@ -10,6 +10,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from 'firebase/auth';
+import { ThemeProvider } from '@emotion/react';
 
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_apiKey,
@@ -44,33 +45,38 @@ const App = () => {
 	});
 
 	return (<>
-		<AppBar position='static'>
-			<Toolbar variant="dense">
+		<ThemeProvider theme={theme}>
+			<AppBar position='static'>
+				<Toolbar variant="dense">
 
-			</Toolbar>
-		</AppBar>
-		<div className='title container p-3'>
-			<div className='row'>
-				<div className='col text-center'>
-					<h1 className='display-2'>
-						Callum Mackenzie
-					</h1>
-					<p className='lead'>
-						Second Year Computer Science & Statistics Major at the University of British Columbia
-					</p>
+				</Toolbar>
+			</AppBar>
+			<div className='title container p-3'>
+				<div className='row px-2'>
+					<div className='col text-center'>
+						<h1 className='display-1'>
+							Callum Mackenzie
+						</h1>
+						<p className='lead'>
+							Second Year Computer Science & Statistics Major at the University of British Columbia
+						</p>
+					</div>
+					<div className="col-8 mx-auto">
+						<img className='img-fluid mx-auto px-5' alt='Callum Mackenzie'
+							src="img/callum-mackenzie.png" />
+					</div>
+
 				</div>
-				<img className='col-4 img-fluid' alt='Callum Mackenzie'
-					src="img/callum-mackenzie.png" />
 			</div>
-		</div>
-		<div className='summary container py-2 px-3'>
-			<h2 className='display-4 text-center'>
-				About
-			</h2>
-			<p>
-				ABOUT HERE
-			</p>
-		</div>
+			<div className='summary container py-2 px-3'>
+				<h2 className='display-4 text-center'>
+					About
+				</h2>
+				<p>
+					ABOUT HERE
+				</p>
+			</div>
+		</ThemeProvider>
 	</>);
 }
 
