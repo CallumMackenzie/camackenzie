@@ -1,7 +1,5 @@
 import React from 'react';
 
-import AppBar from "@mui/material/AppBar";
-import Toolbar from '@mui/material/Toolbar';
 import { createTheme } from '@mui/material/styles';
 
 import './App.scss';
@@ -12,7 +10,9 @@ import { getAuth } from 'firebase/auth';
 import { ThemeProvider } from '@emotion/react';
 import { TitleCard } from './TitleCard';
 import { InfoCard } from './InfoCard';
-import { Avatar, Box, Container, CssBaseline, IconButton, Menu, Tooltip } from '@mui/material';
+import { Container, CssBaseline } from '@mui/material';
+import { red, teal } from '@mui/material/colors';
+import { SiteAppBar } from './AppBar';
 
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_apiKey,
@@ -28,31 +28,22 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-const openGithub = () => {
-	window.open("https://github.com/CallumMackenzie");
-};
-
 export const theme = createTheme({
 	palette: {
 		primary: {
-			dark: "#265e5c",
-			main: "#2d8185",
-			light: "#31959c",
-			contrastText: "#F5F7DC",
+			main: teal[200],
 		},
 		secondary: {
-			light: "#6d322e",
-			main: "#5e2627",
-			dark: "#4c181d",
-			contrastText: "#0F0326",
+			main: red["A100"],
 		},
 		background: {
-			default: "#032e2d",
-			paper: "#000000",
+			default: "#0e1111",
+			paper: "#232b2b"
 		},
 		text: {
-			primary: "#F5F7DC",
-			secondary: "#000000"
+			primary: "#C3CbCb",
+			secondary: "#F5F5F5",
+			disabled: "#FCC8D1"
 		}
 	},
 });
@@ -62,17 +53,7 @@ const App = () => {
 	return (<>
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
-			<AppBar position='static'>
-				<Toolbar variant="dense">
-					<Box sx={{ flexGrow: 0 }}>
-						<Tooltip title="Github">
-							<IconButton onClick={openGithub}>
-								<Avatar alt="Github" src="/img/github-logo.png" />
-							</IconButton>
-						</Tooltip>
-					</Box>
-				</Toolbar>
-			</AppBar>
+			<SiteAppBar />
 			<Container >
 				<TitleCard />
 				<InfoCard />
