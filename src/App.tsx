@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import AppBar from "@mui/material/AppBar";
 import Toolbar from '@mui/material/Toolbar';
 import { createTheme } from '@mui/material/styles';
 
 import './App.scss';
-import styles from './style.module.scss';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from 'firebase/auth';
 import { ThemeProvider } from '@emotion/react';
+import { TitleCard } from './TitleCard';
+import { InfoCard } from './InfoCard';
+import { Avatar, Box, Container, CssBaseline, IconButton, Menu, Tooltip } from '@mui/material';
 
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_apiKey,
@@ -26,56 +28,55 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-const App = () => {
-	const theme = createTheme({
-		palette: {
-			primary: {
-				light: '#468189',
-				main: '#031926',
-				dark: '#000',
-				contrastText: '#fff',
-			},
-			secondary: {
-				light: '#9DBEBB',
-				main: '#77ACA2',
-				dark: '#468189',
-				contrastText: '#000',
-			},
+const openGithub = () => {
+	window.open("https://github.com/CallumMackenzie");
+};
+
+export const theme = createTheme({
+	palette: {
+		primary: {
+			dark: "#265e5c",
+			main: "#2d8185",
+			light: "#31959c",
+			contrastText: "#F5F7DC",
 		},
-	});
+		secondary: {
+			light: "#6d322e",
+			main: "#5e2627",
+			dark: "#4c181d",
+			contrastText: "#0F0326",
+		},
+		background: {
+			default: "#032e2d",
+			paper: "#000000",
+		},
+		text: {
+			primary: "#F5F7DC",
+			secondary: "#000000"
+		}
+	},
+});
+
+const App = () => {
 
 	return (<>
 		<ThemeProvider theme={theme}>
+			<CssBaseline />
 			<AppBar position='static'>
 				<Toolbar variant="dense">
-
+					<Box sx={{ flexGrow: 0 }}>
+						<Tooltip title="Github">
+							<IconButton onClick={openGithub}>
+								<Avatar alt="Github" src="/img/github-logo.png" />
+							</IconButton>
+						</Tooltip>
+					</Box>
 				</Toolbar>
 			</AppBar>
-			<div className='title container p-3'>
-				<div className='row px-2'>
-					<div className='col text-center'>
-						<h1 className='display-1'>
-							Callum Mackenzie
-						</h1>
-						<p className='lead'>
-							Second Year Computer Science & Statistics Major at the University of British Columbia
-						</p>
-					</div>
-					<div className="col-8 mx-auto">
-						<img className='img-fluid mx-auto px-5' alt='Callum Mackenzie'
-							src="img/callum-mackenzie.png" />
-					</div>
-
-				</div>
-			</div>
-			<div className='summary container py-2 px-3'>
-				<h2 className='display-4 text-center'>
-					About
-				</h2>
-				<p>
-					ABOUT HERE
-				</p>
-			</div>
+			<Container >
+				<TitleCard />
+				<InfoCard />
+			</Container>
 		</ThemeProvider>
 	</>);
 }
