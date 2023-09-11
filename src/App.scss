@@ -1,5 +1,9 @@
 @import "./index.scss";
 
+body {
+	overflow-x: hidden;
+}
+
 .app-container {
 	padding-top: 10%;
 }

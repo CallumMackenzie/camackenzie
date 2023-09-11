@@ -2,7 +2,7 @@ import React from 'react';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { theme } from "./App";
 import LocationOn from '@mui/icons-material/LocationOn';
-import Grid from "@mui/material/Grid";
+import { Avatar, Container } from '@mui/material';
 
 export const TitleCard = () => {
 	const smallScreen = useMediaQuery(theme.breakpoints.down("md"));
@@ -18,7 +18,9 @@ export const TitleCard = () => {
 						Second Year Computer Science & Statistics Major at the University of British Columbia
 					</p>
 					<div className='row justify-content-center'>
-						<LocationOn className='col-5' />
+						<Container className='col'>
+							<Avatar><LocationOn /></Avatar>
+						</Container>
 						<p className='col'>Vancouver + Calgary</p>
 					</div>
 				</div>
