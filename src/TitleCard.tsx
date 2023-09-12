@@ -4,6 +4,9 @@ import { theme } from "./App";
 import LocationOn from '@mui/icons-material/LocationOn';
 import { Avatar, Container } from '@mui/material';
 
+import './TitleCard.scss';
+
+
 export const TitleCard = () => {
 	const smallScreen = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -18,10 +21,8 @@ export const TitleCard = () => {
 						Second Year Computer Science & Statistics Major at the University of British Columbia
 					</p>
 					<div className='row justify-content-center'>
-						<Container className='col'>
-							<Avatar><LocationOn /></Avatar>
-						</Container>
-						<p className='col'>Vancouver + Calgary</p>
+						<Avatar className='col-auto my-auto'><LocationOn /></Avatar>
+						<p className='col-auto my-auto'>Vancouver + Calgary</p>
 					</div>
 				</div>
 				<div className={smallScreen ? "col-10" : "col-6"}>
