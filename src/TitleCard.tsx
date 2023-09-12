@@ -4,9 +4,6 @@ import { theme } from "./App";
 import LocationOn from '@mui/icons-material/LocationOn';
 import { Avatar, Container } from '@mui/material';
 
-import './TitleCard.scss';
-
-
 export const TitleCard = () => {
 	const smallScreen = useMediaQuery(theme.breakpoints.down("md"));
 
