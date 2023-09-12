@@ -12,7 +12,6 @@ import { TitleCard } from './TitleCard';
 import { InfoCard } from './InfoCard';
 import { Container, CssBaseline } from '@mui/material';
 import { red, teal } from '@mui/material/colors';
-import { SiteAppBar } from './AppBar';
 import { DynamicBackground } from './DynamicBackground';
 
 const firebaseConfig = {
@@ -54,7 +53,6 @@ const App = () => {
 	return (<>
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
-			{/* <SiteAppBar /> */}
 			<DynamicBackground />
 			<Container className='app-container'>
 				<TitleCard />
