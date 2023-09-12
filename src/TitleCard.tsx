@@ -24,7 +24,7 @@ export const TitleCard = () => {
 		<div className='title container p-3'>
 			<div className='row justify-content-center px-2'>
 				<div className={(smallScreen ? "col-11" : "col-6") + " container text-center mx-auto"}>
-					<h1 className='name-heading row display-1'>
+					<h1 className='oswald row display-1'>
 						Callum Mackenzie
 					</h1>
 					<p className='row h4'>
