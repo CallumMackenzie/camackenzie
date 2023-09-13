@@ -14,6 +14,7 @@ import { Container, CssBaseline } from '@mui/material';
 import { red, teal } from '@mui/material/colors';
 import { DynamicBackground } from './DynamicBackground';
 import { BottomCard } from './BottomCard';
+import { ProjectsCard } from './ProjectsCard';
 
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_apiKey,
@@ -58,6 +59,7 @@ const App = () => {
 			<Container className='app-container'>
 				<TitleCard />
 				<InfoCard />
+				<ProjectsCard />
 				<BottomCard />
 			</Container>
 		</ThemeProvider>
