@@ -56,7 +56,7 @@ const App = () => {
 
 	return (<>
 		<ThemeProvider theme={theme}>
-			<CssBaseline />
+			<CssBaseline enableColorScheme />
 			<DynamicBackground />
 			<Container className='app-container'>
 				<TitleCard aboutCardRef={aboutCardRef}/>

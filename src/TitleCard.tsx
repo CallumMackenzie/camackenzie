@@ -38,25 +38,23 @@ export const TitleCard = (props: {
 						<Avatar className='col-auto my-auto'><LocationOn /></Avatar>
 						<p className='col-auto my-auto'>Vancouver + Calgary</p>
 					</div>
-					<div className='row py-4 justify-content-center'>
-						<Paper className='col-auto'>
-							<Tooltip className='px-4' title="Github">
-								<IconButton onClick={openGithub}>
-									<Avatar alt="Github" src="/img/github-logo.png" />
-								</IconButton>
-							</Tooltip>
-							<Tooltip className='px-4' title="Linkedin">
-								<IconButton onClick={openLinkedin}>
-									<Avatar alt="Linkedin" variant="rounded" src="/img/linkedin-logo.png" />
-								</IconButton>
-							</Tooltip>
-							<Tooltip className='px-4' title="Mail">
-								<IconButton onClick={openMailTo}>
-									<Avatar alt='Mail'><Mail /></Avatar>
-								</IconButton>
-							</Tooltip>
-						</Paper>
-					</div>
+					<Paper className='row-auto my-4 justify-content-center'>
+						<Tooltip className='col-auto px-2' title="Github">
+							<IconButton onClick={openGithub}>
+								<Avatar alt="Github" src="/img/github-logo.png" />
+							</IconButton>
+						</Tooltip>
+						<Tooltip className='col-auto px-2' title="Linkedin">
+							<IconButton onClick={openLinkedin}>
+								<Avatar alt="Linkedin" variant="rounded" src="/img/linkedin-logo.png" />
+							</IconButton>
+						</Tooltip>
+						<Tooltip className='col-auto px-2' title="Mail">
+							<IconButton onClick={openMailTo}>
+								<Avatar alt='Mail'><Mail /></Avatar>
+							</IconButton>
+						</Tooltip>
+					</Paper>
 				</div>
 				<div className={smallScreen ? "col-10" : "col-6"}>
 					<img className='img-fluid mx-auto px-5' alt='Callum Mackenzie'
