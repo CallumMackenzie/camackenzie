@@ -9,7 +9,7 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth } from 'firebase/auth';
 import { ThemeProvider } from '@emotion/react';
 import { TitleCard } from './TitleCard';
-import { InfoCard } from './InfoCard';
+import { AboutCard } from './AboutCard';
 import { Container, CssBaseline } from '@mui/material';
 import { red, teal } from '@mui/material/colors';
 import { DynamicBackground } from './DynamicBackground';
@@ -52,13 +52,15 @@ export const theme = createTheme({
 
 const App = () => {
 
+	const aboutCardRef = React.createRef<HTMLDivElement>();
+
 	return (<>
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
 			<DynamicBackground />
 			<Container className='app-container'>
-				<TitleCard />
-				<InfoCard />
+				<TitleCard aboutCardRef={aboutCardRef}/>
+				<AboutCard aboutCardRef={aboutCardRef}/>
 				<ProjectsCard />
 				<BottomCard />
 			</Container>

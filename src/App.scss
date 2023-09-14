@@ -12,6 +12,24 @@ body {
 	padding-top: 10%;
 }
 
+.app-bg {
+	background-image: url("../public/img/landscape-bg.jpg");
+	background-position: center;
+	background-size: cover;
+
+	z-index: -1;
+}
+
 .title {
-	min-height: 50vh;
+	min-height: 100vh;
+}
+
+.title-content {
+	background-color: black;
+	border-radius: 1em;
+}
+
+.app-bg {
+	width: 100vw;
+	height: 100vh;
 }
