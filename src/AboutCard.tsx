@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { Container, Paper } from '@mui/material';
+import { Paper } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { theme } from "./App";
 
@@ -19,8 +19,14 @@ export const AboutCard = (props: {
 					<p>I am a current undergraduate student at the University of British Columbia in Vancouver, and am currently seeking employment and
 						Co-op opportunities for the summer of 2024 and semesters following!
 						<br /> <br />
-						I'm a type 1 diabetic, which means I am constantly problem solving in my own life to keep my health optimal. I Carry this same
-						philosophy and these problem solving skills into my technical work, constantly looking for issues and improvements.
+						My interests include:
+						<ul>
+							<li>Software Engineering</li>
+							<li>Biotechnology & Bioinformatics</li>
+							<li>Data Science</li>
+							<li>Project Management</li>
+							<li>Fitness & Nutrition</li>
+						</ul>
 					</p>
 				</div>
 				<div className={smallScreen ? "col-11" : "col-5"}>
