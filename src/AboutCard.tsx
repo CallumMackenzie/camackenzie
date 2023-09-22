@@ -10,7 +10,7 @@ export const AboutCard = (props: {
 	const smallScreen = useMediaQuery(theme.breakpoints.down("md"));
 
 	return (<>
-		<Paper elevation={4} className='container py-2 px-3 my-3 text-center' ref={props.aboutCardRef}>
+		<Paper elevation={4} className='container py-2 px-3 my-5 text-center' ref={props.aboutCardRef}>
 			<div className='row'>
 				<h1 className='col'>About</h1>
 			</div>
