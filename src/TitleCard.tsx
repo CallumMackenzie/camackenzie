@@ -26,7 +26,7 @@ export const TitleCard = (props: {
 
 	return (<>
 		<div className='title d-flex align-items-center justify-content-center'>
-			<div className='container p-3'>
+			<div className='container p-2'>
 				<div className='title-content row align-items-center justify-content-center px-5 py-5'>
 					<div className={(smallScreen ? "col-11" : "col-6") + " container text-center mx-auto"}>
 						<h1 className='oswald row display-1'>
