@@ -13,7 +13,7 @@ const openGithub = () => {
 	window.open("https://github.com/CallumMackenzie");
 }
 const openLinkedin = () => {
-	window.open("https://www.linkedin.com/in/callum-mackenzie-704854212/");
+	window.open("https://www.linkedin.com/in/callum-ma/");
 }
 const openMailTo = () => {
 	window.open("mailto:callum.alex.mackenzie@gmail.com");
