@@ -59,7 +59,7 @@ const App = () => {
 		<ThemeProvider theme={theme}>
 			<CssBaseline enableColorScheme />
 			<DynamicBackground />
-			<Container className='app-container'>
+			<Container className='app-container p-2'>
 				<TitleCard aboutCardRef={aboutCardRef}/>
 				<AboutCard aboutCardRef={aboutCardRef}/>
 				<SkillsCard />
