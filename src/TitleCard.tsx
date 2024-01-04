@@ -29,7 +29,7 @@ export const TitleCard = (props: {
 			<div className='container p-2'>
 				<div className='title-content row align-items-center justify-content-center px-5 py-5'>
 					<div className={(smallScreen ? "col-11" : "col-6") + " container text-center mx-auto"}>
-						<h1 className='oswald row display-1'>
+						<h1 className='row display-1'>
 							Callum Mackenzie
 						</h1>
 						<p className='row h4'>

@@ -11,12 +11,10 @@ export const AboutCard = (props: {
 
 	return (<>
 		<Paper elevation={4} className='container py-2 px-2 my-5 text-center' ref={props.aboutCardRef}>
-			<div className='row'>
-				<h1 className='col'>About</h1>
-			</div>
 			<div className='row py-4 px-1 justify-content-center'>
-				<div className={(smallScreen ? "col-11" : "col-6") + " container text-start m-auto"}>
-					<p>I am a current undergraduate student at the University of British Columbia in Vancouver, and am currently seeking employment and
+				<div className={(smallScreen ? "col-11" : "col-6") + " container text-center m-auto"}>
+					<h1 className='py-4'>About</h1>
+					<p className='text-start'>I am a current undergraduate student at the University of British Columbia in Vancouver, and am currently seeking employment and
 						Co-op opportunities for the summer of 2024 and semesters following!
 						<br /> <br />
 						My interests include:
