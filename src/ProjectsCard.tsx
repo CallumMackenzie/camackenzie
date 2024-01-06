@@ -4,7 +4,7 @@ import Paper from "@mui/material/Paper/Paper";
 export const ProjectsCard = () => {
 
 	return (<>
-		<Paper elevation={3} className="container p-4 my-3 text-center justify-content-center">
+		<div className="container p-4 my-3 text-center justify-content-center">
 			<div className='row my-2'>
 				<h1 className='col'>Projects</h1>
 			</div>
@@ -33,6 +33,6 @@ export const ProjectsCard = () => {
 					Placed top 4 of 32 teams, of which there was competetive selection.
 				</p>
 			</Paper>
-		</Paper>
+		</div>
 	</>);
 }

@@ -29,12 +29,16 @@ export const TitleCard = (props: {
 			<div className='container p-2'>
 				<div className='title-content row align-items-center justify-content-center px-5 py-5'>
 					<div className={(smallScreen ? "col-11" : "col-6") + " container text-center mx-auto"}>
-						<h1 className='row display-1'>
-							Callum Mackenzie
-						</h1>
-						<p className='row h4'>
-							Second Year Computer Science & Statistics Major at the University of British Columbia
-						</p>
+						<div className='row'>
+							<h1 className='display-1'>
+								Callum Mackenzie
+							</h1>
+						</div>
+						<div className='row'>
+							<p className='h4'>
+								Second Year Computer Science & Statistics Major at the University of British Columbia
+							</p>
+						</div>
 						<div className='row justify-content-center'>
 							<Avatar className='col-auto my-auto'><LocationOn /></Avatar>
 							<p className='col-auto my-auto'>Vancouver + Calgary</p>
