@@ -4,6 +4,8 @@ import tree from "./tree.svg";
 import { theme } from "./App";
 import { useMediaQuery } from "@mui/material";
 
+// In ms
+
 export const DynamicBackground = () => {
 	const isLg = useMediaQuery(theme.breakpoints.only('lg')),
 		isXl = useMediaQuery(theme.breakpoints.up('xl')),
@@ -69,7 +71,7 @@ export const DynamicBackground = () => {
 			maxWidth: "100%",
 			zIndex: "-5",
 		}}>
-			<img src="img/landscape-bg.jpg"
+			<img src="img/landscape-bg-comp.jpg"
 				alt="Landscape background"
 				style={{
 					objectFit: "cover",

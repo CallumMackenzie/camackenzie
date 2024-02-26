@@ -34,7 +34,7 @@ const analytics = getAnalytics(app);
 export const theme = createTheme({
 	palette: {
 		primary: {
-			main: teal[200],
+			main: teal[600],
 		},
 		secondary: {
 			main: red["A100"],

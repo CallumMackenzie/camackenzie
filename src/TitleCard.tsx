@@ -62,8 +62,14 @@ export const TitleCard = (props: {
 						</Paper>
 					</div>
 					<div className={smallScreen ? "col-10" : "col-6"}>
-						<img className='img-fluid mx-auto px-5' alt='Callum Mackenzie'
-							src="img/callum-mackenzie.png" />
+						<img className='img-fluid mx-auto px-5'
+							alt='Callum Mackenzie'
+							src="img/callum-mackenzie.jpg"
+							style={{
+								borderRadius: "50%",
+								overflow: "hidden",
+								background: theme.palette.background.default
+							}} />
 					</div>
 				</div>
 				<div className='row justify-content-center py-3'>

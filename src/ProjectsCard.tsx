@@ -1,6 +1,7 @@
 
-import { Box, Divider, ImageList, ImageListItem, ImageListItemBar, Stack } from "@mui/material";
+import { Box, Divider, ImageList, ImageListItem, ImageListItemBar, Stack, useMediaQuery } from "@mui/material";
 import Paper from "@mui/material/Paper/Paper";
+import { theme } from "./App";
 
 export const ProjectsCard = () => {
 
@@ -32,7 +33,8 @@ export const ProjectsCard = () => {
 				<ProjectCard
 					name="3D Rendering Engines"
 					description={`A series of 3D rendering engines using primarily OpenGL bindings in various languages such as C++ (CMake), Java, Rust (Desktop & WASM), and TypeScript (WebGL).
-				Used PBR techniques, global lights, point lights, specular/diffuse/ambient lighting, and normal mapping.`}
+					Used PBR techniques, global lights, point lights, specular/diffuse/ambient lighting, and normal mapping. Implemented 
+					several linear algebra systems in different languages.`}
 					links={[{ link: "https://github.com/CallumMackenzie/IngeniumLatte", name: "Java" },
 					{ link: "https://github.com/CallumMackenzie/kvasir", name: "C++ with physics & multiple platforms" },
 					{ link: "https://github.com/CallumMackenzie/Ingenium", name: "C++ 2D & 3D with lua scripting" },
@@ -77,10 +79,15 @@ const ProjectCard = (props: {
 	imageBasePath: string,
 	images: Array<{ desc: string, src: string } | string>
 }) => {
+	const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
 	return (<>
 		<Paper elevation={5} className="row p-3 my-2" >
 			<Stack direction={'column'} spacing={2}>
 				<h3>{props.name}</h3>
+				<Divider sx={{
+					background: 'white'
+				}} />
 				<p>{props.description}</p>
 				{props.links.length !== 0 &&
 					<p>See more here: &nbsp;
@@ -99,12 +106,13 @@ const ProjectCard = (props: {
 					background: "white"
 				}} />}
 				{props.images.length !== 0 &&
-					<ImageList cols={3} variant="masonry">
+					<ImageList cols={isSmallScreen ? 2 : 3} variant="masonry">
 						{props.images.map((item) => {
 							const src = typeof (item) == 'string' ? item : item.src;
 							return (
 								<ImageListItem key={src}>
 									<img src={props.imageBasePath + src}
+										alt={"Project Demo Image"}
 										loading="lazy" />
 									{typeof (item) != 'string' &&
 										<ImageListItemBar position="below" title={item.desc} />}
