@@ -1,5 +1,8 @@
 @import "./index.scss";
 
+$image_load_1: transparent;
+$image_load_2: #00897b90;
+
 h1 {
 	font-family: 'Oswald', sans-serif;
 }
@@ -11,4 +14,28 @@ h3 {
 .title-content {
 	background-color: black;
 	border-radius: 2em;
+}
+
+@keyframes image-preload {
+
+	0% {
+		background-color: $image_load_1;
+	}
+
+	25% {
+		background-color: $image_load_2;
+	}
+
+	50% {
+		background-color: $image_load_1;
+	}
+
+	75% {
+		background-color: $image_load_2;
+	}
+
+	100% {
+		background-color: $image_load_1;
+	}
+
 }

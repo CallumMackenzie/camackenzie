@@ -40,9 +40,12 @@ export const AboutCard = (props: {
 						className='img-fluid m-auto px-3'
 						alt='Callum Mackenzie'
 						src="img/callum-mackenzie-2.jpg"
+						onLoad={e => e.currentTarget.style.animation = ""}
 						style={{
 							borderRadius: "50%",
+							animation: "image-preload 5s infinite",
 							overflow: "hidden",
+							minHeight: '100px'
 						}}
 					/>
 				</div>

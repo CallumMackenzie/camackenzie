@@ -1,10 +1,9 @@
 
+import './App.scss';
 import React, { useEffect, useRef, useState } from "react";
 import tree from "./tree.svg";
 import { theme } from "./App";
 import { useMediaQuery } from "@mui/material";
-
-// In ms
 
 export const DynamicBackground = () => {
 	const isLg = useMediaQuery(theme.breakpoints.only('lg')),
@@ -72,11 +71,14 @@ export const DynamicBackground = () => {
 			zIndex: "-5",
 		}}>
 			<img src="img/landscape-bg-comp.jpg"
+				loading='eager'
 				alt="Landscape background"
+				onLoad={e => e.currentTarget.style.animation = ""}
 				style={{
 					objectFit: "cover",
 					width: "100%",
-					minHeight: "100vh",
+					animation: 'image-preload 4.7s infinite',
+					minHeight: "100svh",
 					position: "absolute",
 					overflow: 'hidden'
 				}} />
@@ -89,6 +91,7 @@ export const DynamicBackground = () => {
 						zIndex: "-6",
 						overflow: 'hidden'
 					}}
+					loading='lazy'
 					src={tree}
 					alt="Tree"
 					className="tree"

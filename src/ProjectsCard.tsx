@@ -22,6 +22,15 @@ export const ProjectsCard = () => {
 					images={["1.png", "2.png", "3.png", "4.png", "5.png", "6.png"]}
 				/>
 				<ProjectCard
+					name="VitAlert"
+					description={`A hackathon project created for NWHacks 2024, a 24 hour hackathon focusing on health. 
+					VitAlert enables vitamin deficiency awareness and easy detection.`}
+					links={[{ link: "http://vitalert.tech", name: "Live Demo" },
+					{ link: "https://github.com/CallumMackenzie/vitalert", name: "GitHub Repository" }]}
+					imageBasePath="/img/vitalert/"
+					images={["home.png", "login.png", "nutrient.png"]}
+				/>
+				<ProjectCard
 					name="Virtual Closet"
 					description={`A project created with Java & Swing which tracks closet inventory and allows easy searching and organization.
 				Created for the CPSC 210 (Software Construction) term project at the University of British Columbia.
@@ -57,15 +66,6 @@ export const ProjectsCard = () => {
 					links={[]}
 					imageBasePath="/img/thinktech/"
 					images={["title.png", "impl.png", "dataflow.png"]}
-				/>
-				<ProjectCard
-					name="VitAlert"
-					description={`A hackathon project created for NWHacks 2024, a 24 hour hackathon focusing on health. 
-					VitAlert enables vitamin deficiency awareness and easy detection.`}
-					links={[{ link: "http://vitalert.tech", name: "Live Demo" },
-					{ link: "https://github.com/CallumMackenzie/vitalert", name: "GitHub Repository" }]}
-					imageBasePath="/img/vitalert/"
-					images={["home.png", "login.png", "nutrient.png"]}
 				/>
 			</Stack>
 		</div>

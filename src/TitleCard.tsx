@@ -64,11 +64,14 @@ export const TitleCard = (props: {
 					<div className={smallScreen ? "col-10" : "col-6"}>
 						<img className='img-fluid mx-auto px-5'
 							alt='Callum Mackenzie'
+							loading='eager'
 							src="img/callum-mackenzie.jpg"
+							onLoad={e => e.currentTarget.style.animation = ""}
 							style={{
 								borderRadius: "50%",
 								overflow: "hidden",
-								background: theme.palette.background.default
+								animation: "image-preload 5s infinite",
+								minHeight: '100px'
 							}} />
 					</div>
 				</div>
