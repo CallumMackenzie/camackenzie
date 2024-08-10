@@ -16,7 +16,7 @@ export const ProjectsCard = () => {
 
 	return (<>
 		<div className="container p-4 my-3 text-center justify-content-center">
-			<Stack sx={{ border: 1, borderColor: 'darkgrey' }} py={1} px={3} borderRadius={1}>
+			<Stack py={1}>
 				<div className='row my-2'>
 					<h1 className='col' style={{ fontSize: '4em', fontStyle: 'bold' }}>Projects</h1>
 				</div>
@@ -38,7 +38,7 @@ const ProjectCard = (props: {
 	const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
 	return (<>
-		<Paper elevation={5} className="row p-3 my-2" >
+		<Paper elevation={5} className="row py-3 px-1 my-2" >
 			<Stack direction={'column'} spacing={2}>
 				<h3>{props.project.name}</h3>
 				<Divider sx={{
