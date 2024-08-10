@@ -44,7 +44,7 @@ const ProjectCard = (props: {
 				<Divider sx={{
 					background: 'white'
 				}} />
-				<ul style={{ textAlign: 'center' }}>
+				<ul style={{ textAlign: 'left' }}>
 					{props.project.description.map(pt => (
 						<>
 							<li>{pt}</li>
