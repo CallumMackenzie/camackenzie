@@ -19,7 +19,7 @@ export const AboutCard = (props: {
 							fontSize: 'large'
 						}}>
 						I am a current undergraduate student at the University of British Columbia in Vancouver, and am currently seeking employment and
-						Co-op opportunities for the summer of 2024 and semesters following!
+						Co-op opportunities for January 2025
 						<br /> <br />
 						My interests include:
 					</p>
