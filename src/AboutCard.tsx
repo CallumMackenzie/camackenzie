@@ -18,7 +18,7 @@ export const AboutCard = (props: {
 						style={{
 							fontSize: 'large'
 						}}>
-						I am a current undergraduate student at the University of British Columbia in Vancouver, and am currently seeking employment and
+						I am a current undergraduate student at the University of British Columbia in Vancouver, and am currently seeking 
 						Co-op opportunities for January 2025
 						<br /> <br />
 						My interests include:
@@ -28,9 +28,9 @@ export const AboutCard = (props: {
 							fontSize: 'large'
 						}}>
 						<li>Software Engineering</li>
-						<li>Data Science & Statistics</li>
 						<li>Embedded Systems</li>
-						<li>Biotechnology & Bioinformatics</li>
+						<li>Data Science & Statistics</li>
+						<li>Biotechnology</li>
 						<li>Project Management</li>
 						<li>Fitness & Nutrition</li>
 					</ul>

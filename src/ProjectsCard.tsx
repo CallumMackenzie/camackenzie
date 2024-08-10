@@ -34,7 +34,7 @@ export const ProjectsCard = () => {
 const ProjectCard = (props: {
 	project: Project
 }) => {
-	const isExtraSmallScreen = useMediaQuery(theme.breakpoints.down("xs"))
+	const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"))
 	const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
 	return (<>
@@ -68,7 +68,7 @@ const ProjectCard = (props: {
 					background: "white"
 				}} />}
 				{props.project.images.length !== 0 &&
-					<ImageList cols={isExtraSmallScreen ? 1 : isSmallScreen ? 2 : 3} variant="masonry">
+					<ImageList cols={isSmallScreen ? 1 : isMediumScreen ? 2 : 3} variant="masonry">
 						{props.project.images.map((item) => {
 							const src = typeof (item) == 'string' ? item : item.src;
 							return (
