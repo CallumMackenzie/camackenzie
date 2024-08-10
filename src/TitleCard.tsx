@@ -36,7 +36,7 @@ export const TitleCard = (props: {
 						</div>
 						<div className='row'>
 							<p className='h4'>
-								Second Year Computer Science & Statistics Major at the University of British Columbia
+								Third Year Computer Science & Statistics Major at the University of British Columbia
 							</p>
 						</div>
 						<div className='row justify-content-center'>
