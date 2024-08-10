@@ -3,10 +3,9 @@ import { Box, Container, Divider, LinearProgress, Paper, Stack, Typography, useM
 import { theme } from './App';
 import React from 'react';
 
-const languages: Array<{
-	name: string,
-	proficiency: number
-}> = [
+type SkillList = Array<{name: string, proficiency: number | undefined}>
+
+const languages: SkillList = [
 		{ name: "Typescript", proficiency: 100 },
 		{ name: "Java", proficiency: 100 },
 		{ name: "C/C++", proficiency: 70 },
@@ -16,10 +15,7 @@ const languages: Array<{
 		{ name: "Python", proficiency: 50 },
 	];
 
-const technologies: Array<{
-	name: string,
-	proficiency: number
-}> = [
+const technologies: SkillList= [
 		{ name: "Git", proficiency: 100 },
 		{ name: "React", proficiency: 80 },
 		{ name: "Maven/Gradle", proficiency: 70 },
@@ -28,15 +24,13 @@ const technologies: Array<{
 		{ name: "OpenGL", proficiency: 50 }
 	];
 
-const otherSkills: Array<{
-	name: string,
-	proficiency: number
-}> = [
+const otherSkills: SkillList = [
 		{ name: "OOP", proficiency: 100 },
 		{ name: "Test-Driven Development", proficiency: 80 },
 		{ name: "Linux", proficiency: 80 },
 		{ name: "Design Patterns", proficiency: 80 },
-		{ name: "UI Design", proficiency: 70 }
+		{ name: "UI Design", proficiency: 70 },
+		{ name: "CAD (Autodesk Fusion 360)", proficiency: 80 }
 	];
 
 export const SkillsCard = () => {
@@ -61,15 +55,6 @@ export const SkillsCard = () => {
 										<Box display='flex' justifyContent='center' alignItems='center'>
 											<Box sx={{ minWidth: "34%" }}>
 												<Typography variant='body1' fontStyle={'revert'}>{elem.name}</Typography>
-											</Box>
-											<Box sx={{ width: '100%', ml: 2 }}>
-												<LinearProgress
-													sx={{
-														height: "10px"
-													}}
-													value={elem.proficiency}
-													variant='determinate'
-													color="primary" />
 											</Box>
 										</Box>
 										<Divider sx={{
