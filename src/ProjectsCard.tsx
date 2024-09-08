@@ -26,6 +26,7 @@ export const ProjectsCard = () => {
 				<ProjectCard project={ThinkTech} />
 				<ProjectCard project={ExviFitness} />
 				<ProjectCard project={RenderingEngines} />
+				<ProjectCard project={Nexus} />
 			</Stack>
 		</div>
 	</>);
@@ -199,4 +200,19 @@ const RenderingEngines: Project = {
 	{ src: "cards.png", desc: "Java with multiple render views" },
 	{ src: "browser.png", desc: "Typescript" },
 	{ src: "ingenium.png", desc: "C++ (OpenGL)" }]
+}
+
+const Nexus: Project = {
+	name: "Nexus",
+	date: "Jan 2022",
+	description: [
+		"Created with Windows WPF, .NET, and C#",
+		"A center for common actions which I used frequently such as wallpapers and apps",
+		"Allowed animated wallpapers in the form of GIFs or MP4s to be set",
+		"Let users launch single apps, groups, or all",
+		"Allowed disabling of certain Microsoft tracking features"
+	],
+	links: [{ link: "https://github.com/CallumMackenzie/Nexus", name: "GitHub Repository" }],
+	imageBasePath: "/img/nexus/",
+	images: ["homepage.png", "desktop.png", "desktop2.png"],
 }
