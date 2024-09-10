@@ -23,10 +23,11 @@ export const ProjectsCard = () => {
 				<ProjectCard project={Drone} />
 				<ProjectCard project={Vitalert} />
 				<ProjectCard project={VirtualCloset} />
+				<ProjectCard project={ClassificationOfHeartDisease} />
 				<ProjectCard project={ThinkTech} />
 				<ProjectCard project={ExviFitness} />
-				<ProjectCard project={RenderingEngines} />
 				<ProjectCard project={Nexus} />
+				<ProjectCard project={RenderingEngines} />
 			</Stack>
 		</div>
 	</>);
@@ -43,8 +44,11 @@ const ProjectCard = (props: {
 			<Stack direction={'column'} spacing={2}>
 				<h3>{props.project.name}</h3>
 				<Divider sx={{
-					background: 'white'
-				}} />
+					"&::before, &::after": {
+						borderColor: "primary.light",
+						opacity: 0.6
+					},
+				}}>{props.project.date}</Divider>
 				<ul style={{ textAlign: 'left' }}>
 					{props.project.description.map(pt => (
 						<>
@@ -66,7 +70,8 @@ const ProjectCard = (props: {
 						fontSize: 'large'
 					}}>Image Gallery</p>}
 				{props.project.images.length !== 0 && <Divider sx={{
-					background: "white"
+					bgcolor: "primary.light",
+					opacity: 0.6
 				}} />}
 				{props.project.images.length !== 0 &&
 					<ImageList cols={isSmallScreen ? 1 : isMediumScreen ? 2 : 3} variant="masonry">
@@ -132,7 +137,7 @@ const Vitalert: Project = {
 
 const VirtualCloset: Project = {
 	name: "Virtual Closet",
-	date: "Jan - Apr 2023",
+	date: "Jan 2023 - Apr 2023",
 	description: [
 		"Users organize closets, individual pieces of clothing, and outfits to track their style",
 		"Practiced imperative UI development with Java Swing",
@@ -148,7 +153,7 @@ const VirtualCloset: Project = {
 
 const ThinkTech: Project = {
 	name: "ThinkTECH 2022",
-	date: "Sep - Nov 2022",
+	date: "Sep 2022 - Nov 2022",
 	description: [
 		"Created for the Deloitte ThinkTECH business case competition",
 		"Improved technical communication by presenting to 75+ individuals at the Deloitte summit building in Vancouver",
@@ -179,7 +184,7 @@ const ExviFitness: Project = {
 
 const RenderingEngines: Project = {
 	name: "Rendering Engines",
-	date: "Feb - Dec 2021",
+	date: "Feb 2021 - Dec 2021",
 	description: [
 		"A series of 3D & 2D rendering engines created from scratch",
 		"Implemented the entire render pipeline to draw to a console window with ASCII",
@@ -214,5 +219,22 @@ const Nexus: Project = {
 	],
 	links: [{ link: "https://github.com/CallumMackenzie/Nexus", name: "GitHub Repository" }],
 	imageBasePath: "/img/nexus/",
-	images: ["homepage.png", "desktop.png", "desktop2.png"],
+	images: ["homepage.PNG", "desktop.PNG", "desktop2.PNG"],
+}
+
+const ClassificationOfHeartDisease: Project = {
+	name: "Classification of Heart Disease",
+	date: "Feb 2023 - Apr 2023",
+	description: [
+		"Trained classification model on whether patients are likely to have heart disease",
+		"Used R and Jupyter notebook",
+		"Created data visualizations for ease of understanding",
+		"Performed preliminary data analysis to give insights to variable selection",
+		"Researched possible links between variables",
+		"Created step-by-step report with rationale, and formed a conclusion based on data",
+	],
+	links: [{ link: "https://github.com/CallumMackenzie/dsci100-group-project/blob/fix-edits/final.ipynb", name: "Report" },
+	{ link: "https://github.com/CallumMackenzie/dsci100-group-project/", name: "GitHub Repository" }],
+	imageBasePath: "/img/dsci100/",
+	images: ["ecg.png", "scatter.png", "accuracy.png"]
 }
