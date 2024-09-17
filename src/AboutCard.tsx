@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { Paper } from '@mui/material';
+import { Divider, Paper } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { theme } from "./App";
 
@@ -19,7 +19,7 @@ export const AboutCard = (props: {
 							fontSize: 'large'
 						}}>
 						I am a current undergraduate student at the University of British Columbia in Vancouver, and am currently seeking 
-						Co-op opportunities for January 2025
+						Co-op opportunities for January 2025.
 						<br /> <br />
 						My interests include:
 					</p>

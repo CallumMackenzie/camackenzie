@@ -13,6 +13,7 @@ const languages: SkillList = [
 		{ name: "Rust", proficiency: 60 },
 		{ name: "R", proficiency: 60 },
 		{ name: "Python", proficiency: 50 },
+		{ name: "Kotlin", proficiency: undefined },
 	];
 
 const technologies: SkillList= [
@@ -21,16 +22,19 @@ const technologies: SkillList= [
 		{ name: "Maven/Gradle", proficiency: 70 },
 		{ name: "AWS", proficiency: 60 },
 		{ name: "Firebase", proficiency: 60 },
-		{ name: "OpenGL", proficiency: 50 }
+		{ name: "OpenGL", proficiency: 50 },
+		{ name: "Arduino", proficiency: undefined },
+		{ name: ".NET", proficiency: undefined },
 	];
 
 const otherSkills: SkillList = [
 		{ name: "OOP", proficiency: 100 },
 		{ name: "Test-Driven Development", proficiency: 80 },
+		{ name: "Technical Communication", proficiency: undefined },
 		{ name: "Linux", proficiency: 80 },
 		{ name: "Design Patterns", proficiency: 80 },
 		{ name: "UI Design", proficiency: 70 },
-		{ name: "CAD (Autodesk Fusion 360)", proficiency: 80 }
+		{ name: "CAD (Autodesk Fusion 360)", proficiency: 80 },
 	];
 
 export const SkillsCard = () => {
