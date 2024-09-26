@@ -1,7 +1,8 @@
 
-import { Box, Divider, ImageList, ImageListItem, ImageListItemBar, Stack, useMediaQuery } from "@mui/material";
+import { Container, Divider, Stack, useMediaQuery } from "@mui/material";
 import Paper from "@mui/material/Paper/Paper";
 import { theme } from "./App";
+import { Masonry } from "@mui/lab";
 
 type Project = {
 	name: string,
@@ -65,29 +66,34 @@ const ProjectCard = (props: {
 								&nbsp;
 							</>))}
 					</p>}
-				{props.project.images.length !== 0 &&
-					<p style={{
-						fontSize: 'large'
-					}}>Image Gallery</p>}
 				{props.project.images.length !== 0 && <Divider sx={{
-					bgcolor: "primary.light",
-					opacity: 0.6
-				}} />}
+					"&::before, &::after": {
+						borderColor: "primary.light",
+						opacity: 0.6
+					},
+				}} >{"Image Gallery"}</Divider>}
 				{props.project.images.length !== 0 &&
-					<ImageList cols={isSmallScreen ? 1 : isMediumScreen ? 2 : 3} variant="masonry">
+					<Masonry columns={isSmallScreen ? 1 : isMediumScreen ? 2 : 3}>
 						{props.project.images.map((item) => {
-							const src = typeof (item) == 'string' ? item : item.src;
-							return (
-								<ImageListItem key={src}>
-									<img src={props.project.imageBasePath + src}
-										alt={"Project Demo Image"}
-										loading="lazy" />
-									{typeof (item) != 'string' &&
-										<ImageListItemBar position="below" title={item.desc} />}
-								</ImageListItem>
-							);
+							const src = props.project.imageBasePath +
+								(typeof (item) == 'string' ? item : item.src);
+							return (<div key={src}>
+								{
+									typeof (item) != 'string' &&
+									<Container>{item.desc}</Container>
+								}
+								<img
+									style={{
+										width: "100%",
+										display: "block"
+									}}
+									src={src}
+									srcSet={src}
+									alt={props.project.name}
+									loading="lazy" />
+							</div>);
 						})}
-					</ImageList>}
+					</Masonry>}
 			</Stack>
 		</Paper>
 	</>);
