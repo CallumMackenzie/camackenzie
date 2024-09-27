@@ -86,7 +86,7 @@ const ProjectCard = (props: {
 									src={src}
 									srcSet={src}
 									alt={props.project.name}
-									loading="lazy" />
+									loading="eager" />
 							</div>);
 						})}
 					</Masonry>}
