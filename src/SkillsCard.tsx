@@ -87,47 +87,51 @@ const SkillInfoView = (props: {
 			{props.skill === undefined &&
 				<h5>Select a skill above to see more.</h5>}
 
-			{props.skill !== undefined &&
-				<Stack
-					justifyContent={'center'}
-					justifyItems={'center'}
-					alignItems={'center'}
-					spacing={2}
-					direction={isSmallScreen ? 'column' : 'row'}>
-					<Stack alignItems={'center'} sx={{
-						width: "50%"
-					}}>
-						<h5>Skills used with {props.skill.name}</h5>
-						<AvatarGroup max={isSmallScreen ? 8 : isMedScreen ? 9 : 13}>
-							{Project.skillsUsedWith(props.skill).map(skill => (<>
-								<Avatar
-									variant='square'
-									src={"img/technologies/" + skill.src}
-									alt={skill.name} />
-							</>))}
-						</AvatarGroup>
-					</Stack>
-					<Stack alignItems={'center'} sx={{
-						width: "50%"
-					}}>
-						<h5>Projects using {props.skill.name}</h5>
-						<Grid container
-							alignItems={'center'}
-							justifyContent={'center'}
-							alignContent={'center'}
-							justifyItems={'center'}
-							spacing={1}>
-							{Project.withSkill(props.skill).map(project => (<>
-								<Grid alignContent={'center'}>
-									<Button onClick={() => props.projectRefs
-										.get(project)?.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })}>
-										{project.name}
-									</Button>
-								</Grid>
-							</>))}
-						</Grid>
-					</Stack>
-				</Stack >}
+			<Stack
+				sx={{
+					transition: "opacity 0.5s",
+					opacity: props.skill === undefined ? 0 : 1
+				}}
+				visibility={props.skill === undefined ? 'hidden' : 'visible'}
+				justifyContent={'center'}
+				justifyItems={'center'}
+				alignItems={'center'}
+				spacing={2}
+				direction={isSmallScreen ? 'column' : 'row'}>
+				<Stack alignItems={'center'} sx={{
+					width: "50%"
+				}}>
+					<h5>Skills used with {props.skill?.name ?? ""}</h5>
+					<AvatarGroup max={isSmallScreen ? 8 : isMedScreen ? 9 : 13}>
+						{Project.skillsUsedWith(props.skill).map(skill => (<>
+							<Avatar
+								variant='square'
+								src={"img/technologies/" + skill.src}
+								alt={skill.name} />
+						</>))}
+					</AvatarGroup>
+				</Stack>
+				<Stack alignItems={'center'} sx={{
+					width: "50%"
+				}}>
+					<h5>Projects using {props.skill?.name ?? ""}</h5>
+					<Grid container
+						alignItems={'center'}
+						justifyContent={'center'}
+						alignContent={'center'}
+						justifyItems={'center'}
+						spacing={1}>
+						{Project.withSkill(props.skill).map(project => (<>
+							<Grid alignContent={'center'}>
+								<Button onClick={() => props.projectRefs
+									.get(project)?.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })}>
+									{project.name}
+								</Button>
+							</Grid>
+						</>))}
+					</Grid>
+				</Stack>
+			</Stack >
 		</Container >
 	</>);
 }

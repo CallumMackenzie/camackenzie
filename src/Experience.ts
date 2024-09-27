@@ -306,7 +306,9 @@ export class Project {
 	];
 
 	// Returns all projects using the given skill
-	static withSkill(skill: Skill): Array<Project> {
+	static withSkill(skill: Skill | undefined): Array<Project> {
+		if (skill === undefined)
+			return [];
 		let projects: Array<Project> = [];
 		for (let i = 0; i < this.All.length; ++i) {
 			if (this.All[i].skills.includes(skill)) {
@@ -318,7 +320,9 @@ export class Project {
 	}
 
 	// Returns all skills used in projects that the given skill is also used
-	static skillsUsedWith(skill: Skill): Array<Skill> {
+	static skillsUsedWith(skill: Skill | undefined): Array<Skill> {
+		if (skill === undefined)
+			return [];
 		const projectsUsingSkill = this.withSkill(skill);
 		let skills = new Set<Skill>();
 		projectsUsingSkill.forEach(project =>
