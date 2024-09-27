@@ -128,6 +128,7 @@ export class Project {
 			Language.JavaScript,
 			Language.CSS,
 			Language.HTML,
+			Language.R,
 			Technology.React,
 			Technology.Firebase,
 			Technology.Git,
@@ -201,6 +202,7 @@ export class Project {
 		skills: [
 			Language.Kotlin,
 			Language.Java,
+			Language.Typescript,
 			Technology.AWS,
 			Technology.Gradle,
 			Technology.Maven,
@@ -244,7 +246,8 @@ export class Project {
 			Language.Rust,
 			Technology.OpenGL,
 			Technology.WASM,
-			OtherSkill.Linux
+			OtherSkill.Linux,
+			OtherSkill.OOP
 		]
 	};
 

@@ -49,7 +49,9 @@ export const DynamicBackground = () => {
 
 				const rotate = scrollPos * 180 + randomOffSets[i];
 				const x = (gridX + 0.25) / treeGridWidth * window.innerWidth;
-				const y = window.scrollY + gridY / treeGridHeight * window.innerHeight * 1.5;
+				let y = window.scrollY + gridY / treeGridHeight * window.innerHeight * 1.5;
+
+				if (y < 5) y = 5;
 
 				const lowestTreePlacement = height - treeRef.height * 1.8;
 				treeRef.style.opacity = `${Math.pow(0.99, y - lowestTreePlacement)}`;

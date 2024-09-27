@@ -20,13 +20,14 @@ const openMailTo = () => {
 }
 
 export const TitleCard = (props: {
-	aboutCardRef: React.RefObject<HTMLDivElement>
+	aboutCardRef: React.RefObject<HTMLDivElement>,
+	titleCardRef: React.RefObject<HTMLDivElement>
 }) => {
 	const smallScreen = useMediaQuery(theme.breakpoints.down("md"));
 
 	return (<>
-		<div className='title d-flex align-items-center justify-content-center'>
-			<div className='container p-2'>
+		<div className='title d-flex align-items-center justify-content-center' ref={props.titleCardRef}>
+			<div className='container px-2 py-3'>
 				<div className='title-content row align-items-center justify-content-center px-5 py-5'>
 					<div className={(smallScreen ? "col-11" : "col-6") + " container text-center mx-auto"}>
 						<div className='row'>
@@ -77,7 +78,7 @@ export const TitleCard = (props: {
 				</div>
 				<div className='row justify-content-center py-3'>
 					<Tooltip className='col-auto' title='About'>
-						<IconButton onClick={() => props.aboutCardRef.current?.scrollIntoView({ behavior: 'smooth' })}>
+						<IconButton onClick={() => props.aboutCardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })}>
 							<Avatar alt="About"><ArrowDropDownIcon /></Avatar>
 						</IconButton>
 					</Tooltip>

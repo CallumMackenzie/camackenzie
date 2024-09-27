@@ -1,20 +1,28 @@
 import Grid from '@mui/material/Grid2';
-import { Avatar, AvatarGroup, Box, Button, Container, Divider, IconButton, Paper, Stack, Tooltip, useMediaQuery } from '@mui/material';
+import { Avatar, AvatarGroup, Box, Button, Container, Divider, IconButton, Paper, Stack, Tooltip, Typography, useMediaQuery } from '@mui/material';
 import { ProjectRefs, theme } from './App';
 import React, { useState } from 'react';
 import { Language, OtherSkill, Project, Skill, Technology } from './Experience';
 
 
 export const SkillsCard = (props: {
-	projectRefs: ProjectRefs
+	projectRefs: ProjectRefs,
+	skillsCardRef: React.RefObject<HTMLDivElement>
 }) => {
 	const [skillOpen, setSkillOpen] = useState<Skill | undefined>();
 	const [lastSelectedSkill, setLastSelectedSkill] = useState<Skill | undefined>();
 
 	return (<>
 		<Paper elevation={4}>
-			<Stack textAlign={'center'} padding={2} spacing={1} alignItems={'center'}>
+			<Stack textAlign={'center'}
+				ref={props.skillsCardRef}
+				padding={2}
+				spacing={1}
+				alignItems={'center'}>
 				<h1 className='col'>Skills</h1>
+				<Typography>
+					Select a skill to view related projects and other skills.
+				</Typography>
 				<SkillList skillOpen={skillOpen}
 					setSkillOpen={setSkillOpen}
 					lastSelectedSkill={lastSelectedSkill}
@@ -112,7 +120,7 @@ const SkillInfoView = (props: {
 							{Project.withSkill(props.skill).map(project => (<>
 								<Grid alignContent={'center'}>
 									<Button onClick={() => props.projectRefs
-										.get(project)?.current?.scrollIntoView({ behavior: 'smooth' })}>
+										.get(project)?.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })}>
 										{project.name}
 									</Button>
 								</Grid>

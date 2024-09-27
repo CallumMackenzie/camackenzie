@@ -1,17 +1,18 @@
 
-import { Container, Divider, Stack, useMediaQuery } from "@mui/material";
+import { Avatar, AvatarGroup, Container, Divider, Stack, Typography, useMediaQuery } from "@mui/material";
 import Paper from "@mui/material/Paper/Paper";
 import { ProjectRefs, theme } from "./App";
 import { Masonry } from "@mui/lab";
 import { Project } from "./Experience";
 
 export const ProjectsCard = (props: {
-	projectRefs: ProjectRefs
+	projectRefs: ProjectRefs,
+	projectCardRef: React.RefObject<HTMLDivElement>,
 }) => {
 	return (<>
 		<div className="container p-4 my-3 text-center justify-content-center">
 			<Stack py={1}>
-				<div className='row my-2'>
+				<div className='row my-2' ref={props.projectCardRef}>
 					<h1 className='col' style={{ fontSize: '4em', fontStyle: 'bold' }}>Projects</h1>
 				</div>
 				<ProjectCard project={Project.Drone} refs={props.projectRefs} />
@@ -35,15 +36,16 @@ const ProjectCard = (props: {
 	const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
 	return (<>
-		<Paper elevation={5} className="row py-3 px-1 my-2" ref={props.refs.get(props.project)}>
-			<Stack direction={'column'} spacing={2}>
-				<h3>{props.project.name}</h3>
+		<Paper elevation={5} className="row py-3 px-1 my-2">
+			<Stack direction={'column'} spacing={2} >
+				<Typography alignSelf={'center'} variant='h3'>{props.project.name}</Typography>
 				<Divider sx={{
 					"&::before, &::after": {
 						borderColor: "primary.light",
 						opacity: 0.6
 					},
 				}}>{props.project.date}</Divider>
+				<div ref={props.refs.get(props.project)} />
 				<ul style={{ textAlign: 'left' }}>
 					{props.project.description.map(pt => (
 						<>

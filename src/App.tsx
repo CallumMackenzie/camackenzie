@@ -10,13 +10,14 @@ import { getAuth } from 'firebase/auth';
 import { ThemeProvider } from '@emotion/react';
 import { TitleCard } from './TitleCard';
 import { AboutCard } from './AboutCard';
-import { Container, CssBaseline } from '@mui/material';
+import { AppBar, Container, CssBaseline } from '@mui/material';
 import { red, teal } from '@mui/material/colors';
 import { DynamicBackground } from './DynamicBackground';
 import { BottomCard } from './BottomCard';
 import { ProjectsCard } from './ProjectsCard';
 import { SkillsCard } from './SkillsCard';
 import { Project } from './Experience';
+import { NavigationBar } from './NavigationBar';
 
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_apiKey,
@@ -35,7 +36,9 @@ const analytics = getAnalytics(app);
 export const theme = createTheme({
 	palette: {
 		primary: {
+			light: teal[400],
 			main: teal[600],
+			dark: teal[900],
 		},
 		secondary: {
 			main: red["A100"],
@@ -67,7 +70,10 @@ export type ProjectRefs = Map<Project, React.RefObject<HTMLDivElement>>;
 
 const App = () => {
 
+	const titleCardRef = React.createRef<HTMLDivElement>();
 	const aboutCardRef = React.createRef<HTMLDivElement>();
+	const skillsCardRef = React.createRef<HTMLDivElement>();
+	const projectCardRef = React.createRef<HTMLDivElement>();
 
 	const projectRefs: ProjectRefs = new Map();
 	Project.All.forEach(project => projectRefs.set(project, React.createRef<HTMLDivElement>()));
@@ -76,11 +82,16 @@ const App = () => {
 		<ThemeProvider theme={theme}>
 			<CssBaseline enableColorScheme />
 			<DynamicBackground />
-			<Container className='p-2'>
-				<TitleCard aboutCardRef={aboutCardRef} />
+			<NavigationBar
+				aboutCardRef={aboutCardRef}
+				skillsCardRef={skillsCardRef}
+				titleCardRef={titleCardRef}
+				projectCardRef={projectCardRef} />
+			<Container className='px-2 py-4'>
+				<TitleCard aboutCardRef={aboutCardRef} titleCardRef={titleCardRef} />
 				<AboutCard aboutCardRef={aboutCardRef} />
-				<SkillsCard projectRefs={projectRefs} />
-				<ProjectsCard projectRefs={projectRefs} />
+				<SkillsCard projectRefs={projectRefs} skillsCardRef={skillsCardRef} />
+				<ProjectsCard projectRefs={projectRefs} projectCardRef={projectCardRef} />
 				<BottomCard />
 			</Container>
 		</ThemeProvider>
