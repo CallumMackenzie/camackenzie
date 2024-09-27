@@ -13,14 +13,22 @@ export const AboutCard = (props: {
 		<Paper elevation={4} className='container py-2 px-2 my-5 text-center' ref={props.aboutCardRef}>
 			<div className='row py-2 px-1 justify-content-center'>
 				<div className={(smallScreen ? "col-11" : "col-6") + " container text-center"}>
-					<h1 className='py-4'>About</h1>
-					<p className='text-start'
+					<h1 className=''>About</h1>
+					<Divider
+						sx={{
+							background: 'white'
+						}} />
+					<p className='text-start py-1'
 						style={{
 							fontSize: 'large'
 						}}>
-						I am a current undergraduate student at the University of British Columbia in Vancouver, and am currently seeking 
+						I am a current undergraduate student at the University of British Columbia in Vancouver, and am currently seeking
 						Co-op opportunities for January 2025.
-						<br /> <br />
+						<div className='py-2'>
+							<Divider sx={{
+								background: 'white'
+							}} />
+						</div>
 						My interests include:
 					</p>
 					<ul className='text-start'

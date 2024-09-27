@@ -16,6 +16,7 @@ import { DynamicBackground } from './DynamicBackground';
 import { BottomCard } from './BottomCard';
 import { ProjectsCard } from './ProjectsCard';
 import { SkillsCard } from './SkillsCard';
+import { Project } from './Experience';
 
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_apiKey,
@@ -49,21 +50,37 @@ export const theme = createTheme({
 			disabled: "#FCC8D1"
 		}
 	},
+	components: {
+		MuiAvatarGroup: {
+			styleOverrides: {
+				root: {
+					".MuiAvatar-root": {
+						border: 'none'
+					}
+				},
+			}
+		}
+	}
 });
+
+export type ProjectRefs = Map<Project, React.RefObject<HTMLDivElement>>;
 
 const App = () => {
 
 	const aboutCardRef = React.createRef<HTMLDivElement>();
+
+	const projectRefs: ProjectRefs = new Map();
+	Project.All.forEach(project => projectRefs.set(project, React.createRef<HTMLDivElement>()));
 
 	return (<>
 		<ThemeProvider theme={theme}>
 			<CssBaseline enableColorScheme />
 			<DynamicBackground />
 			<Container className='p-2'>
-				<TitleCard aboutCardRef={aboutCardRef}/>
-				<AboutCard aboutCardRef={aboutCardRef}/>
-				<SkillsCard />
-				<ProjectsCard />
+				<TitleCard aboutCardRef={aboutCardRef} />
+				<AboutCard aboutCardRef={aboutCardRef} />
+				<SkillsCard projectRefs={projectRefs} />
+				<ProjectsCard projectRefs={projectRefs} />
 				<BottomCard />
 			</Container>
 		</ThemeProvider>

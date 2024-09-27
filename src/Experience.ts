@@ -14,7 +14,7 @@ export class Language implements Skill {
 	static readonly Cpp = new Language({ name: "C++", src: "cpp.png" });
 	static readonly Rust = new Language({ name: "Rust", src: "rust.png" });
 	static readonly R = new Language({ name: "R", src: "r.png" });
-	static readonly Python = new Language({ name: "Python", src: "python.png" });
+	// static readonly Python = new Language({ name: "Python", src: "python.png" });
 	static readonly Kotlin = new Language({ name: "Kotlin", src: "kotlin.png" });
 	static readonly JavaScript = new Language({ name: "JavaScript", src: "js.png" });
 	static readonly HTML = new Language({ name: "HTML", src: "html5.svg.png" });
@@ -106,7 +106,7 @@ export class Project {
 			"circuit overview.png",
 			"drone realistic bottom.png",
 		],
-		skills: [Language.C, Language.Cpp, Language.Rust, Technology.Arduino, OtherSkill.CAD]
+		skills: [Language.C, Language.Cpp, Language.Rust, Technology.Arduino, OtherSkill.CAD, OtherSkill.Linux]
 	};
 
 	static readonly Vitalert: Project = {
@@ -125,6 +125,7 @@ export class Project {
 		images: ["home.png", "login.png", "nutrient.png"],
 		skills: [
 			Language.Typescript,
+			Language.JavaScript,
 			Language.CSS,
 			Language.HTML,
 			Technology.React,
@@ -155,6 +156,7 @@ export class Project {
 			OtherSkill.TestDrivenDevelopment,
 			OtherSkill.DesignPatterns,
 			OtherSkill.TechnicalCommunication,
+			OtherSkill.FunctionalProgramming,
 		]
 	};
 
@@ -201,10 +203,13 @@ export class Project {
 			Language.Java,
 			Technology.AWS,
 			Technology.Gradle,
+			Technology.Maven,
 			OtherSkill.OOP,
 			OtherSkill.UIUX,
 			OtherSkill.DesignPatterns,
 			OtherSkill.TechnicalCommunication,
+			OtherSkill.Android,
+			OtherSkill.Linux
 		]
 	};
 
@@ -239,6 +244,7 @@ export class Project {
 			Language.Rust,
 			Technology.OpenGL,
 			Technology.WASM,
+			OtherSkill.Linux
 		]
 	};
 
@@ -296,6 +302,7 @@ export class Project {
 		this.Nexus,
 	];
 
+	// Returns all projects using the given skill
 	static withSkill(skill: Skill): Array<Project> {
 		let projects: Array<Project> = [];
 		for (let i = 0; i < this.All.length; ++i) {
@@ -305,6 +312,16 @@ export class Project {
 			}
 		}
 		return projects;
+	}
+
+	// Returns all skills used in projects that the given skill is also used
+	static skillsUsedWith(skill: Skill): Array<Skill> {
+		const projectsUsingSkill = this.withSkill(skill);
+		let skills = new Set<Skill>();
+		projectsUsingSkill.forEach(project =>
+			project.skills.forEach(pSkill => skills.add(pSkill)));
+		skills.delete(skill);
+		return Array.from(skills);
 	}
 
 	name: string;

@@ -1,39 +1,41 @@
 
 import { Container, Divider, Stack, useMediaQuery } from "@mui/material";
 import Paper from "@mui/material/Paper/Paper";
-import { theme } from "./App";
+import { ProjectRefs, theme } from "./App";
 import { Masonry } from "@mui/lab";
 import { Project } from "./Experience";
 
-export const ProjectsCard = () => {
-
+export const ProjectsCard = (props: {
+	projectRefs: ProjectRefs
+}) => {
 	return (<>
 		<div className="container p-4 my-3 text-center justify-content-center">
 			<Stack py={1}>
 				<div className='row my-2'>
 					<h1 className='col' style={{ fontSize: '4em', fontStyle: 'bold' }}>Projects</h1>
 				</div>
-				<ProjectCard project={Project.Drone} />
-				<ProjectCard project={Project.Vitalert} />
-				<ProjectCard project={Project.VirtualCloset} />
-				<ProjectCard project={Project.ClassificationOfHeartDisease} />
-				<ProjectCard project={Project.ThinkTech} />
-				<ProjectCard project={Project.ExviFitness} />
-				<ProjectCard project={Project.Nexus} />
-				<ProjectCard project={Project.RenderingEngines} />
+				<ProjectCard project={Project.Drone} refs={props.projectRefs} />
+				<ProjectCard project={Project.Vitalert} refs={props.projectRefs} />
+				<ProjectCard project={Project.VirtualCloset} refs={props.projectRefs} />
+				<ProjectCard project={Project.ClassificationOfHeartDisease} refs={props.projectRefs} />
+				<ProjectCard project={Project.ThinkTech} refs={props.projectRefs} />
+				<ProjectCard project={Project.ExviFitness} refs={props.projectRefs} />
+				<ProjectCard project={Project.Nexus} refs={props.projectRefs} />
+				<ProjectCard project={Project.RenderingEngines} refs={props.projectRefs} />
 			</Stack>
 		</div>
 	</>);
 }
 
 const ProjectCard = (props: {
-	project: Project
+	project: Project,
+	refs: ProjectRefs
 }) => {
 	const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"))
 	const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
 	return (<>
-		<Paper elevation={5} className="row py-3 px-1 my-2" >
+		<Paper elevation={5} className="row py-3 px-1 my-2" ref={props.refs.get(props.project)}>
 			<Stack direction={'column'} spacing={2}>
 				<h3>{props.project.name}</h3>
 				<Divider sx={{
