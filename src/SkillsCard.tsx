@@ -1,8 +1,9 @@
 import Grid from '@mui/material/Grid2';
-import { Avatar, AvatarGroup, Box, Button, Container, Divider, IconButton, Paper, Stack, Tooltip, Typography, useMediaQuery } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Avatar, AvatarGroup, Box, Button, Container, Divider, IconButton, Paper, Stack, Tooltip, Typography, useMediaQuery } from '@mui/material';
 import { ProjectRefs, theme } from './App';
 import React, { useState } from 'react';
 import { Language, OtherSkill, Project, Skill, Technology } from './Experience';
+import { ExpandMore } from '@mui/icons-material';
 
 
 export const SkillsCard = (props: {
@@ -10,7 +11,24 @@ export const SkillsCard = (props: {
 	skillsCardRef: React.RefObject<HTMLDivElement>
 }) => {
 	const [skillOpen, setSkillOpen] = useState<Skill | undefined>();
-	const [lastSelectedSkill, setLastSelectedSkill] = useState<Skill | undefined>();
+	const [lastSelectedSkill, setLastSelectedSkillInternal] = useState<Skill | undefined>();
+	const [expanded, setExpanded] = useState(false);
+
+	const setLastSelectedSkill = (x: Skill | undefined) => {
+		const setSkillNoTimeout = (x: Skill | undefined) => {
+			setLastSelectedSkillInternal(x);
+			setExpanded(x !== undefined);
+		};
+
+		if (x !== lastSelectedSkill && lastSelectedSkill !== undefined && x !== undefined) {
+			setSkillNoTimeout(undefined);
+			setTimeout(() => {
+				setSkillNoTimeout(x);
+			}, 200);
+		} else {
+			setSkillNoTimeout(x);
+		}
+	}
 
 	return (<>
 		<Paper elevation={4}>
@@ -28,7 +46,12 @@ export const SkillsCard = (props: {
 					lastSelectedSkill={lastSelectedSkill}
 					setLastSelectedSkill={setLastSelectedSkill} />
 				<Divider sx={{ background: 'white', width: '80%' }} />
-				<SkillInfoView skill={lastSelectedSkill} projectRefs={props.projectRefs} />
+				<SkillInfoView
+					setSkill={setLastSelectedSkill}
+					expanded={expanded}
+					setExpanded={setExpanded}
+					skill={lastSelectedSkill}
+					projectRefs={props.projectRefs} />
 			</Stack>
 		</Paper >
 	</>);
@@ -77,61 +100,77 @@ const SkillList = (props: {
 
 const SkillInfoView = (props: {
 	skill: Skill | undefined,
-	projectRefs: ProjectRefs
+	setSkill: (x: Skill | undefined) => void,
+	projectRefs: ProjectRefs,
+	expanded: boolean,
+	setExpanded: (x: boolean) => void
 }) => {
 	const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 	const isMedScreen = useMediaQuery(theme.breakpoints.down("md"));
 
 	return (<>
-		<Container sx={{ minHeight: 140 }}>
-			{props.skill === undefined &&
-				<h5>Select a skill above to see more.</h5>}
-
-			<Stack
-				sx={{
-					transition: "opacity 0.5s",
-					opacity: props.skill === undefined ? 0 : 1
-				}}
-				visibility={props.skill === undefined ? 'hidden' : 'visible'}
-				justifyContent={'center'}
-				justifyItems={'center'}
-				alignItems={'center'}
-				spacing={2}
-				direction={isSmallScreen ? 'column' : 'row'}>
-				<Stack alignItems={'center'} sx={{
-					width: "50%"
+		<Container>
+			<Accordion expanded={props.expanded}
+				disabled={props.skill === undefined}
+				onChange={x => {
+					if (props.expanded)
+						props.setSkill(undefined);
+					props.setExpanded(!props.expanded);
 				}}>
-					<h5>Skills used with {props.skill?.name ?? ""}</h5>
-					<AvatarGroup max={isSmallScreen ? 8 : isMedScreen ? 9 : 13}>
-						{Project.skillsUsedWith(props.skill).map(skill => (<>
-							<Avatar
-								variant='square'
-								src={"img/technologies/" + skill.src}
-								alt={skill.name} />
-						</>))}
-					</AvatarGroup>
-				</Stack>
-				<Stack alignItems={'center'} sx={{
-					width: "50%"
-				}}>
-					<h5>Projects using {props.skill?.name ?? ""}</h5>
-					<Grid container
-						alignItems={'center'}
+				<AccordionSummary
+					expandIcon={<ExpandMore sx={{ color: 'white' }} />}
+					aria-controls="panel1-content"
+					id="panel1-header">
+					Select a skill above to see more.
+				</AccordionSummary>
+				<AccordionDetails>
+					<Stack
+						sx={{
+							transition: "opacity 0.5s",
+							opacity: props.skill === undefined ? 0 : 1
+						}}
+						pb={2}
 						justifyContent={'center'}
-						alignContent={'center'}
 						justifyItems={'center'}
-						spacing={1}>
-						{Project.withSkill(props.skill).map(project => (<>
-							<Grid alignContent={'center'}>
-								<Button onClick={() => props.projectRefs
-									.get(project)?.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })}>
-									{project.name}
-								</Button>
+						alignItems={'center'}
+						spacing={2}
+						direction={isSmallScreen ? 'column' : 'row'}>
+						<Stack alignItems={'center'} sx={{
+							width: "50%"
+						}}>
+							<h5>Skills used with {props.skill?.name ?? ""}</h5>
+							<AvatarGroup max={isSmallScreen ? 8 : isMedScreen ? 9 : 13}>
+								{Project.skillsUsedWith(props.skill).map(skill => (<>
+									<Avatar
+										variant='square'
+										src={"img/technologies/" + skill.src}
+										alt={skill.name} />
+								</>))}
+							</AvatarGroup>
+						</Stack>
+						<Stack alignItems={'center'} sx={{
+							width: "50%"
+						}}>
+							<h5>Projects using {props.skill?.name ?? ""}</h5>
+							<Grid container
+								alignItems={'center'}
+								justifyContent={'center'}
+								alignContent={'center'}
+								justifyItems={'center'}
+								spacing={1}>
+								{Project.withSkill(props.skill).map(project => (<>
+									<Grid alignContent={'center'}>
+										<Button onClick={() => props.projectRefs
+											.get(project)?.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })}>
+											{project.name}
+										</Button>
+									</Grid>
+								</>))}
 							</Grid>
-						</>))}
-					</Grid>
-				</Stack>
-			</Stack >
+						</Stack>
+					</Stack >
+				</AccordionDetails>
+			</Accordion>
 		</Container >
 	</>);
 }
