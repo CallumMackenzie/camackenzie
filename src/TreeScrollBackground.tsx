@@ -5,7 +5,7 @@ import tree from "./tree.svg";
 import { theme } from "./App";
 import { useMediaQuery } from "@mui/material";
 
-export const DynamicBackground = () => {
+export const TreeScrollBackground = () => {
 	const isLg = useMediaQuery(theme.breakpoints.only('lg')),
 		isXl = useMediaQuery(theme.breakpoints.up('xl')),
 		isMd = useMediaQuery(theme.breakpoints.only('md'));

@@ -12,7 +12,7 @@ import { TitleCard } from './TitleCard';
 import { AboutCard } from './AboutCard';
 import { AppBar, Container, CssBaseline } from '@mui/material';
 import { red, teal } from '@mui/material/colors';
-import { DynamicBackground } from './DynamicBackground';
+import { TreeScrollBackground } from './TreeScrollBackground';
 import { BottomCard } from './BottomCard';
 import { ProjectsCard } from './ProjectsCard';
 import { SkillsCard } from './SkillsCard';
@@ -81,7 +81,7 @@ const App = () => {
 	return (<>
 		<ThemeProvider theme={theme}>
 			<CssBaseline enableColorScheme />
-			<DynamicBackground />
+			<TreeScrollBackground />
 			<NavigationBar
 				aboutCardRef={aboutCardRef}
 				skillsCardRef={skillsCardRef}
