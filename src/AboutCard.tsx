@@ -22,8 +22,7 @@ export const AboutCard = (props: {
 						style={{
 							fontSize: 'large'
 						}}>
-						I am a current undergraduate student at the University of British Columbia in Vancouver, and am currently seeking
-						Co-op opportunities for January 2025.
+						I am a current undergraduate student at the University of British Columbia in Vancouver, and am completing a Software Engineering Co-op from January to December 2025 with General Dynamics.
 						<div className='py-2'>
 							<Divider sx={{
 								background: 'white'
