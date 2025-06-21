@@ -84,9 +84,21 @@ export const AllSkills: Array<Skill> = Language.All.concat(Technology.All).conca
 
 export class Project {
 
+	// TODO: Fill this in
+	static readonly CMotion: Project = {
+		name: "CMotion",
+		date: "Mar 2025 - Current",
+		description: [
+		],
+		links: [],
+		imageBasePath: "/img/cmotion/",
+		images: [],
+		skills: [Language.C, OtherSkill.CAD]
+	};
+
 	static readonly Drone: Project = {
 		name: "Drone from Scratch",
-		date: "Apr 2022 - Current",
+		date: "Apr 2022 - Aug 2024",
 		description: [
 			"Utilized a variety of low-level communication protocols such as SPI, PWM, I2C",
 			"Researched components based on electrical requirements (FPGA vs microprocessor, voltages, PWM channels, camera interface)",
