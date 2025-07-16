@@ -20,6 +20,7 @@ export class Language implements Skill {
 	static readonly HTML = new Language({ name: "HTML", src: "html5.svg.png" });
 	static readonly CSS = new Language({ name: "CSS", src: "css.svg.png" });
 	static readonly CSharp = new Language({ name: "C#", src: "csharp.svg.png" });
+	static readonly Swift = new Language({ name: "Swift", src: "swift.png"});
 
 	static readonly All: Array<Language> = Object.values(this).filter(x => x instanceof Language);
 
@@ -44,6 +45,8 @@ export class Technology implements Skill {
 	static readonly OpenGL = new Technology({ name: "OpenGL", src: "opengl.png" });
 	static readonly WASM = new Technology({ name: "WebAssembly", src: "wasm.svg.png" });
 	static readonly Jupyter = new Technology({ name: "Jupyter Notebook", src: "jupyter.png" });
+	static readonly CMake = new Technology({ name: "CMake", src: "cmake.png" });
+	// static readonly Make = new Technology({ name: "Make", src: "make.png" });
 
 	static readonly All: Array<Technology> = Object.values(this).filter(x => x instanceof Technology);
 
@@ -66,6 +69,7 @@ export class OtherSkill implements Skill {
 	static readonly FunctionalProgramming = new OtherSkill({ name: "Functional Programming", src: "lambda.png" });
 	static readonly UIUX = new OtherSkill({ name: "UI Design", src: "uiux.png" });
 	static readonly CAD = new OtherSkill({ name: "CAD (Autodesk Fusion 360)", src: "f360.png" });
+	static readonly PCBDesign = new OtherSkill({ name: "PCB Design", src: "pcb.png" });
 
 	static readonly All: Array<OtherSkill> = Object.values(this).filter(x => x instanceof OtherSkill);
 
@@ -84,16 +88,20 @@ export const AllSkills: Array<Skill> = Language.All.concat(Technology.All).conca
 
 export class Project {
 
-	// TODO: Fill this in
 	static readonly CMotion: Project = {
-		name: "CMotion",
+		name: "FITNET",
 		date: "Mar 2025 - Current",
 		description: [
+			"A system of nodes placed across the body to read EMG and motion data in order to record and analyze movement",
+			"Utilized ESP-IDF with C to work with the ESP32-S3 to integrate IMU, thermistor, and EMG sensor data",
+			"Used ESP32-S3 Bluetooth Low Energy to connect data to IOS",
+			// TODO: add more
+			" *** More info to come *** ",
 		],
 		links: [],
-		imageBasePath: "/img/cmotion/",
-		images: [],
-		skills: [Language.C, OtherSkill.CAD]
+		imageBasePath: "/img/fitnet/",
+		images: ["emgdev1real.png", "proto1.png", "emgdev1render.png"],
+		skills: [Language.C, Language.Swift, Technology.CMake, Technology.Git, Technology.Arduino, OtherSkill.PCBDesign, OtherSkill.CAD, OtherSkill.TechnicalCommunication]
 	};
 
 	static readonly Drone: Project = {
@@ -258,8 +266,9 @@ export class Project {
 			Language.Rust,
 			Technology.OpenGL,
 			Technology.WASM,
+			Technology.CMake,
 			OtherSkill.Linux,
-			OtherSkill.OOP
+			OtherSkill.OOP,
 		]
 	};
 
@@ -307,6 +316,7 @@ export class Project {
 	});
 
 	static readonly All: Array<Project> = [
+		this.CMotion,
 		this.Drone,
 		this.Vitalert,
 		this.VirtualCloset,

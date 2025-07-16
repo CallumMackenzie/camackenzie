@@ -1,5 +1,5 @@
 
-import { Avatar, AvatarGroup, Container, Divider, Stack, Typography, useMediaQuery } from "@mui/material";
+import { Container, Divider, Stack, Typography, useMediaQuery } from "@mui/material";
 import Paper from "@mui/material/Paper/Paper";
 import { ProjectRefs, theme } from "./App";
 import { Masonry } from "@mui/lab";
@@ -15,6 +15,7 @@ export const ProjectsCard = (props: {
 				<div className='row my-2' ref={props.projectCardRef}>
 					<h1 className='col' style={{ fontSize: '4em', fontStyle: 'bold' }}>Projects</h1>
 				</div>
+				<ProjectCard project={Project.CMotion} refs={props.projectRefs} />
 				<ProjectCard project={Project.Drone} refs={props.projectRefs} />
 				<ProjectCard project={Project.Vitalert} refs={props.projectRefs} />
 				<ProjectCard project={Project.VirtualCloset} refs={props.projectRefs} />
