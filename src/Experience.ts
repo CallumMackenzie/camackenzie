@@ -95,12 +95,15 @@ export class Project {
 			"A system of nodes placed across the body to read EMG and motion data in order to record and analyze movement",
 			"Utilized ESP-IDF with C to work with the ESP32-S3 to integrate IMU, thermistor, and EMG sensor data",
 			"Used ESP32-S3 Bluetooth Low Energy to connect data to IOS",
+			"Created custom PCB with Autodesk Fusion360",
+			"Designed power system providing +9V, -9V, 3.3V, 5V from 1S LIPO",
+			"Integrated battery protection and charging into electronics design",
 			// TODO: add more
 			" *** More info to come *** ",
 		],
 		links: [],
 		imageBasePath: "/img/fitnet/",
-		images: ["emgdev1real.png", "proto1.png", "emgdev1render.png"],
+		images: ["pcbv1.jpeg", "emgdev1real.png"/*, "proto1.png"*/, "emgdev1render.png"],
 		skills: [Language.C, Language.Swift, Technology.CMake, Technology.Git, Technology.Arduino, OtherSkill.PCBDesign, OtherSkill.CAD, OtherSkill.TechnicalCommunication]
 	};
 
