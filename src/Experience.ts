@@ -90,7 +90,7 @@ export class Project {
 
 	static readonly CMotion: Project = {
 		name: "FITNET",
-		date: "Mar 2025 - Current",
+		date: "Feb 2025 - Current",
 		description: [
 			"A system of nodes placed across the body to read EMG and motion data in order to record and analyze movement",
 			"Utilized ESP-IDF with C to work with the ESP32-S3 to integrate IMU, thermistor, and EMG sensor data",
