@@ -83,7 +83,7 @@ export const ResumePreview = ({
 					<Box sx={{ flex: 1, minHeight: height, borderRadius: 2, overflow: "hidden", border: 1, borderColor: "divider" }}>
 						{url ? (
 							<Box sx={{ height: height, position: "relative", bgcolor: "background.default" }}>
-								<embed src={url + "#toolbar=0&navpanes=0"} type="application/pdf" width="100%" height="100%" />
+								<embed src={url} type="application/pdf" width="100%" height="100%" />
 								<Box sx={{ position: "absolute", bottom: 8, right: 8, display: "flex", gap: 1 }}>
 									<Tooltip title="Open full screen">
 										<IconButton color="primary" onClick={openInNewTab}>
