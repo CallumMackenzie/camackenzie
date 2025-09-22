@@ -8,6 +8,7 @@ export const NavigationBar = (props: {
 	skillsCardRef: React.RefObject<HTMLDivElement>,
 	titleCardRef: React.RefObject<HTMLDivElement>,
 	projectCardRef: React.RefObject<HTMLDivElement>,
+	resumeCardRef: React.RefObject<HTMLDivElement>,
 }) => {
 	const scrollToSmooth = (ref: React.RefObject<HTMLDivElement>) =>
 		ref.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -20,8 +21,10 @@ export const NavigationBar = (props: {
 
 	const navItems = [{ name: "Home", onClick: () => scrollToSmooth(props.titleCardRef) },
 	{ name: "About", onClick: () => scrollToSmooth(props.aboutCardRef) },
+	{ name: "Resume", onClick: () => scrollToSmooth(props.resumeCardRef) },
 	{ name: "Skills", onClick: () => scrollToSmooth(props.skillsCardRef) },
-	{ name: "Projects", onClick: () => scrollToSmooth(props.projectCardRef) }];
+	{ name: "Projects", onClick: () => scrollToSmooth(props.projectCardRef) },
+	];
 
 	const drawer = (
 		<Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
