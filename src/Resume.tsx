@@ -34,7 +34,7 @@ export const ResumePreview = ({
 }: {
 	resumeCardRef: React.RefObject<HTMLDivElement>
 }) => {
-	const url = "https://camackenzie.com/CallumMackenzieResume.pdf";
+	const url = "/CallumMackenzieResume.pdf";
 	const fileNameHint = "CallumMackenzieResume.pdf";
 	const title = "Resume";
 	const height = 720;
