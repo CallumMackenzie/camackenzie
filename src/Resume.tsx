@@ -13,7 +13,6 @@ import {
 	Paper,
 } from "@mui/material";
 import DownloadIcon from "@mui/icons-material/Download";
-import PrintIcon from "@mui/icons-material/Print";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 

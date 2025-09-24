@@ -20,7 +20,7 @@ export class Language implements Skill {
 	static readonly HTML = new Language({ name: "HTML", src: "html5.svg.png" });
 	static readonly CSS = new Language({ name: "CSS", src: "css.svg.png" });
 	static readonly CSharp = new Language({ name: "C#", src: "csharp.svg.png" });
-	static readonly Swift = new Language({ name: "Swift", src: "swift.png"});
+	static readonly Swift = new Language({ name: "Swift", src: "swift.png" });
 
 	static readonly All: Array<Language> = Object.values(this).filter(x => x instanceof Language);
 
@@ -219,7 +219,10 @@ export class Project {
 			"Implemented custom serialization scheme for quick and accurate data saving",
 			"Leveraged Java and Kotlin together via JVM for cloud and client code",
 		],
-		links: [{ link: "https://github.com/CallumMackenzie/exvi-client", name: "Exvi" }],
+		links: [
+			{ link: "https://camackenzie.com/ExviPosterReport.pdf", name: "Poster Report" },
+			{ link: "https://github.com/CallumMackenzie/exvi-client", name: "Exvi" },
+		],
 		imageBasePath: "/img/exvi/",
 		images: ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png"],
 		skills: [
