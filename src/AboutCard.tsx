@@ -34,19 +34,19 @@ export const AboutCard = (props: {
 						style={{
 							fontSize: 'large'
 						}}>
-						<li>Software Engineering</li>
 						<li>Embedded Systems</li>
 						<li>Data Science & Statistics</li>
 						<li>Biotechnology</li>
-						<li>Project Management</li>
 						<li>Fitness & Nutrition</li>
+						<li>Backpacking & Traveling</li>
+						<li>Motorsport</li>
 					</ul>
 				</div>
 				<div className={smallScreen ? "col-11" : "col-5"}>
 					<img
 						className='img-fluid m-auto px-3'
 						alt='Callum Mackenzie'
-						src="img/callum-mackenzie-2.jpg"
+						src="img/callum-mackenzie-2.png"
 						onLoad={e => e.currentTarget.style.animation = ""}
 						style={{
 							borderRadius: "50%",
