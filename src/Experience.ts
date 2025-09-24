@@ -8,8 +8,8 @@ export interface Skill {
 
 
 export class Language implements Skill {
-	static readonly Typescript = new Language({ name: "Typescript", src: "typescript.svg" });
-	static readonly Java = new Language({ name: "Java", src: "java.webp" });
+	static readonly Typescript = new Language({ name: "Typescript", src: "typescript.png" });
+	static readonly Java = new Language({ name: "Java", src: "java.png" });
 	static readonly C = new Language({ name: "C", src: "c.png" });
 	static readonly Cpp = new Language({ name: "C++", src: "cpp.png" });
 	static readonly Rust = new Language({ name: "Rust", src: "rust.png" });
@@ -60,7 +60,7 @@ export class Technology implements Skill {
 };
 
 export class OtherSkill implements Skill {
-	static readonly Linux = new OtherSkill({ name: "Linux", src: "linux.svg" });
+	static readonly Linux = new OtherSkill({ name: "Linux", src: "linux.png" });
 	static readonly Android = new OtherSkill({ name: "Android", src: "android.png" });
 	static readonly OOP = new OtherSkill({ name: "OOP", src: "oop.png" });
 	static readonly TestDrivenDevelopment = new OtherSkill({ name: "Test-Driven Development", src: "testdrivendev.png" });
