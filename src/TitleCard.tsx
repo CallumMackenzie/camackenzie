@@ -2,11 +2,10 @@ import React from 'react';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { theme } from "./App";
 import LocationOn from '@mui/icons-material/LocationOn';
-import { Avatar, Box, Container } from '@mui/material';
+import { Avatar } from '@mui/material';
 import { Paper, IconButton, Tooltip } from '@mui/material';
 import Mail from "@mui/icons-material/Mail";
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 
 
 const openGithub = () => {
@@ -16,7 +15,7 @@ const openLinkedin = () => {
 	window.open("https://www.linkedin.com/in/callum-ma/");
 }
 const openMailTo = () => {
-	window.open("mailto:callum.alex.mackenzie@gmail.com");
+	window.open("mailto:callum@camackenzie.com");
 }
 
 export const TitleCard = (props: {
