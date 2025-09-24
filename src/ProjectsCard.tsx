@@ -1,5 +1,5 @@
 
-import { Container, Divider, Stack, Typography, useMediaQuery } from "@mui/material";
+import { Avatar, Container, Divider, Stack, Tooltip, Typography, useMediaQuery } from "@mui/material";
 import Paper from "@mui/material/Paper/Paper";
 import { ProjectRefs, theme } from "./App";
 import { Masonry } from "@mui/lab";
@@ -36,9 +36,11 @@ const ProjectCard = (props: {
 	const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"))
 	const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
+	const skills = props.project.skills;
+
 	return (<>
 		<Paper elevation={5} className="row py-3 px-1 my-2">
-			<Stack direction={'column'} spacing={2} >
+			<Stack direction={'column'} spacing={1} >
 				<Typography alignSelf={'center'} variant='h3'>{props.project.name}</Typography>
 				<Divider sx={{
 					"&::before, &::after": {
@@ -46,6 +48,16 @@ const ProjectCard = (props: {
 						opacity: 0.6
 					},
 				}}>{props.project.date}</Divider>
+				{skills.length !== 0 &&
+					<Stack direction={'row'} justifyContent={'center'} spacing={isSmallScreen ? 0 : 2} alignItems={'center'}>
+						{skills.slice(0, Math.min(10, skills.length)).map(x => (
+							<Tooltip key={x.name} title={x.name} arrow>
+								<Avatar variant="square"
+									alt={x.name} src={"img/technologies/" + x.src}
+									sx={{ width: 30, height: 30 }} />
+							</Tooltip>
+						))}
+					</Stack>}
 				<div ref={props.refs.get(props.project)} />
 				<ul style={{ textAlign: 'left' }}>
 					{props.project.description.map(pt => (
@@ -92,6 +104,6 @@ const ProjectCard = (props: {
 						})}
 					</Masonry>}
 			</Stack>
-		</Paper>
+		</Paper >
 	</>);
 };

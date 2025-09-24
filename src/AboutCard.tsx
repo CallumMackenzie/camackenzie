@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import { Divider, Paper } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -28,7 +28,7 @@ export const AboutCard = (props: {
 								background: 'white'
 							}} />
 						</div>
-						My interests include:
+						My interests and passions include:
 					</p>
 					<ul className='text-start'
 						style={{
@@ -40,6 +40,7 @@ export const AboutCard = (props: {
 						<li>Fitness & Nutrition</li>
 						<li>Backpacking & Traveling</li>
 						<li>Motorsport</li>
+						<li>Acoustic Guitar</li>
 					</ul>
 				</div>
 				<div className={smallScreen ? "col-11" : "col-5"}>

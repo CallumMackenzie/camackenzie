@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Grid2';
-import { Accordion, AccordionDetails, AccordionSummary, Avatar, AvatarGroup, Box, Button, Container, Divider, IconButton, Paper, Stack, Tooltip, Typography, useMediaQuery } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Avatar, AvatarGroup, Button, Container, Divider, IconButton, Paper, Stack, Tooltip, Typography, useMediaQuery } from '@mui/material';
 import { ProjectRefs, theme } from './App';
 import React, { useState } from 'react';
 import { Language, OtherSkill, Project, Skill, Technology } from './Experience';
