@@ -88,7 +88,7 @@ const App = () => {
 				skillsCardRef={skillsCardRef}
 				titleCardRef={titleCardRef}
 				projectCardRef={projectCardRef} />
-			<Container className='py-4' sx={{ px: { xs: 0, sm: 1, md: 3 } }} maxWidth="md">
+			<Container sx={{ pt: 4 }} maxWidth="md">
 				<TitleCard aboutCardRef={aboutCardRef} titleCardRef={titleCardRef} />
 				<AboutCard aboutCardRef={aboutCardRef} />
 				<ResumePreview resumeCardRef={resumeCardRef} />
