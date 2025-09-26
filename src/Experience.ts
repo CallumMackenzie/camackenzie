@@ -88,7 +88,7 @@ export const AllSkills: Array<Skill> = Language.All.concat(Technology.All).conca
 
 export class Project {
 
-	static readonly CMotion: Project = {
+	static readonly Fitnet: Project = {
 		name: "FITNET",
 		date: "Feb 2025 - Current",
 		description: [
@@ -103,7 +103,7 @@ export class Project {
 		],
 		links: [],
 		imageBasePath: "/img/fitnet/",
-		images: ["pcbv1.jpeg", "emgdev1real.png"/*, "proto1.png"*/, "emgdev1render.png"],
+		images: ["real1.jpg", "render1.jpeg", "pcbv1.jpeg", "emgdev1real.png"/*, "proto1.png"*/, "emgdev1render.png"],
 		skills: [Language.C, Language.Swift, Technology.CMake, Technology.Git, Technology.Arduino, OtherSkill.PCBDesign, OtherSkill.CAD, OtherSkill.TechnicalCommunication]
 	};
 
@@ -322,7 +322,7 @@ export class Project {
 	});
 
 	static readonly All: Array<Project> = [
-		this.CMotion,
+		this.Fitnet,
 		this.Drone,
 		this.Vitalert,
 		this.VirtualCloset,
