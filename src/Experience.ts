@@ -189,11 +189,11 @@ export class Project {
 		date: "Sep 2022 - Nov 2022",
 		description: [
 			"Created for the Deloitte ThinkTECH business case competition",
-			"Improved technical communication by presenting to 75+ individuals at the Deloitte summit building in Vancouver",
+			"Improved technical communication by presenting to 100+ individuals at the Deloitte summit building in Vancouver",
 			"Safely managed sensetive medical forms with cryptographic principles",
 			"Integrated online form APIs to track information",
 			"Set up webhooks to quickly notify and store input data",
-			"Placed top 4 of 32 teams, of which there was competitive participant selection"
+			"Placed top 4 of 160+ candidates"
 		],
 		links: [],
 		imageBasePath: "/img/thinktech/",
