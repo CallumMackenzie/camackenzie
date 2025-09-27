@@ -14,7 +14,7 @@ export class Language implements Skill {
 	static readonly Cpp = new Language({ name: "C++", src: "cpp.png" });
 	static readonly Rust = new Language({ name: "Rust", src: "rust.png" });
 	static readonly R = new Language({ name: "R", src: "r.png" });
-	// static readonly Python = new Language({ name: "Python", src: "python.png" });
+	static readonly Python = new Language({ name: "Python", src: "python.png" });
 	static readonly Kotlin = new Language({ name: "Kotlin", src: "kotlin.png" });
 	static readonly JavaScript = new Language({ name: "JavaScript", src: "js.png" });
 	static readonly HTML = new Language({ name: "HTML", src: "html5.svg.png" });
@@ -98,13 +98,14 @@ export class Project {
 			"Created custom PCB with Autodesk Fusion360",
 			"Designed power system providing +9V, -9V, 3.3V, 5V from 1S LIPO",
 			"Integrated battery protection and charging into electronics design",
+			"Visualized cost with with Fusion360 BOM, DigiKey API, Python, and Jupyter Notebooks",
 			// TODO: add more
 			" *** More info to come *** ",
 		],
 		links: [],
 		imageBasePath: "/img/fitnet/",
 		images: ["real1.jpg", "render1.jpeg", "pcbv1.jpeg", "emgdev1real.png"/*, "proto1.png"*/, "emgdev1render.png"],
-		skills: [Language.C, Language.Swift, Technology.CMake, Technology.Git, Technology.Arduino, OtherSkill.PCBDesign, OtherSkill.CAD, OtherSkill.TechnicalCommunication]
+		skills: [Language.C, Language.Swift, Language.Python, Technology.CMake, Technology.Jupyter, Technology.Git, Technology.Arduino, OtherSkill.PCBDesign, OtherSkill.CAD, OtherSkill.TechnicalCommunication]
 	};
 
 	static readonly Drone: Project = {
