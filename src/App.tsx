@@ -16,7 +16,7 @@ import { ProjectsCard } from './ProjectsCard';
 import { SkillsCard } from './SkillsCard';
 import { Project } from './Experience';
 import { NavigationBar } from './NavigationBar';
-import { ResumePreview } from './Resume';
+import { ResumeCard } from './ResumeCard';
 
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_apiKey,
@@ -91,7 +91,7 @@ const App = () => {
 			<Container sx={{ pt: 4 }} maxWidth="md">
 				<TitleCard aboutCardRef={aboutCardRef} titleCardRef={titleCardRef} />
 				<AboutCard aboutCardRef={aboutCardRef} />
-				<ResumePreview resumeCardRef={resumeCardRef} />
+				<ResumeCard resumeCardRef={resumeCardRef} />
 				<SkillsCard projectRefs={projectRefs} skillsCardRef={skillsCardRef} />
 				<ProjectsCard projectRefs={projectRefs} projectCardRef={projectCardRef} />
 				<BottomCard />
