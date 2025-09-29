@@ -104,7 +104,7 @@ export class Project {
 		],
 		links: [{ link: "https://github.com/Fitintel", name: "GitHub Organization" }],
 		imageBasePath: "/img/fitnet/",
-		images: ["real1.jpg", "render1.jpeg", "pcbv1.jpeg", "emgdev1real.png"/*, "proto1.png"*/, "emgdev1render.png"],
+		images: ["ui1.jpg", "real1.jpg", "render1.jpeg", "pcbv1.jpeg", "emgdev1real.png"/*, "proto1.png"*/, "emgdev1render.png"],
 		skills: [Language.C, Language.Swift, Language.Python, Technology.CMake, Technology.Jupyter, Technology.Git, Technology.Arduino, OtherSkill.PCBDesign, OtherSkill.CAD, OtherSkill.TechnicalCommunication]
 	};
 
