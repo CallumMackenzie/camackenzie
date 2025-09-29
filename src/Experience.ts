@@ -291,7 +291,7 @@ export class Project {
 		],
 		links: [{ link: "https://github.com/CallumMackenzie/Nexus", name: "GitHub Repository" }],
 		imageBasePath: "/img/nexus/",
-		images: ["homepage.PNG", "desktop.PNG", "desktop2.PNG"],
+		images: ["homepage.png", "desktop.png", "desktop2.png"],
 		skills: [
 			Language.CSharp,
 			Technology.DotNet,
