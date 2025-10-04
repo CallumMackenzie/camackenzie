@@ -105,7 +105,7 @@ export class Project {
 		links: [{ link: "https://github.com/Fitintel", name: "GitHub Organization" }],
 		imageBasePath: "/img/fitnet/",
 		images: ["v64render.png", "ui1.jpg", "real1.jpg", "pcbv1.jpeg", "emgdev1real.png", "emgdev1render.png"],
-		skills: [Language.C, Language.Swift, Language.Python, Technology.CMake, Technology.Jupyter, Technology.Git, Technology.Arduino, OtherSkill.PCBDesign, OtherSkill.CAD, OtherSkill.TechnicalCommunication]
+		skills: [Language.C, Language.Swift, Language.Python, Technology.CMake, Technology.Jupyter, Technology.Firebase, Technology.Git, OtherSkill.PCBDesign, OtherSkill.CAD, OtherSkill.TechnicalCommunication]
 	};
 
 	static readonly Drone: Project = {
