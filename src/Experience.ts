@@ -99,6 +99,7 @@ export class Project {
 			"Designed power system providing +9V, -9V, 3.3V, 5V from 1S LIPO",
 			"Integrated battery protection and charging into electronics design",
 			"Visualized cost with with Fusion360 BOM, DigiKey API, Python, and Jupyter Notebooks",
+			"Streamed data from device to IOS to Firebase to Python for data analysis",
 			// TODO: add more
 			" *** More info to come *** ",
 		],
