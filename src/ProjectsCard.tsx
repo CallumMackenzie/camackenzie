@@ -22,8 +22,8 @@ export const ProjectsCard = (props: {
 				<ProjectCard project={Project.ClassificationOfHeartDisease} refs={props.projectRefs} />
 				<ProjectCard project={Project.ThinkTech} refs={props.projectRefs} />
 				<ProjectCard project={Project.ExviFitness} refs={props.projectRefs} />
-				<ProjectCard project={Project.Nexus} refs={props.projectRefs} />
 				<ProjectCard project={Project.RenderingEngines} refs={props.projectRefs} />
+				<ProjectCard project={Project.Nexus} refs={props.projectRefs} />
 			</Stack>
 		</div>
 	</>);

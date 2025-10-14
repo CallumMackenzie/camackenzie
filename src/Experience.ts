@@ -245,7 +245,7 @@ export class Project {
 
 	static readonly RenderingEngines: Project = {
 		name: "Rendering Engines",
-		date: "Feb 2021 - Dec 2021",
+		date: "Feb 2021 - Dec 2023",
 		description: [
 			"A series of 3D & 2D rendering engines created from scratch",
 			"Implemented the entire render pipeline to draw to a console window with ASCII",
