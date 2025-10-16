@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { createTheme } from '@mui/material/styles';
 
@@ -77,6 +77,18 @@ const App = () => {
 
 	const projectRefs: ProjectRefs = new Map();
 	Project.All.forEach(project => projectRefs.set(project, React.createRef<HTMLDivElement>()));
+
+	// Scroll to based on URL hash
+	useEffect(() => {
+		setTimeout(() => {
+			const hash = window.location.hash;
+			const proj = Project.All.find(p => p.urlHash() === hash);
+			if (proj) {
+				const ref = projectRefs.get(proj);
+				ref?.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+			}
+		}, 600);
+	}, [projectRefs]);
 
 	return (<>
 		<ThemeProvider theme={theme}>

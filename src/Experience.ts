@@ -88,7 +88,7 @@ export const AllSkills: Array<Skill> = Language.All.concat(Technology.All).conca
 
 export class Project {
 
-	static readonly Fitnet: Project = {
+	static readonly Fitnet: Project = new Project({
 		name: "FITNET",
 		date: "Feb 2025 - Current",
 		description: [
@@ -107,9 +107,9 @@ export class Project {
 		imageBasePath: "/img/fitnet/",
 		images: ["v64render.png", "ui1.jpg", "real1.jpg", "pcbv1.jpeg", "emgdev1real.png", "emgdev1render.png"],
 		skills: [Language.C, Language.Swift, Language.Python, Technology.CMake, Technology.Jupyter, Technology.Firebase, Technology.Git, OtherSkill.PCBDesign, OtherSkill.CAD, OtherSkill.TechnicalCommunication]
-	};
+	});
 
-	static readonly Drone: Project = {
+	static readonly Drone: Project = new Project({
 		name: "Drone from Scratch",
 		date: "Apr 2022 - Aug 2024",
 		description: [
@@ -132,9 +132,9 @@ export class Project {
 			"drone realistic bottom.png",
 		],
 		skills: [Language.C, Language.Cpp, Language.Rust, Technology.Arduino, OtherSkill.CAD, OtherSkill.Linux]
-	};
+	});
 
-	static readonly Vitalert: Project = {
+	static readonly Vitalert: Project = new Project({
 		name: "VitAlert",
 		date: "Jan 2024",
 		description: [
@@ -159,9 +159,9 @@ export class Project {
 			Technology.Git,
 			OtherSkill.TechnicalCommunication
 		]
-	};
+	});
 
-	static readonly VirtualCloset: Project = {
+	static readonly VirtualCloset: Project = new Project({
 		name: "Virtual Closet",
 		date: "Jan 2023 - Apr 2023",
 		description: [
@@ -184,9 +184,9 @@ export class Project {
 			OtherSkill.TechnicalCommunication,
 			OtherSkill.FunctionalProgramming,
 		]
-	};
+	});
 
-	static readonly ThinkTech: Project = {
+	static readonly ThinkTech: Project = new Project({
 		name: "Deloitte ThinkTECH",
 		date: "Sep 2022 - Nov 2022",
 		description: [
@@ -209,9 +209,9 @@ export class Project {
 			Technology.Git,
 			OtherSkill.TechnicalCommunication,
 		]
-	};
+	});
 
-	static readonly ExviFitness: Project = {
+	static readonly ExviFitness: Project = new Project({
 		name: "Exvi Fitness",
 		date: "Dec 2021 - Jun 2022",
 		description: [
@@ -241,9 +241,9 @@ export class Project {
 			OtherSkill.Android,
 			OtherSkill.Linux
 		]
-	};
+	});
 
-	static readonly RenderingEngines: Project = {
+	static readonly RenderingEngines: Project = new Project({
 		name: "Rendering Engines",
 		date: "Feb 2021 - Dec 2023",
 		description: [
@@ -278,8 +278,8 @@ export class Project {
 			Technology.CMake,
 			OtherSkill.Linux,
 			OtherSkill.OOP,
-		]
-	};
+		],
+	});
 
 	static readonly Nexus: Project = new Project({
 		name: "Nexus",
@@ -386,5 +386,9 @@ export class Project {
 		this.imageBasePath = args.imageBasePath;
 		this.images = args.images;
 		this.skills = args.skills;
+	}
+
+	public urlHash = (): string => {
+		return `#${this.name.replace(/\s+/g, '').toLowerCase()}`;
 	}
 }
