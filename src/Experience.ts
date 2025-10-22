@@ -144,7 +144,7 @@ export class Project {
 			"Utilized R for webscraping and data tidying",
 			"Linked in APIs from several services"
 		],
-		links: [{ link: "http://vitalert.tech", name: "Live Demo" },
+		links: [{ link: "https://nw-hackers.web.app", name: "Live Demo" },
 		{ link: "https://github.com/CallumMackenzie/vitalert", name: "GitHub Repository" }],
 		imageBasePath: "/img/vitalert/",
 		images: ["home.png", "login.png", "nutrient.png"],
