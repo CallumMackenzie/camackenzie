@@ -139,7 +139,7 @@ const SkillInfoView = (props: {
 							width: "50%"
 						}}>
 							<h5>Skills used with {props.skill?.name ?? ""}</h5>
-							<AvatarGroup max={isSmallScreen ? 8 : isMedScreen ? 9 : 13}>
+							<AvatarGroup max={isSmallScreen ? 7 : isMedScreen ? 8 : 11}>
 								{Project.skillsUsedWith(props.skill).map(skill => (<>
 									<Avatar
 										variant='square'
