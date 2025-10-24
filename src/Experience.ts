@@ -103,7 +103,9 @@ export class Project {
 			// TODO: add more
 			" *** More info to come *** ",
 		],
-		links: [{ link: "https://github.com/Fitintel", name: "GitHub Organization" }],
+		links: [{ link: "https://github.com/Fitintel/biodyn-100", name: "Firmware" },
+		{ link: "https://github.com/Fitintel/biohub-ios", name: "iOS App" },
+		{ link: "https://github.cmm/Fitintel", name: "GitHub Organization" }],
 		imageBasePath: "/img/fitnet/",
 		images: ["v64render.png", "ui1.jpg", "real1.jpg", "pcbv1.jpeg", "emgdev1real.png", "emgdev1render.png"],
 		skills: [Language.C, Language.Swift, Language.Python, Technology.CMake, Technology.Jupyter, Technology.Firebase, Technology.Git, OtherSkill.PCBDesign, OtherSkill.CAD, OtherSkill.TechnicalCommunication]
