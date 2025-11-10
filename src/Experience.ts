@@ -93,13 +93,13 @@ export class Project {
 		date: "Feb 2025 - Current",
 		description: [
 			"A system of nodes placed across the body to read EMG and motion data in order to record and analyze movement",
-			"Utilized ESP-IDF with C to work with the ESP32-S3 to integrate IMU, thermistor, and EMG sensor data",
+			"Utilized ESP-IDF with C to work with the ESP32-S3 to integrate IMU, EMG, and thermistor sensor data",
 			"Used ESP32-S3 Bluetooth Low Energy to connect data to IOS",
-			"Created custom PCB with Autodesk Fusion360",
-			"Designed power system providing +9V, -9V, 3.3V, 5V from 1S LIPO",
+			"Created custom PCB with Autodesk Fusion360, designing a power system providing +9V, -9V, 3.3V, 5V from 1S LIPO",
 			"Integrated battery protection and charging into electronics design",
 			"Visualized cost with with Fusion360 BOM, DigiKey API, Python, and Jupyter Notebooks",
-			"Streamed data from device to IOS to Firebase to Python for data analysis",
+			"Streamed data live from device to IOS to Firebase to Python for data analysis",
+			"Implemented on-device Mahony AHRS filter for accurate orientation calculation",
 			// TODO: add more
 			" *** More info to come *** ",
 		],
