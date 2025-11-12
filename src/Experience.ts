@@ -307,10 +307,10 @@ export class Project {
 		name: "Classification of Heart Disease",
 		date: "Feb 2023 - Apr 2023",
 		description: [
-			"Trained classification model on whether patients are likely to have heart disease",
+			"Trained KNN classification model on whether patients are likely to have heart disease",
 			"Used R and Jupyter notebook",
 			"Created data visualizations for ease of understanding",
-			"Performed preliminary data analysis to give insights to variable selection",
+			"Performed exploratory data analysis (EDA) to give insights to variable selection",
 			"Researched possible links between variables",
 			"Created step-by-step report with rationale, and formed a conclusion based on data",
 		],
