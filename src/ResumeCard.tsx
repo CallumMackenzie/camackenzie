@@ -35,14 +35,14 @@ export const ResumeCard = ({
 		if (!url) return;
 		const a = document.createElement("a");
 		a.href = url;
-		a.download = fileNameHint; // browsers may ignore for cross‑origin, but works for same‑origin
+		a.download = fileNameHint;
 		document.body.appendChild(a);
 		a.click();
 		a.remove();
 	}
 
 	return (
-		<Paper elevation={4} className='container py-2 px-2 my-5 text-center' ref={resumeCardRef}>
+		 <Stack ref={resumeCardRef} sx={{ width: '100%' }} >
 			<Accordion defaultExpanded={false}>
 				<AccordionSummary
 					expandIcon={<ExpandMore sx={{ color: 'white' }} />}>
@@ -51,7 +51,7 @@ export const ResumeCard = ({
 							<PictureAsPdfIcon />
 							<Typography variant="h6">Resume</Typography>
 						</Stack>
-						<Stack direction="row" spacing={1}>
+						<Stack direction="row" spacing={1} px={3}>
 							<Tooltip title="Download">
 								<span>
 									<Button onClick={download} startIcon={<DownloadIcon />} variant="contained">
@@ -66,7 +66,7 @@ export const ResumeCard = ({
 				<Divider />
 
 				<AccordionDetails>
-					<Box sx={{ flex: 1, minHeight: height, borderRadius: 2, overflow: "hidden", border: 1, borderColor: "divider" }}>
+					<	Box sx={{ flex: 1, minHeight: height, borderRadius: 2, overflow: "hidden", border: 1, borderColor: "divider" }}>
 						{url ? (
 							<Box sx={{ height: height, position: "relative", bgcolor: "background.default" }}>
 								<embed src={url} type="application/pdf" width="100%" height="100%" />
@@ -89,7 +89,7 @@ export const ResumeCard = ({
 					</Box>
 				</AccordionDetails>
 			</Accordion>
-		</Paper >
+		</Stack >
 	);
 }
 

@@ -102,8 +102,7 @@ const App = () => {
 				projectCardRef={projectCardRef} />
 			<Container sx={{ pt: 4 }} maxWidth="md">
 				<TitleCard aboutCardRef={aboutCardRef} titleCardRef={titleCardRef} />
-				<AboutCard aboutCardRef={aboutCardRef} />
-				<ResumeCard resumeCardRef={resumeCardRef} />
+				<AboutCard aboutCardRef={aboutCardRef} resumeCardRef={resumeCardRef} />
 				<SkillsCard projectRefs={projectRefs} skillsCardRef={skillsCardRef} />
 				<ProjectsCard projectRefs={projectRefs} projectCardRef={projectCardRef} />
 				<BottomCard />
