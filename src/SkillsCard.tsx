@@ -41,6 +41,7 @@ export const SkillsCard = (props: {
 				<Typography>
 					Select a skill to view related projects and other skills.
 				</Typography>
+				<embed src="https://leetcard.jacoblin.cool/CallumMackenzie?theme=catppuccinMocha&font=Noto%20Sans%20Georgian&colors=%23232b2b%2C%2345475A%2C%23C3CBCB%2C%23bac2de%2C%2326a69a%2C%23b2dfdb%2C%234db6ac%2C%2300796b"/>
 				<SkillList skillOpen={skillOpen}
 					setSkillOpen={setSkillOpen}
 					lastSelectedSkill={lastSelectedSkill}
