@@ -46,6 +46,7 @@ export class Technology implements Skill {
 	static readonly WASM = new Technology({ name: "WebAssembly", src: "wasm.svg.png" });
 	static readonly Jupyter = new Technology({ name: "Jupyter Notebook", src: "jupyter.png" });
 	static readonly CMake = new Technology({ name: "CMake", src: "cmake.png" });
+	static readonly GenAI = new Technology({ name: "Gen AI", src: "genai.png" });
 	// static readonly Make = new Technology({ name: "Make", src: "make.png" });
 
 	static readonly All: Array<Technology> = Object.values(this).filter(x => x instanceof Technology);
@@ -87,6 +88,26 @@ export const AllSkills: Array<Skill> = Language.All.concat(Technology.All).conca
 // PROJECTS
 
 export class Project {
+	static readonly Gregor: Project = new Project({
+		name: "TBI Motor Recovery",
+		date: "Jan 2026",
+		description: [
+			"A web application for individuals with traumatic brain injury (TBI) to perform recovery drills",
+			"Leverages generative AI to modify drills and plans in accordance with recovery metrics",
+			"Utilizes data-driven UI to inform treatment-involved individuals",
+			"Uses eye-tracking and physical device orientation tracking for drills",
+			"Principal component analysis to score 3-dimensional motor exercises",
+			"Visualize exercises in-browser with three js and web bluetooth for external controls",
+			"Created for the 2026 Telus AI at the Edge of Innovation Hackathon"
+		],
+		links: [
+			{ link: "https://github.com/EricBalanecki/Telus-Hack-TBI-Gregor", name: "GitHub Repository" },
+			{ link: "https://camackenzie.com/TBIRecoverySlideDeck.pdf", name: "Slide Deck" }
+		],
+		imageBasePath: "/img/gregor/",
+		images: ["home.jpeg", "eye.jpeg", "3d.png"],
+		skills: [Language.Typescript, Language.Python, Technology.GenAI, Technology.React, Technology.Git, OtherSkill.TechnicalCommunication]
+	});
 
 	static readonly Fitnet: Project = new Project({
 		name: "FITNET",
@@ -297,7 +318,7 @@ export class Project {
 		],
 		links: [{ link: "https://github.com/CallumMackenzie/Nexus", name: "GitHub Repository" }],
 		imageBasePath: "/img/nexus/",
-		images: ["homepage.png", "desktop.png", "desktop2.png"],
+		images: ["homepage.PNG", "desktop.PNG", "desktop2.PNG"],
 		skills: [
 			Language.CSharp,
 			Technology.DotNet,
@@ -329,6 +350,7 @@ export class Project {
 	});
 
 	static readonly All: Array<Project> = [
+		this.Gregor,
 		this.Fitnet,
 		this.Drone,
 		this.Vitalert,

@@ -15,6 +15,7 @@ export const ProjectsCard = (props: {
 				<div className='row my-2' ref={props.projectCardRef}>
 					<h1 className='col' style={{ fontSize: '4em', fontStyle: 'bold' }}>Projects</h1>
 				</div>
+				<ProjectCard project={Project.Gregor} refs={props.projectRefs} />
 				<ProjectCard project={Project.Fitnet} refs={props.projectRefs} />
 				<ProjectCard project={Project.Drone} refs={props.projectRefs} />
 				<ProjectCard project={Project.Vitalert} refs={props.projectRefs} />
