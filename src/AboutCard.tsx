@@ -24,7 +24,7 @@ export const AboutCard = (props: {
 						style={{
 							fontSize: 'large'
 						}}>
-						I am a current undergraduate student at the University of British Columbia in Vancouver, and am an on-call Embedded Software Engineering Co-op with General Dynamics.
+						I will be joining <b>Amazon as a Software Development Engineer Intern</b> in Vancouver this summer. I am a current undergraduate student at the University of British Columbia, and an on-call Embedded Software Engeineer Co-op with <b>General Dynamics</b>.
 						<div className='py-2'>
 							<Divider sx={{
 								background: 'white'
