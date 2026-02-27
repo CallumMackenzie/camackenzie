@@ -42,7 +42,7 @@ export const AboutCard = (props: {
 						<li>Fitness & Nutrition</li>
 						<li>Backpacking & Traveling</li>
 						<li>Motorsport</li>
-						<li>Acoustic Guitar</li>
+						<li>Guitar</li>
 					</ul>
 				</div>
 				<div className={smallScreen ? "col-11" : "col-5"}>
