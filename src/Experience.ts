@@ -46,7 +46,7 @@ export class Technology implements Skill {
 	static readonly WASM = new Technology({ name: "WebAssembly", src: "wasm.svg.png" });
 	static readonly Jupyter = new Technology({ name: "Jupyter Notebook", src: "jupyter.png" });
 	static readonly CMake = new Technology({ name: "CMake", src: "cmake.png" });
-	static readonly GenAI = new Technology({ name: "Gen AI", src: "genai.png" });
+	static readonly AIML = new Technology({ name: "AI/ML", src: "genai.png" });
 	// static readonly Make = new Technology({ name: "Make", src: "make.png" });
 
 	static readonly All: Array<Technology> = Object.values(this).filter(x => x instanceof Technology);
@@ -88,6 +88,25 @@ export const AllSkills: Array<Skill> = Language.All.concat(Technology.All).conca
 // PROJECTS
 
 export class Project {
+	static readonly FindMyForce: Project = new Project({
+		name: "Find My Force",
+		date: "Mar 2026",
+		description: [
+			"An application for soldiers to identify and track radio frequency (RF) identities on the battlefield",
+			"Classified signal type from raw RF IQ data",
+			"Integrated a convolutional neural net (CNN) and XGBoost together with logistic regression, achieving 89% accuracy",
+			"Engineered spectral features from RF data in the complex plane. Ie. phase jump frequency, amplitude variance, etc",
+			"CNN had 4 1D convolutional layers and 2 fully connected layers, with 80% accuracy",
+			"XGBoost model with feature selection featured 82% accuracy",
+		],
+		links: [
+			{ link: "https://github.com/Eroxl/Find-My-Force-Research", name: "GitHub Repository" }
+		],
+		imageBasePath: "/img/findmyforce/",
+		images: ["one.png", "two.png", "three.png"],
+		skills: [Language.Python, Language.Typescript, Technology.AIML, Technology.React, Technology.Git, OtherSkill.TechnicalCommunication]
+	});
+
 	static readonly Gregor: Project = new Project({
 		name: "TBI Motor Recovery",
 		date: "Jan 2026",
@@ -106,7 +125,7 @@ export class Project {
 		],
 		imageBasePath: "/img/gregor/",
 		images: ["home.jpeg", "eye.jpeg", "3d.png"],
-		skills: [Language.Typescript, Language.Python, Technology.GenAI, Technology.React, Technology.Git, OtherSkill.TechnicalCommunication]
+		skills: [Language.Typescript, Language.Python, Technology.AIML, Technology.React, Technology.Git, OtherSkill.TechnicalCommunication]
 	});
 
 	static readonly Fitnet: Project = new Project({
@@ -350,6 +369,7 @@ export class Project {
 	});
 
 	static readonly All: Array<Project> = [
+		this.FindMyForce,
 		this.Gregor,
 		this.Fitnet,
 		this.Drone,
