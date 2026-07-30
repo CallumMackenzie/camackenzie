@@ -78,7 +78,7 @@ export const TitleCard = (props: {
             </div>
             <div className={smallScreen ? "col-10" : "col-6"}>
               <img
-                className="img-fluid mx-auto px-5"
+                className="title-photo img-fluid mx-auto px-5"
                 alt="Callum Mackenzie"
                 loading="eager"
                 src="img/callum-mackenzie.jpg"
@@ -113,4 +113,3 @@ export const TitleCard = (props: {
     </>
   );
 };
-

@@ -3,6 +3,7 @@ import React from "react";
 import { Divider, Paper } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { theme } from "./App";
+import { AboutRaceLane } from "./AboutRaceLane";
 
 export const AboutCard = (props: {
   aboutCardRef: React.RefObject<HTMLDivElement>;
@@ -13,10 +14,10 @@ export const AboutCard = (props: {
     <>
       <Paper
         elevation={4}
-        className="container py-2 px-2 my-5 text-center"
+        className="about-card container py-2 px-2 my-5 text-center"
         ref={props.aboutCardRef}
       >
-        <div className="row py-2 px-1 justify-content-center">
+        <div className="about-layout row py-2 px-1 justify-content-center align-items-center">
           <div
             className={
               (smallScreen ? "col-11" : "col-6") + " container text-center"
@@ -63,19 +64,22 @@ export const AboutCard = (props: {
               <li>Guitar</li>
             </ul>
           </div>
-          <div className={smallScreen ? "col-11" : "col-5"}>
-            <img
-              className="img-fluid m-auto px-3"
-              alt="Callum Mackenzie"
-              src="img/callum-mackenzie-motorbike.webp"
-              onLoad={(e) => (e.currentTarget.style.animation = "")}
-              style={{
-                borderRadius: "50%",
-                animation: "image-preload 5s infinite",
-                overflow: "hidden",
-                minHeight: "100px",
-              }}
-            />
+          <div className={(smallScreen ? "col-11" : "col-5") + " about-photo-column"}>
+            <div className="about-photo-stage">
+              <AboutRaceLane />
+              <img
+                className="about-photo img-fluid m-auto"
+                alt="Callum Mackenzie"
+                src="img/callum-mackenzie-motorbike.webp"
+                onLoad={(e) => (e.currentTarget.style.animation = "")}
+                style={{
+                  borderRadius: "50%",
+                  animation: "image-preload 5s infinite",
+                  overflow: "hidden",
+                  minHeight: "100px",
+                }}
+              />
+            </div>
           </div>
         </div>
       </Paper>
