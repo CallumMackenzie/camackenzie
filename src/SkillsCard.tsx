@@ -1,9 +1,9 @@
 import Grid from '@mui/material/Grid2';
-import { Accordion, AccordionDetails, AccordionSummary, Avatar, AvatarGroup, Button, Container, Divider, IconButton, Paper, Stack, Tooltip, Typography, useMediaQuery } from '@mui/material';
+import { Avatar, AvatarGroup, Button, Divider, IconButton, Paper, Stack, Tooltip, Typography, useMediaQuery } from '@mui/material';
 import { EmploymentRoleRefs, ProjectRefs, theme } from './App';
 import React, { useState } from 'react';
 import { EmploymentRole, lastYearInDateRange, Project, shouldDisplaySkill, Skill, SkillCategories, skillImageSrc, skillInitials, sortSkillsByUsage } from './Experience';
-import { ExpandMore, FolderOutlined, WorkOutline } from '@mui/icons-material';
+import { ArrowBack, FolderOutlined, WorkOutline } from '@mui/icons-material';
 
 
 export const SkillsCard = (props: {
@@ -12,27 +12,10 @@ export const SkillsCard = (props: {
 	skillsCardRef: React.RefObject<HTMLDivElement>
 }) => {
 	const [skillOpen, setSkillOpen] = useState<Skill | undefined>();
-	const [lastSelectedSkill, setLastSelectedSkillInternal] = useState<Skill | undefined>();
-	const [expanded, setExpanded] = useState(false);
-
-	const setLastSelectedSkill = (x: Skill | undefined) => {
-		const setSkillNoTimeout = (x: Skill | undefined) => {
-			setLastSelectedSkillInternal(x);
-			setExpanded(x !== undefined);
-		};
-
-		if (x !== lastSelectedSkill && lastSelectedSkill !== undefined && x !== undefined) {
-			setSkillNoTimeout(undefined);
-			setTimeout(() => {
-				setSkillNoTimeout(x);
-			}, 200);
-		} else {
-			setSkillNoTimeout(x);
-		}
-	}
+	const [selectedSkill, setSelectedSkill] = useState<Skill | undefined>();
 
 	return (<>
-		<Paper elevation={4}>
+		<Paper elevation={4} className='skills-card'>
 			<Stack textAlign={'center'}
 				ref={props.skillsCardRef}
 				padding={2}
@@ -40,22 +23,24 @@ export const SkillsCard = (props: {
 				alignItems={'center'}>
 				<h1 className='col'>Skills</h1>
 				<Typography>
-					Select a skill to view related projects and other skills.
+					Select a skill to see more.
 				</Typography>
 				{/* <embed width={isSmallScreen ? "80%" : "auto"} height={isSmallScreen ? "80%" : "auto"}
 				src="https://leetcard.jacoblin.cool/CallumMackenzie?theme=catppuccinMocha&font=Noto%20Sans%20Georgian&colors=%23232b2b%2C%2345475A%2C%23C3CBCB%2C%23bac2de%2C%2326a69a%2C%23b2dfdb%2C%234db6ac%2C%2300796b" /> */}
-				<SkillList skillOpen={skillOpen}
-					setSkillOpen={setSkillOpen}
-					lastSelectedSkill={lastSelectedSkill}
-					setLastSelectedSkill={setLastSelectedSkill} />
-				<Divider sx={{ background: 'white', width: '80%' }} />
-				<SkillInfoView
-					setSkill={setLastSelectedSkill}
-					expanded={expanded}
-					setExpanded={setExpanded}
-					skill={lastSelectedSkill}
-					projectRefs={props.projectRefs}
-					employmentRoleRefs={props.employmentRoleRefs} />
+				<div className='skills-transition-stage'>
+					<div className={`skills-panel skills-list-panel ${selectedSkill ? 'is-exiting' : 'is-active'}`}>
+						<SkillList skillOpen={skillOpen}
+							setSkillOpen={setSkillOpen}
+							setSelectedSkill={setSelectedSkill} />
+					</div>
+					<div className={`skills-panel skills-detail-panel ${selectedSkill ? 'is-active' : 'is-entering'}`}>
+						<SkillInfoView
+							setSkill={setSelectedSkill}
+							skill={selectedSkill}
+							projectRefs={props.projectRefs}
+							employmentRoleRefs={props.employmentRoleRefs} />
+					</div>
+				</div>
 			</Stack>
 		</Paper >
 	</>);
@@ -64,16 +49,16 @@ export const SkillsCard = (props: {
 const SkillList = (props: {
 	skillOpen: Skill | undefined,
 	setSkillOpen: (x: Skill | undefined) => void,
-	lastSelectedSkill: Skill | undefined,
-	setLastSelectedSkill: (x: Skill | undefined) => void,
+	setSelectedSkill: (x: Skill | undefined) => void,
 }) => {
 	return (<>
-		{SkillCategories.map(skillType => (<>
+		{SkillCategories.map(skillType => (
+			<React.Fragment key={skillType.name}>
 				<Divider sx={{ background: 'white', width: '80%' }} />
 				<h4>{skillType.name}</h4>
-				<Grid container justifyContent={'center'}>
-					{sortSkillsByUsage(skillType.skills.filter(shouldDisplaySkill)).map(skill => (<>
-						<Grid>
+				<Grid container justifyContent={'center'} className='skills-category-grid'>
+					{sortSkillsByUsage(skillType.skills.filter(shouldDisplaySkill)).map(skill => (
+						<Grid key={skill.name}>
 							<Tooltip arrow
 								disableHoverListener
 								onOpen={() => props.setSkillOpen(skill)}
@@ -82,8 +67,8 @@ const SkillList = (props: {
 								title={skill.name}>
 								<IconButton
 									onClick={() => {
-										props.setLastSelectedSkill(props.lastSelectedSkill === skill ? undefined : skill);
-										props.setSkillOpen(props.skillOpen === skill ? undefined : skill);
+										props.setSelectedSkill(skill);
+										props.setSkillOpen(undefined);
 									}}>
 									<Avatar
 										className='skill-avatar'
@@ -96,9 +81,9 @@ const SkillList = (props: {
 								</IconButton>
 							</Tooltip>
 						</Grid>
-					</>))}
+					))}
 				</Grid>
-			</>))
+			</React.Fragment>))
 		}
 	</>);
 };
@@ -108,8 +93,6 @@ const SkillInfoView = (props: {
 	setSkill: (x: Skill | undefined) => void,
 	projectRefs: ProjectRefs,
 	employmentRoleRefs: EmploymentRoleRefs,
-	expanded: boolean,
-	setExpanded: (x: boolean) => void
 }) => {
 	const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 	const isMedScreen = useMediaQuery(theme.breakpoints.down("md"));
@@ -141,73 +124,71 @@ const SkillInfoView = (props: {
 		})).sort((a, b) => b.sortYear - a.sortYear || a.title.localeCompare(b.title)));
 
 	return (<>
-		<Container>
-			<Accordion expanded={props.expanded}
-				disabled={props.skill === undefined}
-				onChange={x => {
-					if (props.expanded)
-						props.setSkill(undefined);
-					props.setExpanded(!props.expanded);
+		<Stack className='skills-detail-content' spacing={2}>
+			<Stack direction='row' alignItems='center' spacing={1} className='skills-detail-header'>
+				<Tooltip title='Back' arrow>
+					<IconButton onClick={() => props.setSkill(undefined)} aria-label='Back to skills'>
+						<ArrowBack />
+					</IconButton>
+				</Tooltip>
+				<Avatar
+					className='skill-avatar'
+					variant='square'
+					src={props.skill ? skillImageSrc(props.skill) : undefined}
+					alt={props.skill?.name ?? ""}
+					sx={{ fontSize: 11 }}>
+					{props.skill ? skillInitials(props.skill) : ""}
+				</Avatar>
+				<h4>{props.skill?.name ?? ""}</h4>
+			</Stack>
+			<Divider sx={{ background: 'white', width: '80%', alignSelf: 'center' }} />
+			<Stack
+				pb={2}
+				justifyContent={'center'}
+				justifyItems={'center'}
+				alignItems={'stretch'}
+				spacing={2}
+				direction={isSmallScreen ? 'column' : 'row'}>
+				<Stack alignItems={'center'} sx={{
+					width: relatedColumnWidth
 				}}>
-				<AccordionSummary
-					expandIcon={<ExpandMore sx={{ color: 'white' }} />}
-					aria-controls="panel1-content"
-					id="panel1-header">
-					Select a skill above to see more.
-				</AccordionSummary>
-				<AccordionDetails>
-					<Stack
-						sx={{
-							transition: "opacity 0.5s",
-							opacity: props.skill === undefined ? 0 : 1
-						}}
-						pb={2}
-						justifyContent={'center'}
-						justifyItems={'center'}
-						alignItems={'center'}
-						spacing={2}
-						direction={isSmallScreen ? 'column' : 'row'}>
-						<Stack alignItems={'center'} sx={{
-							width: relatedColumnWidth
-						}}>
-							<h5>Skills used with {props.skill?.name ?? ""}</h5>
-							<AvatarGroup max={isSmallScreen ? 4 : isMedScreen ? 5 : 6}>
-								{sortSkillsByUsage(skillsUsedWith).map(skill => (<>
-									<Avatar
-										className='skill-avatar'
-										variant='square'
-										src={skillImageSrc(skill)}
-										alt={skill.name}
-										sx={{ fontSize: 11 }}>
-										{skillInitials(skill)}
-									</Avatar>
-								</>))}
-							</AvatarGroup>
-						</Stack>
-						<Stack alignItems={'center'} sx={{
-							width: relatedColumnWidth
-						}}>
-							<h5>Using {props.skill?.name ?? ""}</h5>
-							<Stack className='skill-usage-list' spacing={1}>
-								{usageItems.map(item => (
-									<Button
-										key={item.key}
-										variant='outlined'
-										size='small'
-										className='skill-usage-link'
-										onClick={item.onClick}>
-										<span className='skill-usage-icon'>{item.icon}</span>
-										<span className='skill-usage-copy'>
-											<span>{item.title}</span>
-											<small>{item.subtitle}</small>
-										</span>
-									</Button>
-								))}
-							</Stack>
-						</Stack>
-					</Stack >
-				</AccordionDetails>
-			</Accordion>
-		</Container >
+					<h5>Skills used with {props.skill?.name ?? ""}</h5>
+					<AvatarGroup max={isSmallScreen ? 4 : isMedScreen ? 5 : 6}>
+						{sortSkillsByUsage(skillsUsedWith).map(skill => (
+							<Avatar
+								key={skill.name}
+								className='skill-avatar'
+								variant='square'
+								src={skillImageSrc(skill)}
+								alt={skill.name}
+								sx={{ fontSize: 11 }}>
+								{skillInitials(skill)}
+							</Avatar>
+						))}
+					</AvatarGroup>
+				</Stack>
+				<Stack alignItems={'center'} sx={{
+					width: relatedColumnWidth
+				}}>
+					<h5>Using {props.skill?.name ?? ""}</h5>
+					<Stack className='skill-usage-list' spacing={1}>
+						{usageItems.map(item => (
+							<Button
+								key={item.key}
+								variant='outlined'
+								size='small'
+								className='skill-usage-link'
+								onClick={item.onClick}>
+								<span className='skill-usage-icon'>{item.icon}</span>
+								<span className='skill-usage-copy'>
+									<span>{item.title}</span>
+									<small>{item.subtitle}</small>
+								</span>
+							</Button>
+						))}
+					</Stack>
+				</Stack>
+			</Stack >
+		</Stack>
 	</>);
 }

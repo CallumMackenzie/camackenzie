@@ -135,6 +135,74 @@ h3 {
 	background: rgba(35, 54, 45, 0.36);
 }
 
+.skills-card {
+	overflow: hidden;
+}
+
+.skills-transition-stage {
+	display: grid;
+	width: 100%;
+	overflow: hidden;
+}
+
+.skills-panel {
+	grid-area: 1 / 1;
+	width: 100%;
+	min-width: 0;
+	transition:
+		transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+		opacity 260ms ease;
+}
+
+.skills-list-panel {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.skills-category-grid {
+	width: 100%;
+	max-width: 760px;
+	row-gap: 0.15rem;
+}
+
+.skills-panel:not(.is-active) {
+	pointer-events: none;
+}
+
+.skills-list-panel.is-active,
+.skills-detail-panel.is-active {
+	transform: translateX(0);
+	opacity: 1;
+}
+
+.skills-list-panel.is-exiting {
+	transform: translateX(-110%);
+	opacity: 0;
+}
+
+.skills-detail-panel.is-entering {
+	transform: translateX(110%);
+	opacity: 0;
+}
+
+.skills-detail-content {
+	width: min(100%, 980px);
+	margin: 0 auto;
+	padding: 0.25rem 0 0.5rem;
+}
+
+.skills-detail-header {
+	justify-content: center;
+	min-height: 48px;
+	min-width: 0;
+}
+
+.skills-detail-header h4 {
+	margin: 0;
+	overflow-wrap: anywhere;
+}
+
 .skill-usage-list {
 	width: 100%;
 }
@@ -160,6 +228,7 @@ h3 {
 	text-align: left;
 	border-color: rgba(159, 183, 170, 0.3);
 	background: rgba(15, 17, 16, 0.28);
+	min-width: 0;
 }
 
 .skill-usage-icon {
@@ -182,6 +251,7 @@ h3 {
 	width: 100%;
 	white-space: normal;
 	line-height: 1.2;
+	overflow-wrap: anywhere;
 }
 
 .skill-usage-copy small {
@@ -189,6 +259,42 @@ h3 {
 	color: #b8c0b5;
 	font-weight: 500;
 	text-transform: none;
+}
+
+@media (max-width: 600px) {
+	.skills-card {
+		width: 100%;
+	}
+
+	.skills-transition-stage,
+	.skills-panel,
+	.skills-detail-content,
+	.skill-usage-list {
+		max-width: 100%;
+	}
+
+	.skills-category-grid {
+		max-width: 22rem;
+	}
+
+	.skills-category-grid .MuiIconButton-root {
+		padding: 0.45rem;
+	}
+
+	.skills-detail-content {
+		padding-inline: 0.15rem;
+	}
+
+	.skills-detail-header {
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		text-align: left;
+	}
+
+	.skills-detail-header h4,
+	.skills-detail-content h5 {
+		font-size: 1rem;
+	}
 }
 
 @media (min-width: 1400px) {
