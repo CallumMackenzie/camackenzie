@@ -1,7 +1,7 @@
 import Grid from '@mui/material/Grid2';
 import { Avatar, AvatarGroup, Button, Divider, IconButton, Paper, Stack, Tooltip, Typography, useMediaQuery } from '@mui/material';
 import { EmploymentRoleRefs, ProjectRefs, theme } from './App';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { EmploymentRole, lastYearInDateRange, Project, shouldDisplaySkill, Skill, SkillCategories, skillImageSrc, skillInitials, sortSkillsByUsage } from './Experience';
 import { ArrowBack, FolderOutlined, WorkOutline } from '@mui/icons-material';
 
@@ -13,6 +13,24 @@ export const SkillsCard = (props: {
 }) => {
 	const [skillOpen, setSkillOpen] = useState<Skill | undefined>();
 	const [selectedSkill, setSelectedSkill] = useState<Skill | undefined>();
+	const listPanelRef = useRef<HTMLDivElement | null>(null);
+	const [listPanelHeight, setListPanelHeight] = useState<number | undefined>();
+
+	useEffect(() => {
+		const listPanel = listPanelRef.current;
+		if (!listPanel) return;
+
+		const updateHeight = () => setListPanelHeight(listPanel.scrollHeight);
+		updateHeight();
+
+		const observer = new ResizeObserver(updateHeight);
+		observer.observe(listPanel);
+		window.addEventListener("resize", updateHeight);
+		return () => {
+			observer.disconnect();
+			window.removeEventListener("resize", updateHeight);
+		};
+	}, []);
 
 	return (<>
 		<Paper elevation={4} className='skills-card'>
@@ -27,8 +45,12 @@ export const SkillsCard = (props: {
 				</Typography>
 				{/* <embed width={isSmallScreen ? "80%" : "auto"} height={isSmallScreen ? "80%" : "auto"}
 				src="https://leetcard.jacoblin.cool/CallumMackenzie?theme=catppuccinMocha&font=Noto%20Sans%20Georgian&colors=%23232b2b%2C%2345475A%2C%23C3CBCB%2C%23bac2de%2C%2326a69a%2C%23b2dfdb%2C%234db6ac%2C%2300796b" /> */}
-				<div className='skills-transition-stage'>
-					<div className={`skills-panel skills-list-panel ${selectedSkill ? 'is-exiting' : 'is-active'}`}>
+				<div
+					className='skills-transition-stage'
+					style={listPanelHeight === undefined ? undefined : { height: listPanelHeight }}>
+					<div
+						ref={listPanelRef}
+						className={`skills-panel skills-list-panel ${selectedSkill ? 'is-exiting' : 'is-active'}`}>
 						<SkillList skillOpen={skillOpen}
 							setSkillOpen={setSkillOpen}
 							setSelectedSkill={setSelectedSkill} />
@@ -138,11 +160,10 @@ const SkillInfoView = (props: {
 					sx={{ fontSize: 11 }}>
 					{props.skill ? skillInitials(props.skill) : ""}
 				</Avatar>
-				<h4>{props.skill?.name ?? ""}</h4>
+				<h4>{usageItems.length} Using {props.skill?.name ?? ""}</h4>
 			</Stack>
 			<Divider sx={{ background: 'white', width: '80%', alignSelf: 'center' }} />
-			<Stack alignItems={'center'} pb={2}>
-				<h5>Using {props.skill?.name ?? ""}</h5>
+			<Stack className='skill-usage-section' alignItems={'center'} pb={2}>
 				<Stack className='skill-usage-list' spacing={1}>
 					{usageItems.map(item => (
 						<Button

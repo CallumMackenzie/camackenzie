@@ -14,8 +14,19 @@ h3 {
 	letter-spacing: 0;
 }
 
-body {
+html,
+body,
+#root {
+	max-width: 100%;
 	overflow-x: hidden;
+}
+
+@supports (overflow-x: clip) {
+	html,
+	body,
+	#root {
+		overflow-x: clip;
+	}
 }
 
 .title-content {
@@ -265,6 +276,7 @@ body {
 .skills-panel {
 	grid-area: 1 / 1;
 	width: 100%;
+	height: 100%;
 	min-width: 0;
 	transition:
 		transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -275,6 +287,11 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+
+.skills-list-panel .MuiDivider-root,
+.skills-detail-content > .MuiDivider-root {
+	margin-bottom: 0.35rem;
 }
 
 .skills-category-grid {
@@ -303,10 +320,16 @@ body {
 	opacity: 0;
 }
 
+.skills-detail-panel {
+	overflow: hidden;
+}
+
 .skills-detail-content {
 	width: min(100%, 980px);
+	height: 100%;
 	margin: 0 auto;
 	padding: 0.25rem 0 0.5rem;
+	overflow: hidden;
 }
 
 .skills-detail-header {
@@ -321,6 +344,16 @@ body {
 }
 
 .skill-usage-list {
+	width: 100%;
+	min-height: 0;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	padding-right: 0.25rem;
+}
+
+.skill-usage-section {
+	flex: 1 1 auto;
+	min-height: 0;
 	width: 100%;
 }
 
@@ -428,6 +461,14 @@ body {
 	.projects-container .MuiPaper-root {
 		max-width: none;
 		width: 100%;
+	}
+
+	.employment-card {
+		width: 100vw;
+		max-width: 100vw;
+		margin-left: 50%;
+		transform: translateX(-50%);
+		border-radius: 0;
 	}
 
 	.resume-card .MuiAccordionSummary-content {
