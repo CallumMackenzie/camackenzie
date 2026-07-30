@@ -34,12 +34,17 @@ export const TreeScrollBackground = () => {
 	}, [computeTreeGridWidth])
 
 	const [randomOffSets, setRandomOffsets] = useState<undefined | number[]>(undefined);
+	const [randomRotationSpeeds, setRandomRotationSpeeds] = useState<undefined | number[]>(undefined);
 
 	useEffect(() => {
-		const a = [];
-		for (let i = 0; i < nTrees; i++)
-			a.push(Math.random() * 360);
-		setRandomOffsets(a);
+		const offsets = [];
+		const rotationSpeeds = [];
+		for (let i = 0; i < nTrees; i++) {
+			offsets.push(Math.random() * 360);
+			rotationSpeeds.push((Math.random() < 0.5 ? -1 : 1) * (100 + Math.random() * 180));
+		}
+		setRandomOffsets(offsets);
+		setRandomRotationSpeeds(rotationSpeeds);
 	}, [nTrees]);
 
 	useEffect(() => {
@@ -62,6 +67,7 @@ export const TreeScrollBackground = () => {
 	useEffect(() => {
 		if (isMobile) return;
 		if (randomOffSets === undefined) return;
+		if (randomRotationSpeeds === undefined) return;
 		const treeRotateOnScroll = () => {
 			if (treeRefs.current === null) return;
 			treeRefs.current.forEach((treeRef, i) => {
@@ -76,7 +82,7 @@ export const TreeScrollBackground = () => {
 
 				const gridY = Math.floor(i / treeGridWidth), gridX = i - gridY * treeGridWidth;
 
-				const rotate = scrollPos * 180 + randomOffSets[i];
+				const rotate = scrollPos * randomRotationSpeeds[i] + randomOffSets[i];
 				const x = (gridX + 0.25) / treeGridWidth * window.innerWidth;
 				let y = window.scrollY + gridY / treeGridHeight * window.innerHeight * 1.5;
 
@@ -87,14 +93,14 @@ export const TreeScrollBackground = () => {
 				if (y < lowestTreePlacement)
 					treeRef.style.transform = `translate(${x}px, ${y}px) rotate(${rotate}deg)`;
 				else
-					treeRef.style.transform = `translate(${x}px, ${lowestTreePlacement}px) rotate(${rotate})`;
+					treeRef.style.transform = `translate(${x}px, ${lowestTreePlacement}px) rotate(${rotate}deg)`;
 			});
 		};
 		window.removeEventListener('scroll', treeRotateOnScroll);
 		window.addEventListener('scroll', treeRotateOnScroll);
 		treeRotateOnScroll();
 		return () => window.removeEventListener('scroll', treeRotateOnScroll);
-	}, [isMobile, randomOffSets, treeGridWidth, nTrees, treeGridHeight]);
+	}, [isMobile, randomOffSets, randomRotationSpeeds, treeGridWidth, nTrees, treeGridHeight]);
 
 	return (<>
 		<div className="position-absolute" style={{
