@@ -3,7 +3,8 @@ import { Avatar, Container, Divider, Stack, Tooltip, Typography, useMediaQuery }
 import Paper from "@mui/material/Paper/Paper";
 import { ProjectRefs, theme } from "./App";
 import { Masonry } from "@mui/lab";
-import { Project, skillImageSrc, skillInitials } from "./Experience";
+import React, { useEffect, useRef, useState } from "react";
+import { Project, Skill, skillImageSrc, skillInitials } from "./Experience";
 
 export const ProjectsCard = (props: {
 	projectRefs: ProjectRefs,
@@ -52,17 +53,7 @@ const ProjectCard = (props: {
 					},
 				}}>{props.project.date}</Divider>
 				{skills.length !== 0 &&
-					<Stack direction={'row'} justifyContent={'center'} spacing={isSmallScreen ? 0 : 2} alignItems={'center'}>
-						{skills.slice(0, Math.min(10, skills.length)).map(x => (
-							<Tooltip key={x.name} title={x.name} arrow>
-								<Avatar className="skill-avatar" variant="square"
-									alt={x.name} src={skillImageSrc(x)}
-									sx={{ width: 30, height: 30, fontSize: 11 }}>
-									{skillInitials(x)}
-								</Avatar>
-							</Tooltip>
-						))}
-					</Stack>}
+					<ProjectSkillIconRow skills={skills} />}
 				<div ref={props.refs.get(props.project)} />
 				<ul style={{ textAlign: 'left' }}>
 					{props.project.description.map(pt => (
@@ -112,4 +103,56 @@ const ProjectCard = (props: {
 			</Stack>
 		</Paper >
 	</>);
+};
+
+const ProjectSkillIconRow = ({ skills }: { skills: Array<Skill> }) => {
+	const rowRef = useRef<HTMLDivElement | null>(null);
+	const [rowWidth, setRowWidth] = useState(0);
+	const iconSize = 30;
+	const gap = 8;
+
+	useEffect(() => {
+		const row = rowRef.current;
+		if (!row) return;
+
+		const updateWidth = () => setRowWidth(row.clientWidth);
+		updateWidth();
+
+		const observer = new ResizeObserver(updateWidth);
+		observer.observe(row);
+		return () => observer.disconnect();
+	}, []);
+
+	const maxItems = rowWidth === 0
+		? skills.length
+		: Math.max(1, Math.floor((rowWidth + gap) / (iconSize + gap)));
+	const visibleCount = skills.length > maxItems ? Math.max(0, maxItems - 1) : skills.length;
+	const visibleSkills = skills.slice(0, visibleCount);
+	const hiddenSkills = skills.slice(visibleCount);
+
+	return (
+		<div className="project-skill-row" ref={rowRef}>
+			{visibleSkills.map(skill => (
+				<Tooltip key={skill.name} title={skill.name} arrow>
+					<Avatar
+						className="skill-avatar"
+						variant="square"
+						alt={skill.name}
+						src={skillImageSrc(skill)}
+						sx={{ width: iconSize, height: iconSize, fontSize: 11 }}>
+						{skillInitials(skill)}
+					</Avatar>
+				</Tooltip>
+			))}
+			{hiddenSkills.length > 0 &&
+				<Tooltip title={hiddenSkills.map(skill => skill.name).join(", ")} arrow>
+					<Avatar
+						className="project-skill-overflow"
+						variant="square"
+						sx={{ width: iconSize, height: iconSize, fontSize: 11 }}>
+						+{hiddenSkills.length}
+					</Avatar>
+				</Tooltip>}
+		</div>
+	);
 };

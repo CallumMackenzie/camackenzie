@@ -76,6 +76,24 @@ body {
 	width: 100%;
 }
 
+.project-skill-row {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	width: 100%;
+	max-width: 100%;
+	min-width: 0;
+	overflow: hidden;
+}
+
+.project-skill-overflow.MuiAvatar-root {
+	background: rgba(35, 54, 45, 0.72);
+	border: 1px solid rgba(159, 183, 170, 0.34);
+	color: #e8e1d4;
+	font-weight: 700;
+}
+
 .resume-summary {
 	width: 100%;
 	min-width: 0;
@@ -363,7 +381,7 @@ body {
 
 .skill-usage-related-skills {
 	flex: 0 0 auto;
-	max-width: 44%;
+	max-width: 58%;
 	margin-left: auto;
 }
 

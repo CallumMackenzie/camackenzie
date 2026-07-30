@@ -37,7 +37,11 @@ export class Language implements Skill {
     src: "js.png",
   });
   static readonly HTML = new Language({ name: "HTML", src: "html5.svg.png" });
-  static readonly CSS = new Language({ name: "CSS", src: "css.svg.png" });
+  static readonly CSS = new Language({
+    name: "CSS",
+    src: "css.svg.png",
+    display: false,
+  });
   static readonly CSharp = new Language({ name: "C#", src: "csharp.svg.png" });
   static readonly Swift = new Language({ name: "Swift", src: "swift.png" });
 
@@ -84,6 +88,7 @@ export class Technology implements Skill {
   static readonly Arduino = new Technology({
     name: "Arduino",
     src: "arduino.png",
+    display: false,
   });
   static readonly OpenGL = new Technology({
     name: "OpenGL",
@@ -99,6 +104,10 @@ export class Technology implements Skill {
   });
   static readonly CMake = new Technology({ name: "CMake", src: "cmake.png" });
   static readonly AIML = new Technology({ name: "AI/ML", src: "ai-ml.png" });
+  static readonly Databases = new Technology({
+    name: "Databases",
+    src: "databases.png",
+  });
   static readonly RAG = new Technology({ name: "RAG", src: "rag.png" });
   static readonly MCP = new Technology({ name: "MCP", src: "mcp.png" });
   static readonly A2A = new Technology({ name: "A2A", src: "a2a.png" });
@@ -264,6 +273,7 @@ export const SkillCategories: Array<SkillCategory> = [
     name: "AI & Data",
     skills: [
       Technology.AIML,
+      Technology.Databases,
       Technology.RAG,
       Technology.MCP,
       Technology.A2A,
@@ -351,6 +361,7 @@ export class EmploymentRole {
       Technology.MCP,
       Technology.A2A,
       Technology.AIML,
+      Technology.Databases,
       Technology.Git,
       OtherSkill.TechnicalCommunication,
     ],
@@ -467,6 +478,7 @@ export class Project {
       Language.HTML,
       Language.CSS,
       Technology.AIML,
+      Technology.Databases,
       Technology.RAG,
       Technology.MCP,
       Technology.OpenAI,
@@ -593,6 +605,7 @@ export class Project {
       Technology.Pandas,
       Technology.PyTorch,
       Technology.ScikitLearn,
+      Technology.Databases,
       Technology.Firebase,
       Technology.Bluetooth,
       Technology.Git,

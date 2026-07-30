@@ -1,6 +1,6 @@
 import Grid from '@mui/material/Grid2';
-import { Avatar, AvatarGroup, Button, Divider, IconButton, Paper, Stack, Tooltip, Typography } from '@mui/material';
-import { EmploymentRoleRefs, ProjectRefs } from './App';
+import { Avatar, AvatarGroup, Button, Divider, IconButton, Paper, Stack, Tooltip, Typography, useMediaQuery } from '@mui/material';
+import { EmploymentRoleRefs, ProjectRefs, theme } from './App';
 import React, { useState } from 'react';
 import { EmploymentRole, lastYearInDateRange, Project, shouldDisplaySkill, Skill, SkillCategories, skillImageSrc, skillInitials, sortSkillsByUsage } from './Experience';
 import { ArrowBack, FolderOutlined, WorkOutline } from '@mui/icons-material';
@@ -60,7 +60,6 @@ const SkillList = (props: {
 					{sortSkillsByUsage(skillType.skills.filter(shouldDisplaySkill)).map(skill => (
 						<Grid key={skill.name}>
 							<Tooltip arrow
-								disableHoverListener
 								onOpen={() => props.setSkillOpen(skill)}
 								onClose={() => props.setSkillOpen(undefined)}
 								open={props.skillOpen === skill}
@@ -94,7 +93,8 @@ const SkillInfoView = (props: {
 	projectRefs: ProjectRefs,
 	employmentRoleRefs: EmploymentRoleRefs,
 }) => {
-	const relatedSkillAvatarMax = 7;
+	const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
+	const relatedSkillAvatarMax = isDesktop ? 11 : 7;
 	const topRelatedSkills = (skills: Array<Skill>) =>
 		sortSkillsByUsage(skills.filter(skill => skill !== props.skill && shouldDisplaySkill(skill)));
 	const projectsUsingSkill = Project.withSkill(props.skill);
