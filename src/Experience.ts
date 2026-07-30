@@ -460,7 +460,7 @@ export class Project {
       },
     ],
     imageBasePath: "/img/callumployed/",
-    images: ["home.png", "prepresume.png", "prepcl.png"],
+    images: ["home.webp", "prepresume.webp", "prepcl.webp"],
     skills: [
       Language.Python,
       Language.JavaScript,
@@ -495,7 +495,7 @@ export class Project {
       },
     ],
     imageBasePath: "/img/findmyforce/",
-    images: ["one.png", "two.png", "three.png"],
+    images: ["one.webp", "two.webp", "three.webp"],
     skills: [
       Language.Python,
       Language.Typescript,
@@ -534,7 +534,7 @@ export class Project {
       },
     ],
     imageBasePath: "/img/gregor/",
-    images: ["home.jpeg", "eye.jpeg", "3d.png"],
+    images: ["home.webp", "eye.webp", "3d.webp"],
     skills: [
       Language.Typescript,
       Language.Python,
@@ -574,12 +574,12 @@ export class Project {
     ],
     imageBasePath: "/img/fitnet/",
     images: [
-      "v64render.png",
-      "ui1.jpg",
-      "real1.jpg",
-      "pcbv1.jpeg",
-      "emgdev1real.png",
-      "emgdev1render.png",
+      "v64render.webp",
+      "ui1.webp",
+      "real1.webp",
+      "pcbv1.webp",
+      "emgdev1real.webp",
+      "emgdev1render.webp",
     ],
     skills: [
       Language.C,
@@ -626,12 +626,12 @@ export class Project {
     ],
     imageBasePath: "/img/drone/",
     images: [
-      "inside top.jpeg",
-      "chassis.jpeg",
-      "drone realistic angle.png",
-      "drone realistic top.png",
-      "circuit overview.png",
-      "drone realistic bottom.png",
+      "inside top.webp",
+      "chassis.webp",
+      "drone realistic angle.webp",
+      "drone realistic top.webp",
+      "circuit overview.webp",
+      "drone realistic bottom.webp",
     ],
     skills: [
       Language.C,
@@ -665,7 +665,7 @@ export class Project {
       },
     ],
     imageBasePath: "/img/vitalert/",
-    images: ["home.png", "login.png", "nutrient.png"],
+    images: ["home.webp", "login.webp", "nutrient.webp"],
     skills: [
       Language.Typescript,
       Language.JavaScript,
@@ -699,12 +699,12 @@ export class Project {
     ],
     imageBasePath: "/img/virtualcloset/",
     images: [
-      "home.png",
-      "closets.png",
-      "clothing.png",
-      "outfit.png",
-      "search.png",
-      "package-diagram.png",
+      "home.webp",
+      "closets.webp",
+      "clothing.webp",
+      "outfit.webp",
+      "search.webp",
+      "package-diagram.webp",
     ],
     skills: [
       Language.Java,
@@ -730,7 +730,7 @@ export class Project {
     ],
     links: [],
     imageBasePath: "/img/thinktech/",
-    images: ["title.png", "impl.png", "dataflow.png"],
+    images: ["title.webp", "impl.webp", "dataflow.webp"],
     skills: [
       Language.Typescript,
       Language.CSS,
@@ -760,7 +760,7 @@ export class Project {
       { link: "https://github.com/CallumMackenzie/exvi-client", name: "Exvi" },
     ],
     imageBasePath: "/img/exvi/",
-    images: ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png"],
+    images: ["1.webp", "2.webp", "3.webp", "4.webp", "5.webp", "6.webp"],
     skills: [
       Language.Kotlin,
       Language.Java,
@@ -817,12 +817,12 @@ export class Project {
     ],
     imageBasePath: "/img/render/",
     images: [
-      { src: "ingeniumlatte.png", desc: "Java" },
-      { src: "ts.png", desc: "Typescript" },
-      { src: "text.jpeg", desc: "C++ (text rendering)" },
-      { src: "cards.png", desc: "Java with multiple render views" },
-      { src: "browser.png", desc: "Typescript" },
-      { src: "ingenium.png", desc: "C++ (OpenGL)" },
+      { src: "ingeniumlatte.webp", desc: "Java" },
+      { src: "ts.webp", desc: "Typescript" },
+      { src: "text.webp", desc: "C++ (text rendering)" },
+      { src: "cards.webp", desc: "Java with multiple render views" },
+      { src: "browser.webp", desc: "Typescript" },
+      { src: "ingenium.webp", desc: "C++ (OpenGL)" },
     ],
     skills: [
       Language.C,
@@ -856,7 +856,7 @@ export class Project {
       },
     ],
     imageBasePath: "/img/nexus/",
-    images: ["homepage.PNG", "desktop.PNG", "desktop2.PNG"],
+    images: ["homepage.webp", "desktop.webp", "desktop2.webp"],
     skills: [Language.CSharp, Technology.DotNet, OtherSkill.UIUX],
   });
 
@@ -882,7 +882,7 @@ export class Project {
       },
     ],
     imageBasePath: "/img/dsci100/",
-    images: ["ecg.png", "scatter.png", "accuracy.png"],
+    images: ["ecg.webp", "scatter.webp", "accuracy.webp"],
     skills: [
       Language.R,
       Technology.AIML,

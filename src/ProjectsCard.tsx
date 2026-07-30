@@ -104,7 +104,8 @@ const ProjectCard = (props: {
 									src={src}
 									srcSet={src}
 									alt={props.project.name}
-									loading="eager" />
+									loading="lazy"
+									decoding="async" />
 							</div>);
 						})}
 					</Masonry>}
