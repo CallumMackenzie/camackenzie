@@ -72,6 +72,15 @@ h3 {
 	width: 100%;
 }
 
+.resume-summary {
+	width: 100%;
+	min-width: 0;
+}
+
+.resume-details.MuiAccordionDetails-root {
+	padding: 0.75rem;
+}
+
 .employment-card {
 	position: relative;
 	overflow: hidden;
@@ -242,6 +251,7 @@ h3 {
 .skill-usage-copy {
 	display: flex;
 	flex-direction: column;
+	flex: 1 1 auto;
 	min-width: 0;
 }
 
@@ -261,7 +271,48 @@ h3 {
 	text-transform: none;
 }
 
+.skill-usage-related-skills {
+	flex: 0 0 auto;
+	max-width: 44%;
+	margin-left: auto;
+}
+
+.skill-usage-related-skills .MuiAvatar-root {
+	width: 28px;
+	height: 28px;
+	border: none;
+	font-size: 10px;
+}
+
 @media (max-width: 600px) {
+	.projects-container {
+		width: 100vw;
+		max-width: 100vw;
+		margin-left: 50%;
+		transform: translateX(-50%);
+		padding-left: 0.5rem !important;
+		padding-right: 0.5rem !important;
+		border-radius: 0;
+	}
+
+	.projects-container .MuiPaper-root {
+		max-width: none;
+		width: 100%;
+	}
+
+	.resume-card .MuiAccordionSummary-content {
+		min-width: 0;
+	}
+
+	.resume-summary {
+		flex-wrap: wrap;
+		gap: 0.6rem;
+	}
+
+	.resume-details.MuiAccordionDetails-root {
+		padding: 0.35rem;
+	}
+
 	.skills-card {
 		width: 100%;
 	}
@@ -294,6 +345,25 @@ h3 {
 	.skills-detail-header h4,
 	.skills-detail-content h5 {
 		font-size: 1rem;
+	}
+
+	.skill-usage-link.MuiButton-root {
+		flex-wrap: wrap;
+		gap: 0.4rem 0.5rem;
+	}
+
+	.skill-usage-copy {
+		flex-basis: calc(100% - 2rem);
+	}
+
+	.skill-usage-related-skills {
+		max-width: calc(100% - 2rem);
+		margin-left: 2rem;
+	}
+
+	.skill-usage-related-skills .MuiAvatar-root {
+		width: 25px;
+		height: 25px;
 	}
 }
 

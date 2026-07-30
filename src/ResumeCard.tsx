@@ -2,7 +2,6 @@ import React from "react";
 import {
 	Box,
 	Typography,
-	Button,
 	IconButton,
 	Stack,
 	Divider,
@@ -41,30 +40,21 @@ export const ResumeCard = ({
 	}
 
 	return (
-		 <Stack ref={resumeCardRef} sx={{ width: '100%' }} >
+		 <Stack ref={resumeCardRef} className="resume-card" sx={{ width: '100%' }} >
 			<Accordion defaultExpanded={false}>
 				<AccordionSummary
 					expandIcon={<ExpandMore sx={{ color: 'white' }} />}>
-					<Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2}>
+					<Stack className="resume-summary" direction="row" alignItems="center" justifyContent="space-between" spacing={2}>
 						<Stack direction="row" spacing={1} alignItems="center">
 							<PictureAsPdfIcon />
 							<Typography variant="h6">Resume</Typography>
-						</Stack>
-						<Stack direction="row" spacing={1} px={3}>
-							<Tooltip title="Download">
-								<span>
-									<Button onClick={download} startIcon={<DownloadIcon />} variant="contained">
-										Download
-									</Button>
-								</span>
-							</Tooltip>
 						</Stack>
 					</Stack>
 				</AccordionSummary>
 
 				<Divider />
 
-				<AccordionDetails>
+				<AccordionDetails className="resume-details">
 					<	Box sx={{ flex: 1, minHeight: height, borderRadius: 2, overflow: "hidden", border: 1, borderColor: "divider" }}>
 						{url ? (
 							<Box sx={{ height: height, position: "relative", bgcolor: "background.default" }}>

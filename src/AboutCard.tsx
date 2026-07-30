@@ -67,7 +67,7 @@ export const AboutCard = (props: {
             <img
               className="img-fluid m-auto px-3"
               alt="Callum Mackenzie"
-              src="img/callum-mackenzie-2.png"
+              src="img/callum-mackenzie-motorbike.webp"
               onLoad={(e) => (e.currentTarget.style.animation = "")}
               style={{
                 borderRadius: "50%",

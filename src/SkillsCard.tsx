@@ -1,6 +1,6 @@
 import Grid from '@mui/material/Grid2';
-import { Avatar, AvatarGroup, Button, Divider, IconButton, Paper, Stack, Tooltip, Typography, useMediaQuery } from '@mui/material';
-import { EmploymentRoleRefs, ProjectRefs, theme } from './App';
+import { Avatar, AvatarGroup, Button, Divider, IconButton, Paper, Stack, Tooltip, Typography } from '@mui/material';
+import { EmploymentRoleRefs, ProjectRefs } from './App';
 import React, { useState } from 'react';
 import { EmploymentRole, lastYearInDateRange, Project, shouldDisplaySkill, Skill, SkillCategories, skillImageSrc, skillInitials, sortSkillsByUsage } from './Experience';
 import { ArrowBack, FolderOutlined, WorkOutline } from '@mui/icons-material';
@@ -94,12 +94,9 @@ const SkillInfoView = (props: {
 	projectRefs: ProjectRefs,
 	employmentRoleRefs: EmploymentRoleRefs,
 }) => {
-	const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
-	const isMedScreen = useMediaQuery(theme.breakpoints.down("md"));
-	const relatedColumnWidth = isSmallScreen ? "100%" : "50%";
-	const skillsUsedWith = Array.from(new Set(
-		Project.skillsUsedWith(props.skill).concat(EmploymentRole.skillsUsedWith(props.skill))
-	)).filter(shouldDisplaySkill);
+	const relatedSkillAvatarMax = 7;
+	const topRelatedSkills = (skills: Array<Skill>) =>
+		sortSkillsByUsage(skills.filter(skill => skill !== props.skill && shouldDisplaySkill(skill)));
 	const projectsUsingSkill = Project.withSkill(props.skill);
 	const rolesUsingSkill = EmploymentRole.withSkill(props.skill);
 	const usageItems = rolesUsingSkill
@@ -109,6 +106,7 @@ const SkillInfoView = (props: {
 			subtitle: role.role,
 			sortYear: lastYearInDateRange(role.dates),
 			icon: <WorkOutline fontSize='small' />,
+			relatedSkills: topRelatedSkills(role.skills),
 			onClick: () => props.employmentRoleRefs
 				.get(role)?.current?.scrollIntoView({ behavior: 'smooth', block: 'center' }),
 		}))
@@ -119,6 +117,7 @@ const SkillInfoView = (props: {
 			subtitle: project.date,
 			sortYear: lastYearInDateRange(project.date),
 			icon: <FolderOutlined fontSize='small' />,
+			relatedSkills: topRelatedSkills(project.skills),
 			onClick: () => props.projectRefs
 				.get(project)?.current?.scrollIntoView({ behavior: 'smooth', block: 'center' }),
 		})).sort((a, b) => b.sortYear - a.sortYear || a.title.localeCompare(b.title)));
@@ -142,53 +141,38 @@ const SkillInfoView = (props: {
 				<h4>{props.skill?.name ?? ""}</h4>
 			</Stack>
 			<Divider sx={{ background: 'white', width: '80%', alignSelf: 'center' }} />
-			<Stack
-				pb={2}
-				justifyContent={'center'}
-				justifyItems={'center'}
-				alignItems={'stretch'}
-				spacing={2}
-				direction={isSmallScreen ? 'column' : 'row'}>
-				<Stack alignItems={'center'} sx={{
-					width: relatedColumnWidth
-				}}>
-					<h5>Skills used with {props.skill?.name ?? ""}</h5>
-					<AvatarGroup max={isSmallScreen ? 4 : isMedScreen ? 5 : 6}>
-						{sortSkillsByUsage(skillsUsedWith).map(skill => (
-							<Avatar
-								key={skill.name}
-								className='skill-avatar'
-								variant='square'
-								src={skillImageSrc(skill)}
-								alt={skill.name}
-								sx={{ fontSize: 11 }}>
-								{skillInitials(skill)}
-							</Avatar>
-						))}
-					</AvatarGroup>
+			<Stack alignItems={'center'} pb={2}>
+				<h5>Using {props.skill?.name ?? ""}</h5>
+				<Stack className='skill-usage-list' spacing={1}>
+					{usageItems.map(item => (
+						<Button
+							key={item.key}
+							variant='outlined'
+							size='small'
+							className='skill-usage-link'
+							onClick={item.onClick}>
+							<span className='skill-usage-icon'>{item.icon}</span>
+							<span className='skill-usage-copy'>
+								<span>{item.title}</span>
+								<small>{item.subtitle}</small>
+							</span>
+							<AvatarGroup className='skill-usage-related-skills' max={relatedSkillAvatarMax}>
+								{item.relatedSkills.map(skill => (
+									<Avatar
+										key={skill.name}
+										className='skill-avatar'
+										variant='square'
+										src={skillImageSrc(skill)}
+										alt={skill.name}
+										sx={{ fontSize: 11 }}>
+										{skillInitials(skill)}
+									</Avatar>
+								))}
+							</AvatarGroup>
+						</Button>
+					))}
 				</Stack>
-				<Stack alignItems={'center'} sx={{
-					width: relatedColumnWidth
-				}}>
-					<h5>Using {props.skill?.name ?? ""}</h5>
-					<Stack className='skill-usage-list' spacing={1}>
-						{usageItems.map(item => (
-							<Button
-								key={item.key}
-								variant='outlined'
-								size='small'
-								className='skill-usage-link'
-								onClick={item.onClick}>
-								<span className='skill-usage-icon'>{item.icon}</span>
-								<span className='skill-usage-copy'>
-									<span>{item.title}</span>
-									<small>{item.subtitle}</small>
-								</span>
-							</Button>
-						))}
-					</Stack>
-				</Stack>
-			</Stack >
+			</Stack>
 		</Stack>
 	</>);
 }

@@ -1,37 +1,66 @@
 
 import './App.scss';
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import tree from "./tree.svg";
 import { theme } from "./App";
 import { useMediaQuery } from "@mui/material";
 
 export const TreeScrollBackground = () => {
+	const getStableMobileHeight = () =>
+		typeof window === "undefined"
+			? 0
+			: Math.max(window.screen?.height ?? 0, window.innerHeight);
+
 	const isLg = useMediaQuery(theme.breakpoints.only('lg')),
 		isXl = useMediaQuery(theme.breakpoints.up('xl')),
-		isMd = useMediaQuery(theme.breakpoints.only('md'));
+		isMd = useMediaQuery(theme.breakpoints.only('md')),
+		isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-	const computeTreeGridWidth = () => isXl ? 5 : isLg ? 4 : isMd ? 2 : 1;
+	const computeTreeGridWidth = useCallback(
+		() => isMobile ? 0 : isXl ? 5 : isLg ? 4 : isMd ? 2 : 1,
+		[isMobile, isLg, isXl, isMd],
+	);
 
 	const [treeGridWidth, setTreeGridWidth] = useState(computeTreeGridWidth()),
 		treeGridHeight = 4, [nTrees, setNTrees] = useState(treeGridWidth * treeGridHeight);
 	const treeRefs: React.MutableRefObject<Array<HTMLImageElement | null>> = useRef([]);
+	const viewportWidthRef = useRef(typeof window === "undefined" ? 0 : window.innerWidth);
+	const [stableMobileHeight, setStableMobileHeight] = useState(getStableMobileHeight());
 
 	useEffect(() => {
 		const newWid = computeTreeGridWidth();
 		setTreeGridWidth(newWid);
 		setNTrees(treeGridHeight * newWid);
-	}, [isLg, isXl, isMd])
+	}, [computeTreeGridWidth])
 
 	const [randomOffSets, setRandomOffsets] = useState<undefined | number[]>(undefined);
 
 	useEffect(() => {
 		const a = [];
-		for (let _ in [...Array(nTrees)])
+		for (let i = 0; i < nTrees; i++)
 			a.push(Math.random() * 360);
 		setRandomOffsets(a);
 	}, [nTrees]);
 
 	useEffect(() => {
+		const updateStableMobileHeight = () => {
+			if (!isMobile) return;
+			const widthChanged = Math.abs(window.innerWidth - viewportWidthRef.current) > 80;
+			if (!widthChanged) return;
+			viewportWidthRef.current = window.innerWidth;
+			setStableMobileHeight(getStableMobileHeight());
+		};
+
+		window.addEventListener('resize', updateStableMobileHeight);
+		window.addEventListener('orientationchange', updateStableMobileHeight);
+		return () => {
+			window.removeEventListener('resize', updateStableMobileHeight);
+			window.removeEventListener('orientationchange', updateStableMobileHeight);
+		};
+	}, [isMobile]);
+
+	useEffect(() => {
+		if (isMobile) return;
 		if (randomOffSets === undefined) return;
 		const treeRotateOnScroll = () => {
 			if (treeRefs.current === null) return;
@@ -64,7 +93,8 @@ export const TreeScrollBackground = () => {
 		window.removeEventListener('scroll', treeRotateOnScroll);
 		window.addEventListener('scroll', treeRotateOnScroll);
 		treeRotateOnScroll();
-	}, [randomOffSets, treeGridWidth, nTrees, window.innerWidth, window.innerHeight, treeGridHeight]);
+		return () => window.removeEventListener('scroll', treeRotateOnScroll);
+	}, [isMobile, randomOffSets, treeGridWidth, nTrees, treeGridHeight]);
 
 	return (<>
 		<div className="position-absolute" style={{
@@ -78,10 +108,13 @@ export const TreeScrollBackground = () => {
 				onLoad={e => e.currentTarget.style.animation = ""}
 				style={{
 					objectFit: "cover",
-					width: "100%",
+					width: isMobile ? "100vw" : "100%",
+					height: isMobile ? `${stableMobileHeight}px` : undefined,
 					animation: 'image-preload 4.7s infinite',
-					minHeight: "100svh",
-					position: "absolute",
+					minHeight: isMobile ? `${stableMobileHeight}px` : "100svh",
+					position: isMobile ? "fixed" : "absolute",
+					top: 0,
+					left: 0,
 					overflow: 'hidden'
 				}} />
 			{[...Array(nTrees)].map((x, i) => {
