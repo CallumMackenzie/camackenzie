@@ -3,7 +3,7 @@ import { Avatar, Container, Divider, Stack, Tooltip, Typography, useMediaQuery }
 import Paper from "@mui/material/Paper/Paper";
 import { ProjectRefs, theme } from "./App";
 import { Masonry } from "@mui/lab";
-import { Project } from "./Experience";
+import { Project, skillImageSrc, skillInitials } from "./Experience";
 
 export const ProjectsCard = (props: {
 	projectRefs: ProjectRefs,
@@ -55,9 +55,11 @@ const ProjectCard = (props: {
 					<Stack direction={'row'} justifyContent={'center'} spacing={isSmallScreen ? 0 : 2} alignItems={'center'}>
 						{skills.slice(0, Math.min(10, skills.length)).map(x => (
 							<Tooltip key={x.name} title={x.name} arrow>
-								<Avatar variant="square"
-									alt={x.name} src={"img/technologies/" + x.src}
-									sx={{ width: 30, height: 30 }} />
+								<Avatar className="skill-avatar" variant="square"
+									alt={x.name} src={skillImageSrc(x)}
+									sx={{ width: 30, height: 30, fontSize: 11 }}>
+									{skillInitials(x)}
+								</Avatar>
 							</Tooltip>
 						))}
 					</Stack>}

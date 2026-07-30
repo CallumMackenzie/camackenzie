@@ -9,14 +9,13 @@ import { ThemeProvider } from '@emotion/react';
 import { TitleCard } from './TitleCard';
 import { AboutCard } from './AboutCard';
 import { Container, CssBaseline } from '@mui/material';
-import { red, teal } from '@mui/material/colors';
 import { TreeScrollBackground } from './TreeScrollBackground';
 import { BottomCard } from './BottomCard';
 import { ProjectsCard } from './ProjectsCard';
 import { SkillsCard } from './SkillsCard';
-import { Project } from './Experience';
+import { EmploymentRole, Project } from './Experience';
 import { NavigationBar } from './NavigationBar';
-import { ResumeCard } from './ResumeCard';
+import { ExperienceCard } from './ExperienceCard';
 
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_apiKey,
@@ -30,29 +29,81 @@ const firebaseConfig = {
 
 
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+getAnalytics(app);
 
 export const theme = createTheme({
 	palette: {
 		primary: {
-			light: teal[400],
-			main: teal[600],
-			dark: teal[900],
+			light: "#9fb7aa",
+			main: "#6f8f7a",
+			dark: "#22362d",
 		},
 		secondary: {
-			main: red["A100"],
+			main: "#d26a2e",
 		},
 		background: {
-			default: "#0e1111",
-			paper: "#232b2b"
+			default: "#0f1110",
+			paper: "#1d2320"
 		},
 		text: {
-			primary: "#C3CbCb",
-			secondary: "#F5F5F5",
-			disabled: "#FCC8D1"
+			primary: "#e8e1d4",
+			secondary: "#f5f1e8",
+			disabled: "#d39a72"
 		}
 	},
+	shape: {
+		borderRadius: 6,
+	},
 	components: {
+		MuiAppBar: {
+			styleOverrides: {
+				root: {
+					backgroundImage: "none",
+					backgroundColor: "#171b18",
+					borderBottom: "1px solid rgba(210, 106, 46, 0.45)",
+					boxShadow: "0 10px 28px rgba(0, 0, 0, 0.3)",
+				},
+			},
+		},
+		MuiPaper: {
+			styleOverrides: {
+				root: {
+					backgroundImage: "linear-gradient(145deg, rgba(37, 44, 40, 0.96), rgba(22, 27, 25, 0.96))",
+					border: "1px solid rgba(159, 183, 170, 0.22)",
+					boxShadow: "0 18px 42px rgba(0, 0, 0, 0.38)",
+				},
+			},
+		},
+		MuiButton: {
+			styleOverrides: {
+				root: {
+					borderRadius: 4,
+					letterSpacing: 0,
+					fontWeight: 700,
+					color: "#e8e1d4",
+					"&:hover": {
+						backgroundColor: "rgba(210, 106, 46, 0.16)",
+					},
+				},
+			},
+		},
+		MuiIconButton: {
+			styleOverrides: {
+				root: {
+					color: "#e8e1d4",
+					"&:hover": {
+						backgroundColor: "rgba(210, 106, 46, 0.16)",
+					},
+				},
+			},
+		},
+		MuiDivider: {
+			styleOverrides: {
+				root: {
+					borderColor: "rgba(159, 183, 170, 0.4)",
+				},
+			},
+		},
 		MuiAvatarGroup: {
 			styleOverrides: {
 				root: {
@@ -66,17 +117,27 @@ export const theme = createTheme({
 });
 
 export type ProjectRefs = Map<Project, React.RefObject<HTMLDivElement>>;
+export type EmploymentRoleRefs = Map<EmploymentRole, React.RefObject<HTMLDivElement>>;
 
 const App = () => {
 
 	const titleCardRef = React.createRef<HTMLDivElement>();
 	const aboutCardRef = React.createRef<HTMLDivElement>();
 	const skillsCardRef = React.createRef<HTMLDivElement>();
+	const experienceCardRef = React.createRef<HTMLDivElement>();
 	const projectCardRef = React.createRef<HTMLDivElement>();
 	const resumeCardRef = React.createRef<HTMLDivElement>();
 
-	const projectRefs: ProjectRefs = new Map();
-	Project.All.forEach(project => projectRefs.set(project, React.createRef<HTMLDivElement>()));
+	const projectRefs = React.useMemo<ProjectRefs>(() => {
+		const refs: ProjectRefs = new Map();
+		Project.All.forEach(project => refs.set(project, React.createRef<HTMLDivElement>()));
+		return refs;
+	}, []);
+	const employmentRoleRefs = React.useMemo<EmploymentRoleRefs>(() => {
+		const refs: EmploymentRoleRefs = new Map();
+		EmploymentRole.All.forEach(role => refs.set(role, React.createRef<HTMLDivElement>()));
+		return refs;
+	}, []);
 
 	// Scroll to based on URL hash
 	useEffect(() => {
@@ -96,14 +157,21 @@ const App = () => {
 			<TreeScrollBackground />
 			<NavigationBar
 				aboutCardRef={aboutCardRef}
-				resumeCardRef={resumeCardRef}
 				skillsCardRef={skillsCardRef}
+				experienceCardRef={experienceCardRef}
 				titleCardRef={titleCardRef}
 				projectCardRef={projectCardRef} />
 			<Container sx={{ pt: 4 }} maxWidth="md">
 				<TitleCard aboutCardRef={aboutCardRef} titleCardRef={titleCardRef} />
-				<AboutCard aboutCardRef={aboutCardRef} resumeCardRef={resumeCardRef} />
-				<SkillsCard projectRefs={projectRefs} skillsCardRef={skillsCardRef} />
+				<AboutCard aboutCardRef={aboutCardRef} />
+				<SkillsCard
+					projectRefs={projectRefs}
+					employmentRoleRefs={employmentRoleRefs}
+					skillsCardRef={skillsCardRef} />
+				<ExperienceCard
+					experienceCardRef={experienceCardRef}
+					employmentRoleRefs={employmentRoleRefs}
+					resumeCardRef={resumeCardRef} />
 				<ProjectsCard projectRefs={projectRefs} projectCardRef={projectCardRef} />
 				<BottomCard />
 			</Container>

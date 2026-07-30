@@ -3,11 +3,9 @@ import React from "react";
 import { Divider, Paper } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { theme } from "./App";
-import { ResumeCard } from "./ResumeCard";
 
 export const AboutCard = (props: {
   aboutCardRef: React.RefObject<HTMLDivElement>;
-  resumeCardRef: React.RefObject<HTMLDivElement>;
 }) => {
   const smallScreen = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -80,7 +78,6 @@ export const AboutCard = (props: {
             />
           </div>
         </div>
-        <ResumeCard resumeCardRef={props.resumeCardRef} />
       </Paper>
     </>
   );

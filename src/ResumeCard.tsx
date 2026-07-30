@@ -7,7 +7,6 @@ import {
 	Stack,
 	Divider,
 	Tooltip,
-	Paper,
 	Accordion,
 	AccordionDetails,
 	AccordionSummary,

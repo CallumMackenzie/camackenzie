@@ -6,9 +6,9 @@ import React from "react";
 export const NavigationBar = (props: {
 	aboutCardRef: React.RefObject<HTMLDivElement>,
 	skillsCardRef: React.RefObject<HTMLDivElement>,
+	experienceCardRef: React.RefObject<HTMLDivElement>,
 	titleCardRef: React.RefObject<HTMLDivElement>,
 	projectCardRef: React.RefObject<HTMLDivElement>,
-	resumeCardRef: React.RefObject<HTMLDivElement>,
 }) => {
 	const scrollToSmooth = (ref: React.RefObject<HTMLDivElement>) =>
 		ref.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -21,8 +21,8 @@ export const NavigationBar = (props: {
 
 	const navItems = [{ name: "Home", onClick: () => scrollToSmooth(props.titleCardRef) },
 	{ name: "About", onClick: () => scrollToSmooth(props.aboutCardRef) },
-	{ name: "Resume", onClick: () => scrollToSmooth(props.resumeCardRef) },
 	{ name: "Skills", onClick: () => scrollToSmooth(props.skillsCardRef) },
+	{ name: "Experience", onClick: () => scrollToSmooth(props.experienceCardRef) },
 	{ name: "Projects", onClick: () => scrollToSmooth(props.projectCardRef) },
 	];
 

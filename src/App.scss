@@ -5,31 +5,227 @@ $image_load_2: #00897b90;
 
 h1 {
 	font-family: 'Oswald', sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 0;
 }
 
 h3 {
 	font-style: italic;
+	letter-spacing: 0;
 }
 
 .title-content {
-	background-color: black;
-	border-radius: 2em;
+	position: relative;
+	overflow: hidden;
+	background:
+		linear-gradient(135deg, rgba(12, 14, 13, 0.94), rgba(35, 43, 38, 0.93)),
+		linear-gradient(90deg, rgba(210, 106, 46, 0.18), transparent 36%);
+	border: 1px solid rgba(159, 183, 170, 0.28);
+	border-radius: 8px;
+	box-shadow: 0 24px 70px rgba(0, 0, 0, 0.48);
+}
+
+.title-content::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	background:
+		linear-gradient(115deg, transparent 0 70%, rgba(210, 106, 46, 0.22) 70% 72%, transparent 72%),
+		linear-gradient(115deg, transparent 0 78%, rgba(159, 183, 170, 0.18) 78% 79%, transparent 79%);
+}
+
+.title-content > * {
+	position: relative;
 }
 
 .projects-container {
-	max-width: 100%;
+	position: relative;
+	isolation: isolate;
+	width: min(calc(100vw - 1.5rem), 100%);
+	max-width: none;
+	border-radius: 10px;
+	overflow: hidden;
 }
 
 @media (min-width: 992px) {
 	.projects-container {
-		max-width: 1320px;
+		width: min(calc(100vw - 4rem), 1240px);
+		max-width: 1240px;
+		margin-left: 50%;
+		transform: translateX(-50%);
 	}
 }
 
 @media (min-width: 1400px) {
 	.projects-container {
-		max-width: 1560px;
+		width: min(calc(100vw - 6rem), 1380px);
+		max-width: 1380px;
 	}
+}
+
+.projects-container .MuiPaper-root {
+	border-left: 4px solid rgba(210, 106, 46, 0.78);
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 1040px;
+	width: 100%;
+}
+
+.employment-card {
+	position: relative;
+	overflow: hidden;
+}
+
+.employment-card::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	background:
+		linear-gradient(110deg, rgba(210, 106, 46, 0.14), transparent 28%),
+		linear-gradient(180deg, rgba(159, 183, 170, 0.08), transparent 38%);
+}
+
+.employment-card > * {
+	position: relative;
+}
+
+.employment-entry {
+	padding: 1.25rem;
+	text-align: left;
+	border: 1px solid rgba(159, 183, 170, 0.2);
+	border-left: 4px solid rgba(210, 106, 46, 0.78);
+	border-radius: 6px;
+	background: rgba(15, 17, 16, 0.38);
+}
+
+.employment-logo {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex: 0 0 auto;
+	width: 58px;
+	height: 58px;
+	padding: 0.25rem;
+	border: 1px solid rgba(159, 183, 170, 0.2);
+	border-radius: 8px;
+	background: transparent;
+}
+
+.employment-logo img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.employment-bullets {
+	margin: 1rem 0;
+	padding-left: 1.2rem;
+}
+
+.employment-bullets li {
+	margin-bottom: 0.45rem;
+}
+
+.employment-card .MuiChip-root {
+	color: #d9c9b2;
+	border-color: rgba(159, 183, 170, 0.42);
+	background: rgba(35, 54, 45, 0.36);
+}
+
+.skill-usage-list {
+	width: 100%;
+}
+
+.skill-avatar.MuiAvatar-root {
+	background: transparent;
+}
+
+.skill-avatar .MuiAvatar-img {
+	width: 76%;
+	height: 76%;
+	object-fit: contain;
+}
+
+.skill-usage-link.MuiButton-root {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 0.55rem;
+	width: 100%;
+	padding: 0.45rem 0.65rem;
+	text-align: left;
+	border-color: rgba(159, 183, 170, 0.3);
+	background: rgba(15, 17, 16, 0.28);
+}
+
+.skill-usage-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex: 0 0 auto;
+	color: #f0b478;
+}
+
+.skill-usage-copy {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+}
+
+.skill-usage-copy span,
+.skill-usage-copy small {
+	display: block;
+	width: 100%;
+	white-space: normal;
+	line-height: 1.2;
+}
+
+.skill-usage-copy small {
+	margin-top: 0.2rem;
+	color: #b8c0b5;
+	font-weight: 500;
+	text-transform: none;
+}
+
+@media (min-width: 1400px) {
+	.projects-container .MuiPaper-root {
+		max-width: 1160px;
+	}
+}
+
+.MuiPaper-root {
+	backdrop-filter: blur(2px);
+}
+
+.MuiDivider-wrapper {
+	color: #d9c9b2;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0;
+}
+
+a {
+	color: #e09a5a;
+	text-decoration-color: rgba(224, 154, 90, 0.55);
+}
+
+a:hover {
+	color: #f0b478;
+}
+
+.title-content img:not(.MuiAvatar-img),
+.projects-container img:not(.MuiAvatar-img),
+.position-absolute > img:first-child {
+	filter: saturate(0.9) contrast(1.06);
+}
+
+.tree {
+	opacity: 0.76;
+	filter: sepia(0.14) saturate(0.75) brightness(0.82);
 }
 
 @keyframes image-preload {

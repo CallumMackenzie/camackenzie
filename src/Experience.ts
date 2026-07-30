@@ -1,7 +1,22 @@
 export interface Skill {
   name: string;
   src?: string;
+  display?: boolean;
 }
+
+export const skillImageSrc = (skill: Skill): string | undefined =>
+  skill.src === undefined ? undefined : "img/technologies/" + skill.src;
+
+export const shouldDisplaySkill = (skill: Skill): boolean =>
+  skill.display !== false;
+
+export const skillInitials = (skill: Skill): string =>
+  skill.name
+    .split(/[\s/+.-]+/)
+    .filter((part) => part.length > 0)
+    .slice(0, 2)
+    .map((part) => part[0].toUpperCase())
+    .join("");
 
 // Skills
 
@@ -32,15 +47,21 @@ export class Language implements Skill {
 
   name: string;
   src?: string;
+  display?: boolean;
 
   private constructor(args: Skill) {
     this.name = args.name;
     this.src = args.src;
+    this.display = args.display;
   }
 }
 
 export class Technology implements Skill {
-  static readonly Git = new Technology({ name: "Git", src: "git.png" });
+  static readonly Git = new Technology({
+    name: "Git",
+    src: "git.png",
+    display: false,
+  });
   static readonly React = new Technology({ name: "React", src: "react.png" });
   static readonly AWS = new Technology({ name: "AWS", src: "aws.png" });
   static readonly Firebase = new Technology({
@@ -51,7 +72,11 @@ export class Technology implements Skill {
     name: ".NET",
     src: "dotnet.svg.png",
   });
-  static readonly Maven = new Technology({ name: "Maven", src: "maven.png" });
+  static readonly Maven = new Technology({
+    name: "Maven",
+    src: "maven.png",
+    display: false,
+  });
   static readonly Gradle = new Technology({
     name: "Gradle",
     src: "gradle.png",
@@ -73,7 +98,78 @@ export class Technology implements Skill {
     src: "jupyter.png",
   });
   static readonly CMake = new Technology({ name: "CMake", src: "cmake.png" });
-  static readonly AIML = new Technology({ name: "AI/ML", src: "genai.png" });
+  static readonly AIML = new Technology({ name: "AI/ML", src: "ai-ml.png" });
+  static readonly RAG = new Technology({ name: "RAG", src: "rag.png" });
+  static readonly MCP = new Technology({ name: "MCP", src: "mcp.png" });
+  static readonly A2A = new Technology({ name: "A2A", src: "a2a.png" });
+  static readonly Numpy = new Technology({ name: "NumPy", src: "numpy.webp" });
+  static readonly Pandas = new Technology({ name: "Pandas", src: "pandas.svg" });
+  static readonly PyTorch = new Technology({
+    name: "PyTorch",
+    src: "pytorch.webp",
+    display: false,
+  });
+  static readonly XGBoost = new Technology({
+    name: "XGBoost",
+    src: "xgboost.png",
+    display: false,
+  });
+  static readonly ScikitLearn = new Technology({
+    name: "scikit-learn",
+    src: "scikit-learn.svg",
+    display: false,
+  });
+  static readonly Tidyverse = new Technology({
+    name: "Tidyverse",
+    src: "tidyverse.webp",
+    display: false,
+  });
+  static readonly OpenAI = new Technology({
+    name: "OpenAI",
+    src: "openai.png",
+    display: false,
+  });
+  static readonly NextJS = new Technology({
+    name: "Next.js",
+    src: "next.webp",
+    display: false,
+  });
+  static readonly FastAPI = new Technology({
+    name: "FastAPI",
+    src: "fastapi.webp",
+    display: false,
+  });
+  static readonly ThreeJS = new Technology({
+    name: "Three.js",
+    src: "three.webp",
+    display: false,
+  });
+  static readonly Bluetooth = new Technology({
+    name: "Bluetooth",
+    src: "bluetooth.webp",
+    display: false,
+  });
+  static readonly ESPIDF = new Technology({
+    name: "ESP-IDF",
+    src: "esp-idf.webp",
+    display: false,
+  });
+  static readonly FreeRTOS = new Technology({
+    name: "FreeRTOS",
+    src: "freertos.png",
+  });
+  static readonly JetpackCompose = new Technology({
+    name: "Jetpack Compose",
+    src: "jetpackcompose.png",
+    display: false,
+  });
+  static readonly GitHubActions = new Technology({
+    name: "GitHub Actions",
+    src: "github-actions.webp",
+    display: false,
+  });
+  static readonly Docker = new Technology({ name: "Docker", src: "docker.webp" });
+  static readonly Jenkins = new Technology({ name: "Jenkins", src: "jenkins.svg" });
   // static readonly Make = new Technology({ name: "Make", src: "make.png" });
 
   static readonly All: Array<Technology> = Object.values(this).filter(
@@ -82,10 +178,12 @@ export class Technology implements Skill {
 
   name: string;
   src?: string;
+  display?: boolean;
 
   private constructor(args: Skill) {
     this.name = args.name;
     this.src = args.src;
+    this.display = args.display;
   }
 }
 
@@ -103,10 +201,12 @@ export class OtherSkill implements Skill {
   static readonly TechnicalCommunication = new OtherSkill({
     name: "Technical Communication",
     src: "communicate.png",
+    display: false,
   });
   static readonly DesignPatterns = new OtherSkill({
     name: "Design Patterns",
     src: "blocks.png",
+    display: false,
   });
   static readonly FunctionalProgramming = new OtherSkill({
     name: "Functional Programming",
@@ -119,7 +219,20 @@ export class OtherSkill implements Skill {
   });
   static readonly PCBDesign = new OtherSkill({
     name: "PCB Design",
-    src: "pcb.png",
+    src: "pcb-design.png",
+  });
+  static readonly Networking = new OtherSkill({
+    name: "Networking",
+    src: "networking.png",
+  });
+  static readonly CICD = new OtherSkill({ name: "CI/CD", src: "ci-cd.png" });
+  static readonly DistributedSystems = new OtherSkill({
+    name: "Distributed Systems",
+    src: "distributed-systems.png",
+  });
+  static readonly EmbeddedSystems = new OtherSkill({
+    name: "Embedded Systems",
+    src: "embeddedsystems.png",
   });
 
   static readonly All: Array<OtherSkill> = Object.values(this).filter(
@@ -128,16 +241,204 @@ export class OtherSkill implements Skill {
 
   name: string;
   src?: string;
+  display?: boolean;
 
   private constructor(args: Skill) {
     this.name = args.name;
     this.src = args.src;
+    this.display = args.display;
   }
 }
 
-export const AllSkills: Array<Skill> = Language.All.concat(
-  Technology.All,
-).concat(OtherSkill.All);
+export interface SkillCategory {
+  name: string;
+  skills: Array<Skill>;
+}
+
+export const SkillCategories: Array<SkillCategory> = [
+  {
+    name: "Languages",
+    skills: Language.All,
+  },
+  {
+    name: "AI & Data",
+    skills: [
+      Technology.AIML,
+      Technology.RAG,
+      Technology.MCP,
+      Technology.A2A,
+      Technology.Numpy,
+      Technology.Pandas,
+      Technology.PyTorch,
+      Technology.XGBoost,
+      Technology.ScikitLearn,
+      Technology.Tidyverse,
+      Technology.OpenAI,
+      Technology.Jupyter,
+    ],
+  },
+  {
+    name: "Platforms & Tooling",
+    skills: [
+      Technology.Git,
+      Technology.React,
+      Technology.AWS,
+      Technology.Firebase,
+      Technology.DotNet,
+      Technology.Maven,
+      Technology.Gradle,
+      Technology.Arduino,
+      Technology.OpenGL,
+      Technology.WASM,
+      Technology.CMake,
+      Technology.Docker,
+      Technology.Jenkins,
+      Technology.GitHubActions,
+      Technology.NextJS,
+      Technology.FastAPI,
+      Technology.ThreeJS,
+      Technology.Bluetooth,
+      Technology.ESPIDF,
+      Technology.FreeRTOS,
+      Technology.JetpackCompose,
+      OtherSkill.Android,
+    ],
+  },
+  {
+    name: "Engineering Domains",
+    skills: [
+      OtherSkill.Linux,
+      OtherSkill.Networking,
+      OtherSkill.CICD,
+      OtherSkill.DistributedSystems,
+      OtherSkill.EmbeddedSystems,
+      OtherSkill.OOP,
+      OtherSkill.TestDrivenDevelopment,
+      OtherSkill.DesignPatterns,
+      OtherSkill.FunctionalProgramming,
+      OtherSkill.TechnicalCommunication,
+      OtherSkill.UIUX,
+      OtherSkill.CAD,
+      OtherSkill.PCBDesign,
+    ],
+  },
+];
+
+export const AllSkills: Array<Skill> = SkillCategories.reduce<Array<Skill>>(
+  (skills, category) => skills.concat(category.skills),
+  [],
+);
+
+// EMPLOYMENT
+
+export class EmploymentRole {
+  static readonly AmazonSdeIntern: EmploymentRole = new EmploymentRole({
+    company: "Amazon",
+    role: "Software Development Engineer Intern",
+    dates: "May 2026 - Present",
+    location: "Vancouver, BC, Canada",
+    logoSrc: "/img/companylogos/amazon.webp",
+    bullets: [
+      "Building a self-improving agentic AI platform on AWS for ticket analysis, historical retrieval, and root-cause feedback loops",
+      "Delivered RAG, source attribution, Bedrock Knowledge Base integration, auto-improving CTI suggestions, learning commands, and ticket knowledge management to 5 teams",
+      "Implementing MCP/A2A configuration, Slack actions, auto-execution, metrics dashboards, and model fine-tuning",
+    ],
+    skills: [
+      Language.Python,
+      Language.Typescript,
+      Technology.AWS,
+      Technology.RAG,
+      Technology.MCP,
+      Technology.A2A,
+      Technology.AIML,
+      Technology.Git,
+      OtherSkill.TechnicalCommunication,
+    ],
+  });
+
+  static readonly GeneralDynamicsEmbeddedCoop: EmploymentRole =
+    new EmploymentRole({
+      company: "General Dynamics",
+      role: "Embedded Software Engineer Co-op",
+      dates: "Jan 2025 - May 2026",
+      location: "Calgary, AB, Canada / Remote",
+      logoSrc: "/img/companylogos/gd.webp",
+      bullets: [
+        "Designed software for tactical communications systems on a defense R&D team",
+        "Developed 3 Linux device drivers and daemons in C/C++ for distributed embedded platforms",
+        "Saved customers $20k+ per vehicle platform by enabling additional users on existing hardware resources",
+        "Implemented configurable networking functionality for distributed systems using layer 3/4/5 protocols",
+        "Resolved 30+ defects in embedded projects, improving reliability in safety-critical environments",
+        "Reduced CI/CD pipeline runtime by 50% across multiple pipelines with Docker, Python, and Jenkins",
+        "Built and integrated AI infrastructure and tooling supporting 20+ engineers and 3 build pipelines",
+        "Shipped client functionality in .NET apps interfacing with embedded devices & AI services",
+      ],
+      skills: [
+        Language.C,
+        Language.Cpp,
+        Language.CSharp,
+        Language.Python,
+        Technology.DotNet,
+        Technology.Docker,
+        Technology.Jenkins,
+        Technology.AIML,
+        Technology.Git,
+        OtherSkill.Linux,
+        OtherSkill.Networking,
+        OtherSkill.CICD,
+        OtherSkill.DistributedSystems,
+        OtherSkill.EmbeddedSystems,
+        OtherSkill.TechnicalCommunication,
+      ],
+    });
+
+  static readonly All: Array<EmploymentRole> = [
+    this.AmazonSdeIntern,
+    this.GeneralDynamicsEmbeddedCoop,
+  ];
+
+  static withSkill(skill: Skill | undefined): Array<EmploymentRole> {
+    if (skill === undefined) return [];
+    return this.All.filter((role) => role.skills.includes(skill));
+  }
+
+  static skillsUsedWith(skill: Skill | undefined): Array<Skill> {
+    if (skill === undefined) return [];
+    const rolesUsingSkill = this.withSkill(skill);
+    const skills = new Set<Skill>();
+    rolesUsingSkill.forEach((role) =>
+      role.skills.forEach((roleSkill) => skills.add(roleSkill)),
+    );
+    skills.delete(skill);
+    return Array.from(skills);
+  }
+
+  company: string;
+  role: string;
+  dates: string;
+  location: string;
+  logoSrc: string;
+  bullets: Array<string>;
+  skills: Array<Skill>;
+
+  private constructor(args: {
+    company: string;
+    role: string;
+    dates: string;
+    location: string;
+    logoSrc: string;
+    bullets: Array<string>;
+    skills: Array<Skill>;
+  }) {
+    this.company = args.company;
+    this.role = args.role;
+    this.dates = args.dates;
+    this.location = args.location;
+    this.logoSrc = args.logoSrc;
+    this.bullets = args.bullets;
+    this.skills = args.skills;
+  }
+}
 
 // PROJECTS
 
@@ -166,6 +467,9 @@ export class Project {
       Language.HTML,
       Language.CSS,
       Technology.AIML,
+      Technology.RAG,
+      Technology.MCP,
+      Technology.OpenAI,
       Technology.Git,
       OtherSkill.TestDrivenDevelopment,
       OtherSkill.UIUX,
@@ -196,6 +500,11 @@ export class Project {
       Language.Python,
       Language.Typescript,
       Technology.AIML,
+      Technology.Numpy,
+      Technology.PyTorch,
+      Technology.XGBoost,
+      Technology.ScikitLearn,
+      Technology.Jupyter,
       Technology.React,
       Technology.Git,
       OtherSkill.TechnicalCommunication,
@@ -230,6 +539,11 @@ export class Project {
       Language.Typescript,
       Language.Python,
       Technology.AIML,
+      Technology.NextJS,
+      Technology.FastAPI,
+      Technology.OpenAI,
+      Technology.ThreeJS,
+      Technology.Bluetooth,
       Technology.React,
       Technology.Git,
       OtherSkill.TechnicalCommunication,
@@ -272,11 +586,21 @@ export class Project {
       Language.Swift,
       Language.Python,
       Technology.CMake,
+      Technology.ESPIDF,
+      Technology.FreeRTOS,
       Technology.Jupyter,
+      Technology.Numpy,
+      Technology.Pandas,
+      Technology.PyTorch,
+      Technology.ScikitLearn,
       Technology.Firebase,
+      Technology.Bluetooth,
       Technology.Git,
       OtherSkill.PCBDesign,
       OtherSkill.CAD,
+      OtherSkill.Networking,
+      OtherSkill.DistributedSystems,
+      OtherSkill.EmbeddedSystems,
       OtherSkill.TechnicalCommunication,
     ],
   });
@@ -314,8 +638,12 @@ export class Project {
       Language.Cpp,
       Language.Rust,
       Technology.Arduino,
+      Technology.Git,
       OtherSkill.CAD,
       OtherSkill.Linux,
+      OtherSkill.Networking,
+      OtherSkill.DistributedSystems,
+      OtherSkill.EmbeddedSystems,
     ],
   });
 
@@ -344,6 +672,7 @@ export class Project {
       Language.CSS,
       Language.HTML,
       Language.R,
+      Technology.Tidyverse,
       Technology.React,
       Technology.Firebase,
       Technology.Git,
@@ -439,11 +768,15 @@ export class Project {
       Technology.AWS,
       Technology.Gradle,
       Technology.Maven,
+      Technology.JetpackCompose,
+      Technology.GitHubActions,
+      Technology.Git,
       OtherSkill.OOP,
       OtherSkill.UIUX,
       OtherSkill.DesignPatterns,
       OtherSkill.TechnicalCommunication,
       OtherSkill.Android,
+      OtherSkill.CICD,
       OtherSkill.Linux,
     ],
   });
@@ -500,6 +833,7 @@ export class Project {
       Technology.OpenGL,
       Technology.WASM,
       Technology.CMake,
+      Technology.Git,
       OtherSkill.Linux,
       OtherSkill.OOP,
     ],
@@ -551,6 +885,8 @@ export class Project {
     images: ["ecg.png", "scatter.png", "accuracy.png"],
     skills: [
       Language.R,
+      Technology.AIML,
+      Technology.Tidyverse,
       Technology.Jupyter,
       Technology.Git,
       OtherSkill.TechnicalCommunication,
@@ -627,3 +963,40 @@ export class Project {
     return `#${this.name.replace(/\s+/g, "").toLowerCase()}`;
   };
 }
+
+const currentYear = (): number => new Date().getFullYear();
+
+export const lastYearInDateRange = (date: string): number => {
+  const years = (date.match(/\b(?:19|20)\d{2}\b/g) ?? []).map(Number);
+  if (/present|current/i.test(date)) years.push(currentYear());
+  return years.length === 0 ? 0 : Math.max(...years);
+};
+
+export const skillUsageStats = (
+  skill: Skill,
+): { usageCount: number; weightedUsageCount: number; lastUsedYear: number } => {
+  const projects = Project.withSkill(skill);
+  const roles = EmploymentRole.withSkill(skill);
+  const years = projects
+    .map((project) => lastYearInDateRange(project.date))
+    .concat(roles.map((role) => lastYearInDateRange(role.dates)));
+  const lastUsedYear = years.length === 0 ? 0 : Math.max(...years);
+  const usageCount = projects.length + roles.length;
+  return {
+    usageCount,
+    weightedUsageCount: projects.length + roles.length * 3,
+    lastUsedYear,
+  };
+};
+
+export const sortSkillsByUsage = (skills: Array<Skill>): Array<Skill> =>
+  [...skills].sort((a, b) => {
+    const aStats = skillUsageStats(a);
+    const bStats = skillUsageStats(b);
+    return (
+      bStats.weightedUsageCount - aStats.weightedUsageCount ||
+      bStats.usageCount - aStats.usageCount ||
+      bStats.lastUsedYear - aStats.lastUsedYear ||
+      a.name.localeCompare(b.name)
+    );
+  });
