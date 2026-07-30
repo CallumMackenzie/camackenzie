@@ -10,11 +10,12 @@ export const ProjectsCard = (props: {
 	projectCardRef: React.RefObject<HTMLDivElement>,
 }) => {
 	return (<>
-		<div className="container p-4 my-3 text-center justify-content-center">
+		<div className="container projects-container p-4 my-3 text-center justify-content-center">
 			<Stack py={1}>
 				<div className='row my-2' ref={props.projectCardRef}>
 					<h1 className='col' style={{ fontSize: '4em', fontStyle: 'bold' }}>Projects</h1>
 				</div>
+				<ProjectCard project={Project.Callumployed} refs={props.projectRefs} />
 				<ProjectCard project={Project.FindMyForce} refs={props.projectRefs} />
 				<ProjectCard project={Project.Gregor} refs={props.projectRefs} />
 				<ProjectCard project={Project.Fitnet} refs={props.projectRefs} />

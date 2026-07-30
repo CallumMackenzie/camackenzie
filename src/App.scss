@@ -16,6 +16,22 @@ h3 {
 	border-radius: 2em;
 }
 
+.projects-container {
+	max-width: 100%;
+}
+
+@media (min-width: 992px) {
+	.projects-container {
+		max-width: 1320px;
+	}
+}
+
+@media (min-width: 1400px) {
+	.projects-container {
+		max-width: 1560px;
+	}
+}
+
 @keyframes image-preload {
 
 	0% {

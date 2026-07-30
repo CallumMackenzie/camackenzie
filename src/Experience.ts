@@ -142,13 +142,43 @@ export const AllSkills: Array<Skill> = Language.All.concat(
 // PROJECTS
 
 export class Project {
+  static readonly Callumployed: Project = new Project({
+    name: "callumployed",
+    date: "Jul 2026",
+    description: [
+      "Local-first Python job-search automation tool with a CLI, web tracker, and FastMCP agent interface",
+      "Built a LangGraph scan workflow that renders career pages, extracts candidates, scores links, classifies ambiguous postings, visits selected roles, and persists scan artifacts",
+      "Implemented webscraping with Playwright, Browserbase fallback, BeautifulSoup link extraction, schema.org JobPosting parsing, ATS heuristics, location parsing, and cleaned role descriptions",
+      "Designed deterministic scoring agents plus LangChain-based LLM classifiers to separate job postings from career navigation and merge heuristic/agent discoveries",
+      "Integrated Turso-compatible storage with vectorized resume-feedback and cover-letter-example retrieval for agent-assisted application prep",
+    ],
+    links: [
+      {
+        link: "https://github.com/CallumMackenzie/callumployed",
+        name: "GitHub Repository",
+      },
+    ],
+    imageBasePath: "/img/callumployed/",
+    images: ["home.png", "prepresume.png", "prepcl.png"],
+    skills: [
+      Language.Python,
+      Language.JavaScript,
+      Language.HTML,
+      Language.CSS,
+      Technology.AIML,
+      Technology.Git,
+      OtherSkill.TestDrivenDevelopment,
+      OtherSkill.UIUX,
+    ],
+  });
+
   static readonly FindMyForce: Project = new Project({
     name: "Find My Force",
     date: "Mar 2026",
     description: [
       "An application for soldiers to identify and track radio frequency (RF) identities on the battlefield",
       "Classified signal type from raw RF IQ data",
-      "Integrated a convolutional neural net (CNN) and XGBoost together with logistic regression, achieving 89% accuracy",
+      "Integrated a convolutional neural net (via PyTorch) and XGBoost together with logistic regression, achieving 89% accuracy",
       "Engineered spectral features from RF data in the complex plane. Ie. phase jump frequency, amplitude variance, etc",
       "CNN had 4 1D convolutional layers and 2 fully connected layers, with 80% accuracy",
       "XGBoost model with feature selection featured 82% accuracy",
@@ -528,6 +558,7 @@ export class Project {
   });
 
   static readonly All: Array<Project> = [
+    this.Callumployed,
     this.FindMyForce,
     this.Gregor,
     this.Fitnet,
