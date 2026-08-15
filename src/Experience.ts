@@ -349,9 +349,9 @@ export class EmploymentRole {
     location: "Vancouver, BC, Canada",
     logoSrc: "/img/companylogos/amazon.webp",
     bullets: [
-      "Building a self-improving agentic AI platform on AWS for ticket analysis, historical retrieval, and root-cause feedback loops",
-      "Delivered RAG, source attribution, Bedrock Knowledge Base integration, auto-improving CTI suggestions, learning commands, and ticket knowledge management to 5 teams",
-      "Implementing MCP/A2A configuration, Slack actions, auto-execution, metrics dashboards, and model fine-tuning",
+      "Built an agentic AI platform providing instant root-cause triage for 80+ engineering tickets/week across 7 teams on AWS",
+      "Enabled continuous learning from resolved tickets by incorporating historical resolutions, team domain knowledge, and source attribution",
+      "Enabled agents to autonomously investigate and act on tickets by integrating MCP/A2A tools, Slack workflows, and automated execution",
     ],
     skills: [
       Language.Python,
@@ -375,14 +375,11 @@ export class EmploymentRole {
       location: "Calgary, AB, Canada / Remote",
       logoSrc: "/img/companylogos/gd.webp",
       bullets: [
-        "Designed software for tactical communications systems on a defense R&D team",
-        "Developed 3 Linux device drivers and daemons in C/C++ for distributed embedded platforms",
-        "Saved customers $20k+ per vehicle platform by enabling additional users on existing hardware resources",
-        "Implemented configurable networking functionality for distributed systems using layer 3/4/5 protocols",
-        "Resolved 30+ defects in embedded projects, improving reliability in safety-critical environments",
-        "Reduced CI/CD pipeline runtime by 50% across multiple pipelines with Docker, Python, and Jenkins",
-        "Built and integrated AI infrastructure and tooling supporting 20+ engineers and 3 build pipelines",
-        "Shipped client functionality in .NET apps interfacing with embedded devices & AI services",
+        "Saved $20k+ per vehicle platform by enabling an additional user on existing hardware, eliminating the need for another communications unit",
+        "Developed 3 Linux device drivers and daemons in C/C++ for tactical communications systems spanning 20+ networks of 4-8 distributed nodes",
+        "Implemented configurable layer 3/4/5 networking for communication across distributed embedded systems",
+        "Reduced CI/CD pipeline runtime by 50% using build caching and dedicated Docker build environments to eliminate redundant rebuilds",
+        "Built lab-local AI infrastructure and agents for testing and development, supporting 20+ engineers and 3 build pipelines",
       ],
       skills: [
         Language.C,
@@ -456,13 +453,13 @@ export class EmploymentRole {
 export class Project {
   static readonly Callumployed: Project = new Project({
     name: "callumployed",
-    date: "Jul 2026",
+    date: "Jul 2026 - Present",
     description: [
-      "Local-first Python job-search automation tool with a CLI, web tracker, and FastMCP agent interface",
-      "Built a LangGraph scan workflow that renders career pages, extracts candidates, scores links, classifies ambiguous postings, visits selected roles, and persists scan artifacts",
-      "Implemented webscraping with Playwright, Browserbase fallback, BeautifulSoup link extraction, schema.org JobPosting parsing, ATS heuristics, location parsing, and cleaned role descriptions",
-      "Designed deterministic scoring agents plus LangChain-based LLM classifiers to separate job postings from career navigation and merge heuristic/agent discoveries",
-      "Integrated Turso-compatible storage with vectorized resume-feedback and cover-letter-example retrieval for agent-assisted application prep",
+      "Local-first job-search tracker and automation tool spanning a Python CLI, local web app, FastMCP server, and SQLite/Turso-compatible data store",
+      "Built Playwright and Browserbase-backed scan workflows with LangGraph orchestration, deterministic link scoring, LLM classification, schema.org JobPosting parsing, and persisted scan artifacts",
+      "Implemented company, role, status, notes, lifecycle counts, scan history, and configurable filtering across shared repository and service layers",
+      "Built role prep workflows for master resume storage, cover letter examples, experience notes, resume feedback, tailored resumes, cover letters, and PDF generation",
+      "Added a Firebase-backed central role store with passkey-gated private feed sync, company ID resolution, and local status/history preservation",
     ],
     links: [
       {
@@ -482,6 +479,7 @@ export class Project {
       Technology.RAG,
       Technology.MCP,
       Technology.OpenAI,
+      Technology.Firebase,
       Technology.Git,
       OtherSkill.TestDrivenDevelopment,
       OtherSkill.UIUX,
@@ -492,12 +490,9 @@ export class Project {
     name: "Find My Force",
     date: "Mar 2026",
     description: [
-      "An application for soldiers to identify and track radio frequency (RF) identities on the battlefield",
-      "Classified signal type from raw RF IQ data",
-      "Integrated a convolutional neural net (via PyTorch) and XGBoost together with logistic regression, achieving 89% accuracy",
-      "Engineered spectral features from RF data in the complex plane. Ie. phase jump frequency, amplitude variance, etc",
-      "CNN had 4 1D convolutional layers and 2 fully connected layers, with 80% accuracy",
-      "XGBoost model with feature selection featured 82% accuracy",
+      "Built an RF signal classification pipeline combining CNN-extracted features with statistical signal features for transmitter identification",
+      "Achieved 89% classification accuracy by ensembling PyTorch CNN, XGBoost, and logistic regression models",
+      "Engineered spectral features from RF data in the complex plane including phase jump frequency and amplitude variance",
       "Created for the Red Team Hacks Defence Hackathon",
     ],
     links: [
@@ -527,12 +522,10 @@ export class Project {
     name: "TBI Motor Recovery",
     date: "Jan 2026",
     description: [
-      "A web application for individuals with traumatic brain injury (TBI) to perform recovery drills",
-      "Leverages generative AI to modify drills and plans in accordance with recovery metrics",
-      "Utilizes data-driven UI to inform treatment-involved individuals",
-      "Uses eye-tracking and physical device orientation tracking for drills",
-      "Principal component analysis to score 3-dimensional motor exercises",
-      "Visualize exercises in-browser with three js and web bluetooth for external controls",
+      "Built an interactive 3D motor-rehabilitation platform using Three.js for individuals with traumatic brain injury to perform recovery drills",
+      "Combined eye tracking and device-orientation data to measure patient movement",
+      "Developed AI-generated rehabilitation exercises using patient motion data, PCA-based analysis, and real-time 3D visualization",
+      "Visualized exercises in-browser with Three.js and Web Bluetooth for external controls",
       "Created for the 2026 Telus AI at the Edge of Innovation Hackathon",
     ],
     links: [
@@ -566,18 +559,12 @@ export class Project {
     name: "FITNET",
     date: "Feb 2025 - Dec 2025",
     description: [
-      "A system of nodes placed across the body to read EMG and motion data in order to record and analyze movement",
-      "Utilized ESP-IDF with C to work with the ESP32-S3 to integrate IMU, EMG, and thermistor sensor data",
-      "Used ESP32-S3 Bluetooth Low Energy to connect data to iOS",
-      "Created custom PCB with Autodesk Fusion360, designing a power system providing +9V, -9V, 3.3V, 5V from 1S LIPO",
-      "Integrated battery protection and charging into electronics design",
-      "Visualized cost with with Fusion360 BOM, DigiKey API, Python, and Jupyter Notebooks",
-      "Synchronized data between host and nodes with sub-millisecond accuracy over Bluetooth",
-      "Streamed data live from device to iOS to Firebase, using Python for data analysis",
-      "Implemented on-device Mahony Attitude and Heading Reference System (AHRS) for accurate orientation calculation",
-      "Utilized Dynamic Time Warping (DTW) for KNN classification of motion patterns",
-      // TODO: add more
-      " *** More info to come *** ",
+      "Built a real-time wearable motion-tracking system using ESP32-S3 nodes, EMG, and 9-axis IMUs",
+      "Achieved sub-millisecond synchronization across distributed sensors over Bluetooth Low Energy",
+      "Achieved 95% movement-classification accuracy using DTW-KNN on synchronized EMG and motion data",
+      "Implemented on-device Mahony Attitude and Heading Reference System (AHRS) for accurate orientation estimation",
+      "Streamed and processed sensor data in a SwiftUI/SceneKit iOS app for real-time 3D motion visualization",
+      "Created a custom PCB and power system in Autodesk Fusion 360 with battery protection and charging",
     ],
     links: [
       { link: "https://github.com/Fitintel/biodyn-100", name: "Firmware" },
