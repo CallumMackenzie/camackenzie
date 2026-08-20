@@ -462,7 +462,7 @@ export class EmploymentRole {
 export class Project {
   static readonly Callumployed: Project = new Project({
     name: "callumployed",
-    date: "Jul 2026 - Present",
+    date: "Jun 2026 - Present",
     description: [
       "Local-first job-search tracker and automation tool spanning a Python CLI, local web app, FastMCP server, and SQLite/Turso-compatible data store",
       "Built Playwright and Browserbase-backed scan workflows with LangGraph orchestration, deterministic link scoring, LLM classification, schema.org JobPosting parsing, and persisted scan artifacts",
