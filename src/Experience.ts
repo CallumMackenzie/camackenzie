@@ -112,7 +112,10 @@ export class Technology implements Skill {
   static readonly MCP = new Technology({ name: "MCP", src: "mcp.png" });
   static readonly A2A = new Technology({ name: "A2A", src: "a2a.png" });
   static readonly Numpy = new Technology({ name: "NumPy", src: "numpy.webp" });
-  static readonly Pandas = new Technology({ name: "Pandas", src: "pandas.svg" });
+  static readonly Pandas = new Technology({
+    name: "Pandas",
+    src: "pandas.svg",
+  });
   static readonly PyTorch = new Technology({
     name: "PyTorch",
     src: "pytorch.webp",
@@ -177,8 +180,14 @@ export class Technology implements Skill {
     src: "github-actions.webp",
     display: false,
   });
-  static readonly Docker = new Technology({ name: "Docker", src: "docker.webp" });
-  static readonly Jenkins = new Technology({ name: "Jenkins", src: "jenkins.svg" });
+  static readonly Docker = new Technology({
+    name: "Docker",
+    src: "docker.webp",
+  });
+  static readonly Jenkins = new Technology({
+    name: "Jenkins",
+    src: "jenkins.svg",
+  });
   // static readonly Make = new Technology({ name: "Make", src: "make.png" });
 
   static readonly All: Array<Technology> = Object.values(this).filter(
@@ -349,9 +358,9 @@ export class EmploymentRole {
     location: "Vancouver, BC, Canada",
     logoSrc: "/img/companylogos/amazon.webp",
     bullets: [
-      "Built an agentic AI platform providing instant root-cause triage for 80+ engineering tickets/week across 7 teams on AWS",
-      "Enabled continuous learning from resolved tickets by incorporating historical resolutions, team domain knowledge, and source attribution",
-      "Enabled agents to autonomously investigate and act on tickets by integrating MCP/A2A tools, Slack workflows, and automated execution",
+      "Built the agent harness for an LLM ticket-triage platform on AWS Bedrock (tool integration via MCP, structured output parsing, fallback chains), delivering root-cause analysis for 1,370+ production tickets across 7 Amazon teams",
+      "Engineered context and retrieval pipelines grounding every analysis in team runbooks and 760+ ingestedticket ticket resolutions (2,000+ RAG retrievals), with source citations on agent responses",
+      "Designed guardrails for autonomous actions (confidence gates, default-deny allowlists), enabling the agent to safely post 1,200+ ticket responses and resolve 75+ tickets end-to-end without human intervention",
     ],
     skills: [
       Language.Python,
