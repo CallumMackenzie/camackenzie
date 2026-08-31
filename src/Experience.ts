@@ -358,9 +358,9 @@ export class EmploymentRole {
     location: "Vancouver, BC, Canada",
     logoSrc: "/img/companylogos/amazon.webp",
     bullets: [
-      "Built the agent harness for an LLM ticket-triage platform on AWS Bedrock (tool integration via MCP, structured output parsing, fallback chains), delivering root-cause analysis for 1,370+ production tickets across 7 Amazon teams",
-      "Engineered context and retrieval pipelines grounding every analysis in team runbooks and 760+ ingestedticket ticket resolutions (2,000+ RAG retrievals), with source citations on agent responses",
-      "Designed guardrails for autonomous actions (confidence gates, default-deny allowlists), enabling the agent to safely post 1,200+ ticket responses and resolve 75+ tickets end-to-end without human intervention",
+      "Built the agent harness for an LLM ticket-triage platform on AWS Bedrock (tool integration via MCP, structured output parsing, fallback chains), delivering root-cause analysis for 2,000+ production tickets across 8 Amazon teams",
+      "Engineered context and retrieval pipelines grounding every analysis in team runbooks and 760+ ingested ticket resolutions (2,800+ RAG retrievals), with source citations on agent responses",
+      "Designed guardrails for autonomous actions (confidence gates, default-deny allowlists), enabling the agent to safely post 1,900+ ticket responses and resolve 90+ tickets end-to-end without human intervention",
     ],
     skills: [
       Language.Python,
