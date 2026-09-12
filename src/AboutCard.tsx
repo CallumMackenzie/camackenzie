@@ -35,11 +35,13 @@ export const AboutCard = (props: {
                 fontSize: "large",
               }}
             >
-              I am working at{" "}
-              <b>Amazon as a Software Development Engineer Intern</b> in
-              Vancouver this summer. I am a current undergraduate student at the
-              University of British Columbia, and previously worked as an
-              Embedded Software Engineer Co-op with <b>General Dynamics</b>.
+              I am joining <b>Tesla AI</b> as an{" "}
+              <b>Embedded Software Engineer Intern</b> working on Optimus and
+              Autopilot in Palo Alto this January. <br />
+              <br /> I am a current undergraduate student at the University of
+              British Columbia, and previously worked as an SDE Intern at{" "}
+              <b>Amazon</b> and an Embedded SWE Co-op at <b>General Dynamics</b>
+              .
               <div className="py-2">
                 <Divider
                   sx={{
@@ -64,7 +66,11 @@ export const AboutCard = (props: {
               <li>Guitar</li>
             </ul>
           </div>
-          <div className={(smallScreen ? "col-11" : "col-5") + " about-photo-column"}>
+          <div
+            className={
+              (smallScreen ? "col-11" : "col-5") + " about-photo-column"
+            }
+          >
             <div className="about-photo-stage">
               <AboutRaceLane />
               <img
