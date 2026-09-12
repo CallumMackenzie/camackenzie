@@ -47,6 +47,9 @@ const ProjectCard = (props: {
 		<Paper elevation={5} className="row py-3 px-1 my-2">
 			<Stack direction={'column'} spacing={1} >
 				<Typography alignSelf={'center'} variant='h3'>{props.project.name}</Typography>
+				<Typography className="project-summary" component="p">
+					{props.project.summary}
+				</Typography>
 				<Divider sx={{
 					"&::before, &::after": {
 						borderColor: "primary.light",

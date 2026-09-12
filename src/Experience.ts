@@ -475,6 +475,8 @@ export class Project {
   static readonly Callumployed: Project = new Project({
     name: "callumployed",
     date: "Jun 2026 - Present",
+    summary:
+      "Local-first job discovery and AI-powered application preparation.",
     description: [
       "Built a **local-first job-search platform** with a web tracker, **Python CLI**, **FastMCP server**, and shared **SQLite**-backed data and service layers",
       "Automated job discovery with scheduled **Playwright** and **Browserbase** scans, dedicated ATS adapters, **LangGraph** orchestration, deterministic scoring, LLM fallback assessment, and schema.org JobPosting extraction",
@@ -510,6 +512,8 @@ export class Project {
   static readonly FindMyForce: Project = new Project({
     name: "Find My Force",
     date: "Mar 2026",
+    summary:
+      "RF transmitter identification using learned and statistical signal features.",
     description: [
       "Built an **RF signal classification pipeline** combining CNN-extracted features with statistical signal features for transmitter identification",
       "Achieved **89% classification accuracy** by ensembling **PyTorch CNN, XGBoost, and logistic regression** models",
@@ -542,6 +546,8 @@ export class Project {
   static readonly Gregor: Project = new Project({
     name: "TBI Motor Recovery",
     date: "Jan 2026",
+    summary:
+      "AI-assisted 3D motor-rehabilitation exercises for traumatic brain injury.",
     description: [
       "Built an **interactive 3D motor-rehabilitation platform** using **Three.js** for individuals with traumatic brain injury to perform recovery drills",
       "Combined **eye tracking** and **device-orientation data** to measure patient movement",
@@ -579,6 +585,8 @@ export class Project {
   static readonly Fitnet: Project = new Project({
     name: "FITNET",
     date: "Feb 2025 - Dec 2025",
+    summary:
+      "Real-time wearable motion tracking with synchronized EMG and IMU data.",
     description: [
       "Built a **real-time wearable motion-tracking system** using **ESP32-S3 nodes, EMG, and 9-axis IMUs**",
       "Achieved **sub-millisecond synchronization** across distributed sensors over **Bluetooth Low Energy**",
@@ -629,6 +637,8 @@ export class Project {
   static readonly Drone: Project = new Project({
     name: "Drone from Scratch",
     date: "Apr 2022 - Aug 2024",
+    summary:
+      "A custom drone spanning hardware, embedded firmware, and mobile control.",
     description: [
       "Utilized a variety of **low-level communication protocols** such as **SPI, PWM, I2C**",
       "Researched components based on **electrical requirements** (FPGA vs microprocessor, voltages, PWM channels, camera interface)",
@@ -671,6 +681,8 @@ export class Project {
   static readonly Vitalert: Project = new Project({
     name: "VitAlert",
     date: "Jan 2024",
+    summary:
+      "A responsive health-information app built at nwHacks 2024.",
     description: [
       "Submission for **NWHacks 2024**, a 24 hour hackathon focusing on health",
       "Worked on **collaborative coding skills** with 3 group members",
@@ -704,6 +716,8 @@ export class Project {
   static readonly VirtualCloset: Project = new Project({
     name: "Virtual Closet",
     date: "Jan 2023 - Apr 2023",
+    summary:
+      "A fully tested Java desktop app for organizing outfits.",
     description: [
       "Users organize **closets, individual pieces of clothing, and outfits** to track their style",
       "Practiced **imperative UI development with Java Swing**",
@@ -741,6 +755,8 @@ export class Project {
   static readonly ThinkTech: Project = new Project({
     name: "Deloitte ThinkTECH",
     date: "Sep 2022 - Nov 2022",
+    summary:
+      "A secure medical-form workflow that placed top four at ThinkTECH.",
     description: [
       "Created for the **Deloitte ThinkTECH business case competition**",
       "Improved technical communication by presenting to **100+ individuals** at the Deloitte summit building in Vancouver",
@@ -766,6 +782,8 @@ export class Project {
   static readonly ExviFitness: Project = new Project({
     name: "Exvi Fitness",
     date: "Dec 2021 - Jun 2022",
+    summary:
+      "A serverless fitness tracker for Android and desktop.",
     description: [
       "**Serverless backend android and desktop fitness tracking app**",
       "Used **AWS** for hosting, database, cloud functions, and a **RESTful API**",
@@ -805,6 +823,8 @@ export class Project {
   static readonly RenderingEngines: Project = new Project({
     name: "Rendering Engines",
     date: "Feb 2021 - Dec 2023",
+    summary:
+      "2D and 3D rendering engines built across four languages.",
     description: [
       "A series of **3D & 2D rendering engines created from scratch**",
       "Implemented the **entire render pipeline** to draw to a console window with ASCII",
@@ -863,6 +883,8 @@ export class Project {
   static readonly Nexus: Project = new Project({
     name: "Nexus",
     date: "Jan 2022",
+    summary:
+      "A Windows utility for apps, wallpapers, and privacy settings.",
     description: [
       "Created with **Windows WPF, .NET, and C#**",
       "A center for **common actions** which I used frequently such as wallpapers and apps",
@@ -884,6 +906,8 @@ export class Project {
   static readonly ClassificationOfHeartDisease = new Project({
     name: "Classification of Heart Disease",
     date: "Feb 2023 - Apr 2023",
+    summary:
+      "Heart-disease prediction using KNN and exploratory data analysis.",
     description: [
       "Trained **KNN classification model** on whether patients are likely to have heart disease",
       "Used **R and Jupyter notebook**",
@@ -956,6 +980,7 @@ export class Project {
 
   name: string;
   date: string;
+  summary: string;
   // Wrap text in **double asterisks** to render it in bold.
   description: Array<string>;
   links: Array<{ name: string; link: string }>;
@@ -966,6 +991,7 @@ export class Project {
   private constructor(args: {
     name: string;
     date: string;
+    summary: string;
     description: Array<string>;
     links: Array<{ name: string; link: string }>;
     imageBasePath: string;
@@ -974,6 +1000,7 @@ export class Project {
   }) {
     this.name = args.name;
     this.date = args.date;
+    this.summary = args.summary;
     this.description = args.description;
     this.links = args.links;
     this.imageBasePath = args.imageBasePath;

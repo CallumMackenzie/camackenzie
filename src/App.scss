@@ -357,6 +357,16 @@ body,
 	width: 100%;
 }
 
+.project-summary {
+	width: min(100% - 2rem, 48rem);
+	margin: 0.35rem auto 0.25rem !important;
+	font-size: 1.2rem !important;
+	font-weight: 600 !important;
+	line-height: 1.45 !important;
+	text-align: center;
+	opacity: 0.9;
+}
+
 .skill-avatar.MuiAvatar-root {
 	background: transparent;
 }
