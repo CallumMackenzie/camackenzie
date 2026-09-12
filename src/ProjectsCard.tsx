@@ -5,6 +5,7 @@ import { ProjectRefs, theme } from "./App";
 import { Masonry } from "@mui/lab";
 import React, { useEffect, useRef, useState } from "react";
 import { Project, Skill, skillImageSrc, skillInitials } from "./Experience";
+import { BoldText } from "./BoldText";
 
 export const ProjectsCard = (props: {
 	projectRefs: ProjectRefs,
@@ -58,7 +59,7 @@ const ProjectCard = (props: {
 				<ul style={{ textAlign: 'left' }}>
 					{props.project.description.map((point, index) => (
 						<li key={`${props.project.name}-description-${index}`}>
-							<DescriptionBullet text={point} />
+							<BoldText text={point} />
 						</li>
 					))}
 				</ul>
@@ -104,18 +105,6 @@ const ProjectCard = (props: {
 		</Paper >
 	</>);
 };
-
-const DescriptionBullet = ({ text }: { text: string }) => (
-	<>
-		{text.split(/(\*\*[^*]+\*\*)/g).map((segment, index) =>
-			segment.startsWith("**") && segment.endsWith("**") ? (
-				<strong key={index}>{segment.slice(2, -2)}</strong>
-			) : (
-				<React.Fragment key={index}>{segment}</React.Fragment>
-			),
-		)}
-	</>
-);
 
 const ProjectSkillIconRow = ({ skills }: { skills: Array<Skill> }) => {
 	const rowRef = useRef<HTMLDivElement | null>(null);

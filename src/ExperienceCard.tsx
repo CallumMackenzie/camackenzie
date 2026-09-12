@@ -3,6 +3,7 @@ import { Avatar, Divider, Paper, Stack, Tooltip, Typography, useMediaQuery } fro
 import { theme } from "./App";
 import { EmploymentRole, skillImageSrc, skillInitials } from "./Experience";
 import { ResumeCard } from "./ResumeCard";
+import { BoldText } from "./BoldText";
 
 export const ExperienceCard = (props: {
   experienceCardRef: React.RefObject<HTMLDivElement>;
@@ -53,7 +54,9 @@ export const ExperienceCard = (props: {
 
               <ul className="employment-bullets">
                 {job.bullets.map((bullet) => (
-                  <li key={bullet}>{bullet}</li>
+                  <li key={bullet}>
+                    <BoldText text={bullet} />
+                  </li>
                 ))}
               </ul>
 

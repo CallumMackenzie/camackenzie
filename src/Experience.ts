@@ -351,6 +351,16 @@ export const AllSkills: Array<Skill> = SkillCategories.reduce<Array<Skill>>(
 // EMPLOYMENT
 
 export class EmploymentRole {
+  static readonly TeslaEmbeddedAiIntern: EmploymentRole = new EmploymentRole({
+    company: "Tesla AI",
+    role: "Embedded AI Software Engineer Intern",
+    dates: "Jan 2027",
+    location: "Palo Alto, California, USA",
+    logoSrc: "/img/companylogos/tesla.webp",
+    bullets: ["Offer accepted, incoming January"],
+    skills: [],
+  });
+
   static readonly AmazonSdeIntern: EmploymentRole = new EmploymentRole({
     company: "Amazon",
     role: "Software Development Engineer Intern",
@@ -358,9 +368,9 @@ export class EmploymentRole {
     location: "Vancouver, BC, Canada",
     logoSrc: "/img/companylogos/amazon.webp",
     bullets: [
-      "Built the agent harness for an LLM ticket-triage platform on AWS Bedrock (tool integration via MCP, structured output parsing, fallback chains), delivering root-cause analysis for 2,000+ production tickets across 8 Amazon teams",
-      "Engineered context and retrieval pipelines grounding every analysis in team runbooks and 760+ ingested ticket resolutions (2,800+ RAG retrievals), with source citations on agent responses",
-      "Designed guardrails for autonomous actions (confidence gates, default-deny allowlists), enabling the agent to safely post 1,900+ ticket responses and resolve 90+ tickets end-to-end without human intervention",
+      "Built the agent harness for an **LLM ticket-triage platform on AWS Bedrock** (tool integration via MCP, structured output parsing, fallback chains), delivering root-cause analysis for **2,000+ production tickets across 8 Amazon teams**",
+      "Engineered **context and retrieval pipelines** grounding every analysis in team runbooks and **760+ ingested ticket resolutions** (2,800+ RAG retrievals), with source citations on agent responses",
+      "Designed **guardrails for autonomous actions** (confidence gates, default-deny allowlists), enabling the agent to safely post **1,900+ ticket responses** and resolve **90+ tickets end-to-end** without human intervention",
     ],
     skills: [
       Language.Python,
@@ -384,11 +394,11 @@ export class EmploymentRole {
       location: "Calgary, AB, Canada / Remote",
       logoSrc: "/img/companylogos/gd.webp",
       bullets: [
-        "Saved $20k+ per vehicle platform by enabling an additional user on existing hardware, eliminating the need for another communications unit",
-        "Developed 3 Linux device drivers and daemons in C/C++ for tactical communications systems spanning 20+ networks of 4-8 distributed nodes",
-        "Implemented configurable layer 3/4/5 networking for communication across distributed embedded systems",
-        "Reduced CI/CD pipeline runtime by 50% using build caching and dedicated Docker build environments to eliminate redundant rebuilds",
-        "Built lab-local AI infrastructure and agents for testing and development, supporting 20+ engineers and 3 build pipelines",
+        "Saved **$20k+ per vehicle platform** by enabling an additional user on existing hardware, eliminating the need for another communications unit",
+        "Developed **3 Linux device drivers and daemons in C/C++** for tactical communications systems spanning **20+ networks of 4-8 distributed nodes**",
+        "Implemented configurable **layer 3/4/5 networking** for communication across distributed embedded systems",
+        "Reduced **CI/CD pipeline runtime by 50%** using build caching and dedicated Docker build environments to eliminate redundant rebuilds",
+        "Built **lab-local AI infrastructure and agents** for testing and development, supporting **20+ engineers and 3 build pipelines**",
       ],
       skills: [
         Language.C,
@@ -410,6 +420,7 @@ export class EmploymentRole {
     });
 
   static readonly All: Array<EmploymentRole> = [
+    this.TeslaEmbeddedAiIntern,
     this.AmazonSdeIntern,
     this.GeneralDynamicsEmbeddedCoop,
   ];
@@ -435,6 +446,7 @@ export class EmploymentRole {
   dates: string;
   location: string;
   logoSrc: string;
+  // Wrap text in **double asterisks** to render it in bold.
   bullets: Array<string>;
   skills: Array<Skill>;
 
@@ -499,10 +511,10 @@ export class Project {
     name: "Find My Force",
     date: "Mar 2026",
     description: [
-      "Built an RF signal classification pipeline combining CNN-extracted features with statistical signal features for transmitter identification",
-      "Achieved 89% classification accuracy by ensembling PyTorch CNN, XGBoost, and logistic regression models",
-      "Engineered spectral features from RF data in the complex plane including phase jump frequency and amplitude variance",
-      "Created for the Red Team Hacks Defence Hackathon",
+      "Built an **RF signal classification pipeline** combining CNN-extracted features with statistical signal features for transmitter identification",
+      "Achieved **89% classification accuracy** by ensembling **PyTorch CNN, XGBoost, and logistic regression** models",
+      "Engineered **spectral features** from RF data in the complex plane including phase jump frequency and amplitude variance",
+      "Created for the **Red Team Hacks Defence Hackathon**",
     ],
     links: [
       {
@@ -531,11 +543,11 @@ export class Project {
     name: "TBI Motor Recovery",
     date: "Jan 2026",
     description: [
-      "Built an interactive 3D motor-rehabilitation platform using Three.js for individuals with traumatic brain injury to perform recovery drills",
-      "Combined eye tracking and device-orientation data to measure patient movement",
-      "Developed AI-generated rehabilitation exercises using patient motion data, PCA-based analysis, and real-time 3D visualization",
-      "Visualized exercises in-browser with Three.js and Web Bluetooth for external controls",
-      "Created for the 2026 Telus AI at the Edge of Innovation Hackathon",
+      "Built an **interactive 3D motor-rehabilitation platform** using **Three.js** for individuals with traumatic brain injury to perform recovery drills",
+      "Combined **eye tracking** and **device-orientation data** to measure patient movement",
+      "Developed **AI-generated rehabilitation exercises** using patient motion data, PCA-based analysis, and real-time 3D visualization",
+      "Visualized exercises in-browser with **Three.js** and **Web Bluetooth** for external controls",
+      "Created for the **2026 Telus AI at the Edge of Innovation Hackathon**",
     ],
     links: [
       {
@@ -568,12 +580,12 @@ export class Project {
     name: "FITNET",
     date: "Feb 2025 - Dec 2025",
     description: [
-      "Built a real-time wearable motion-tracking system using ESP32-S3 nodes, EMG, and 9-axis IMUs",
-      "Achieved sub-millisecond synchronization across distributed sensors over Bluetooth Low Energy",
-      "Achieved 95% movement-classification accuracy using DTW-KNN on synchronized EMG and motion data",
-      "Implemented on-device Mahony Attitude and Heading Reference System (AHRS) for accurate orientation estimation",
-      "Streamed and processed sensor data in a SwiftUI/SceneKit iOS app for real-time 3D motion visualization",
-      "Created a custom PCB and power system in Autodesk Fusion 360 with battery protection and charging",
+      "Built a **real-time wearable motion-tracking system** using **ESP32-S3 nodes, EMG, and 9-axis IMUs**",
+      "Achieved **sub-millisecond synchronization** across distributed sensors over **Bluetooth Low Energy**",
+      "Achieved **95% movement-classification accuracy** using **DTW-KNN** on synchronized EMG and motion data",
+      "Implemented on-device **Mahony Attitude and Heading Reference System (AHRS)** for accurate orientation estimation",
+      "Streamed and processed sensor data in a **SwiftUI/SceneKit iOS app** for real-time 3D motion visualization",
+      "Created a **custom PCB and power system** in Autodesk Fusion 360 with battery protection and charging",
     ],
     links: [
       { link: "https://github.com/Fitintel/biodyn-100", name: "Firmware" },
@@ -618,13 +630,13 @@ export class Project {
     name: "Drone from Scratch",
     date: "Apr 2022 - Aug 2024",
     description: [
-      "Utilized a variety of low-level communication protocols such as SPI, PWM, I2C",
-      "Researched components based on electrical requirements (FPGA vs microprocessor, voltages, PWM channels, camera interface)",
-      "Designed custom chassis and elecrical diagram with Autodesk Fusion 360",
-      "Ran no-std Rust on microprocessors for memory safety and speed",
-      "Designing flight controller and remote-drone commincation protocols",
-      "Creating iOS app to connect via bluetooth to ground station which communicates with drone",
-      "Read a variety of sensor feeds on an embedded device (accelerometer, barometer, magnetometer, camera, ultrasonic)",
+      "Utilized a variety of **low-level communication protocols** such as **SPI, PWM, I2C**",
+      "Researched components based on **electrical requirements** (FPGA vs microprocessor, voltages, PWM channels, camera interface)",
+      "Designed **custom chassis and elecrical diagram** with Autodesk Fusion 360",
+      "Ran **no-std Rust** on microprocessors for memory safety and speed",
+      "Designing **flight controller and remote-drone commincation protocols**",
+      "Creating **iOS app** to connect via bluetooth to ground station which communicates with drone",
+      "Read a variety of **sensor feeds on an embedded device** (accelerometer, barometer, magnetometer, camera, ultrasonic)",
     ],
     links: [
       { link: "https://a360.co/3AnnJ8f", name: "CAD Model Link" },
@@ -660,11 +672,11 @@ export class Project {
     name: "VitAlert",
     date: "Jan 2024",
     description: [
-      "Submission for NWHacks 2024, a 24 hour hackathon focusing on health",
-      "Worked on collaborative coding skills with 3 group members",
-      "Developed React skills with a responsive UI that adapts to screen size",
-      "Utilized R for webscraping and data tidying",
-      "Linked in APIs from several services",
+      "Submission for **NWHacks 2024**, a 24 hour hackathon focusing on health",
+      "Worked on **collaborative coding skills** with 3 group members",
+      "Developed **React skills** with a responsive UI that adapts to screen size",
+      "Utilized **R for webscraping and data tidying**",
+      "Linked in **APIs from several services**",
     ],
     links: [
       { link: "https://nw-hackers.web.app", name: "Live Demo" },
@@ -693,12 +705,12 @@ export class Project {
     name: "Virtual Closet",
     date: "Jan 2023 - Apr 2023",
     description: [
-      "Users organize closets, individual pieces of clothing, and outfits to track their style",
-      "Practiced imperative UI development with Java Swing",
-      "Leveraged Java's inherant OOP to enforce SOLID design principles",
-      "Has 100% model LOC test coverage to ensure a bug-free user experience",
-      "Created UML diagrams for both the model and user interface class structures",
-      "Term project for CPSC 210 (Software Construction) at UBC",
+      "Users organize **closets, individual pieces of clothing, and outfits** to track their style",
+      "Practiced **imperative UI development with Java Swing**",
+      "Leveraged **Java's inherant OOP** to enforce **SOLID design principles**",
+      "Has **100% model LOC test coverage** to ensure a bug-free user experience",
+      "Created **UML diagrams** for both the model and user interface class structures",
+      "Term project for **CPSC 210 (Software Construction) at UBC**",
     ],
     links: [
       {
@@ -730,12 +742,12 @@ export class Project {
     name: "Deloitte ThinkTECH",
     date: "Sep 2022 - Nov 2022",
     description: [
-      "Created for the Deloitte ThinkTECH business case competition",
-      "Improved technical communication by presenting to 100+ individuals at the Deloitte summit building in Vancouver",
-      "Safely managed sensetive medical forms with cryptographic principles",
-      "Integrated online form APIs to track information",
-      "Set up webhooks to quickly notify and store input data",
-      "Placed top 4 of 160+ candidates",
+      "Created for the **Deloitte ThinkTECH business case competition**",
+      "Improved technical communication by presenting to **100+ individuals** at the Deloitte summit building in Vancouver",
+      "Safely managed **sensetive medical forms with cryptographic principles**",
+      "Integrated **online form APIs** to track information",
+      "Set up **webhooks** to quickly notify and store input data",
+      "Placed **top 4 of 160+ candidates**",
     ],
     links: [],
     imageBasePath: "/img/thinktech/",
@@ -755,11 +767,11 @@ export class Project {
     name: "Exvi Fitness",
     date: "Dec 2021 - Jun 2022",
     description: [
-      "Serverless backend android and desktop fitness tracking app",
-      "Used AWS for hosting, database, cloud functions, and a RESTful API",
-      "Created user system from scratc with dynamic salting and hashing, and two factor authentication",
-      "Implemented custom serialization scheme for quick and accurate data saving",
-      "Leveraged Java and Kotlin together via JVM for cloud and client code",
+      "**Serverless backend android and desktop fitness tracking app**",
+      "Used **AWS** for hosting, database, cloud functions, and a **RESTful API**",
+      "Created user system from scratc with **dynamic salting and hashing, and two factor authentication**",
+      "Implemented **custom serialization scheme** for quick and accurate data saving",
+      "Leveraged **Java and Kotlin together via JVM** for cloud and client code",
     ],
     links: [
       {
@@ -794,12 +806,12 @@ export class Project {
     name: "Rendering Engines",
     date: "Feb 2021 - Dec 2023",
     description: [
-      "A series of 3D & 2D rendering engines created from scratch",
-      "Implemented the entire render pipeline to draw to a console window with ASCII",
-      "Used OpenGL bindings in various languages to utilize GPU power",
-      "Implemented in C++ (with CMake), Java, Rust (Desktop & WASM), and Typescript (WebGL)",
-      "Used PBR techniques, a variety of light types, specular/diffuse/ambient lighting, and normal mapping",
-      "Implemented linear algebra libraries for quick transformation calculations",
+      "A series of **3D & 2D rendering engines created from scratch**",
+      "Implemented the **entire render pipeline** to draw to a console window with ASCII",
+      "Used **OpenGL bindings** in various languages to utilize GPU power",
+      "Implemented in **C++ (with CMake), Java, Rust (Desktop & WASM), and Typescript (WebGL)**",
+      "Used **PBR techniques**, a variety of light types, specular/diffuse/ambient lighting, and normal mapping",
+      "Implemented **linear algebra libraries** for quick transformation calculations",
     ],
     links: [
       {
@@ -852,11 +864,11 @@ export class Project {
     name: "Nexus",
     date: "Jan 2022",
     description: [
-      "Created with Windows WPF, .NET, and C#",
-      "A center for common actions which I used frequently such as wallpapers and apps",
-      "Allowed animated wallpapers in the form of GIFs or MP4s to be set",
-      "Let users launch single apps, groups, or all",
-      "Allowed disabling of certain Microsoft tracking features",
+      "Created with **Windows WPF, .NET, and C#**",
+      "A center for **common actions** which I used frequently such as wallpapers and apps",
+      "Allowed **animated wallpapers** in the form of GIFs or MP4s to be set",
+      "Let users launch **single apps, groups, or all**",
+      "Allowed disabling of certain **Microsoft tracking features**",
     ],
     links: [
       {
@@ -873,12 +885,12 @@ export class Project {
     name: "Classification of Heart Disease",
     date: "Feb 2023 - Apr 2023",
     description: [
-      "Trained KNN classification model on whether patients are likely to have heart disease",
-      "Used R and Jupyter notebook",
-      "Created data visualizations for ease of understanding",
-      "Performed exploratory data analysis (EDA) to give insights to variable selection",
-      "Researched possible links between variables",
-      "Created step-by-step report with rationale, and formed a conclusion based on data",
+      "Trained **KNN classification model** on whether patients are likely to have heart disease",
+      "Used **R and Jupyter notebook**",
+      "Created **data visualizations** for ease of understanding",
+      "Performed **exploratory data analysis (EDA)** to give insights to variable selection",
+      "Researched possible **links between variables**",
+      "Created **step-by-step report with rationale**, and formed a conclusion based on data",
     ],
     links: [
       {
