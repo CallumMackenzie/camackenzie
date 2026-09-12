@@ -364,7 +364,7 @@ export class EmploymentRole {
   static readonly AmazonSdeIntern: EmploymentRole = new EmploymentRole({
     company: "Amazon",
     role: "Software Development Engineer Intern",
-    dates: "May 2026 - Present",
+    dates: "May 2026 - Aug 2026",
     location: "Vancouver, BC, Canada",
     logoSrc: "/img/companylogos/amazon.webp",
     bullets: [
@@ -474,7 +474,7 @@ export class EmploymentRole {
 export class Project {
   static readonly Callumployed: Project = new Project({
     name: "callumployed",
-    date: "Jun 2026 - Present",
+    date: "Jun - Sep 2026",
     summary:
       "Local-first job discovery and AI-powered application preparation.",
     description: [
@@ -584,7 +584,7 @@ export class Project {
 
   static readonly Fitnet: Project = new Project({
     name: "FITNET",
-    date: "Feb 2025 - Dec 2025",
+    date: "Feb - Dec 2025",
     summary:
       "Real-time wearable motion tracking with synchronized EMG and IMU data.",
     description: [
@@ -681,8 +681,7 @@ export class Project {
   static readonly Vitalert: Project = new Project({
     name: "VitAlert",
     date: "Jan 2024",
-    summary:
-      "A responsive health-information app built at nwHacks 2024.",
+    summary: "A responsive health-information app built at nwHacks 2024.",
     description: [
       "Submission for **NWHacks 2024**, a 24 hour hackathon focusing on health",
       "Worked on **collaborative coding skills** with 3 group members",
@@ -715,9 +714,8 @@ export class Project {
 
   static readonly VirtualCloset: Project = new Project({
     name: "Virtual Closet",
-    date: "Jan 2023 - Apr 2023",
-    summary:
-      "A fully tested Java desktop app for organizing outfits.",
+    date: "Jan - Apr 2023",
+    summary: "A fully tested Java desktop app for organizing outfits.",
     description: [
       "Users organize **closets, individual pieces of clothing, and outfits** to track their style",
       "Practiced **imperative UI development with Java Swing**",
@@ -754,7 +752,7 @@ export class Project {
 
   static readonly ThinkTech: Project = new Project({
     name: "Deloitte ThinkTECH",
-    date: "Sep 2022 - Nov 2022",
+    date: "Sep - Nov 2022",
     summary:
       "A secure medical-form workflow that placed top four at ThinkTECH.",
     description: [
@@ -782,8 +780,7 @@ export class Project {
   static readonly ExviFitness: Project = new Project({
     name: "Exvi Fitness",
     date: "Dec 2021 - Jun 2022",
-    summary:
-      "A serverless fitness tracker for Android and desktop.",
+    summary: "A serverless fitness tracker for Android and desktop.",
     description: [
       "**Serverless backend android and desktop fitness tracking app**",
       "Used **AWS** for hosting, database, cloud functions, and a **RESTful API**",
@@ -823,8 +820,7 @@ export class Project {
   static readonly RenderingEngines: Project = new Project({
     name: "Rendering Engines",
     date: "Feb 2021 - Dec 2023",
-    summary:
-      "2D and 3D rendering engines built across four languages.",
+    summary: "2D and 3D rendering engines built across four languages.",
     description: [
       "A series of **3D & 2D rendering engines created from scratch**",
       "Implemented the **entire render pipeline** to draw to a console window with ASCII",
@@ -883,8 +879,7 @@ export class Project {
   static readonly Nexus: Project = new Project({
     name: "Nexus",
     date: "Jan 2022",
-    summary:
-      "A Windows utility for apps, wallpapers, and privacy settings.",
+    summary: "A Windows utility for apps, wallpapers, and privacy settings.",
     description: [
       "Created with **Windows WPF, .NET, and C#**",
       "A center for **common actions** which I used frequently such as wallpapers and apps",
@@ -905,7 +900,7 @@ export class Project {
 
   static readonly ClassificationOfHeartDisease = new Project({
     name: "Classification of Heart Disease",
-    date: "Feb 2023 - Apr 2023",
+    date: "Feb - Apr 2023",
     summary:
       "Heart-disease prediction using KNN and exploratory data analysis.",
     description: [
