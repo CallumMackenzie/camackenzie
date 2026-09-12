@@ -56,10 +56,10 @@ const ProjectCard = (props: {
 					<ProjectSkillIconRow skills={skills} />}
 				<div ref={props.refs.get(props.project)} />
 				<ul style={{ textAlign: 'left' }}>
-					{props.project.description.map(pt => (
-						<>
-							<li>{pt}</li>
-						</>
+					{props.project.description.map((point, index) => (
+						<li key={`${props.project.name}-description-${index}`}>
+							<DescriptionBullet text={point} />
+						</li>
 					))}
 				</ul>
 				{props.project.links.length !== 0 &&
@@ -104,6 +104,18 @@ const ProjectCard = (props: {
 		</Paper >
 	</>);
 };
+
+const DescriptionBullet = ({ text }: { text: string }) => (
+	<>
+		{text.split(/(\*\*[^*]+\*\*)/g).map((segment, index) =>
+			segment.startsWith("**") && segment.endsWith("**") ? (
+				<strong key={index}>{segment.slice(2, -2)}</strong>
+			) : (
+				<React.Fragment key={index}>{segment}</React.Fragment>
+			),
+		)}
+	</>
+);
 
 const ProjectSkillIconRow = ({ skills }: { skills: Array<Skill> }) => {
 	const rowRef = useRef<HTMLDivElement | null>(null);

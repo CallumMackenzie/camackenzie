@@ -464,11 +464,11 @@ export class Project {
     name: "callumployed",
     date: "Jun 2026 - Present",
     description: [
-      "Local-first job-search tracker and automation tool spanning a Python CLI, local web app, FastMCP server, and SQLite/Turso-compatible data store",
-      "Built Playwright and Browserbase-backed scan workflows with LangGraph orchestration, deterministic link scoring, LLM classification, schema.org JobPosting parsing, and persisted scan artifacts",
-      "Implemented company, role, status, notes, lifecycle counts, scan history, and configurable filtering across shared repository and service layers",
-      "Built role prep workflows for master resume storage, cover letter examples, experience notes, resume feedback, tailored resumes, cover letters, and PDF generation",
-      "Added a Firebase-backed central role store with passkey-gated private feed sync, company ID resolution, and local status/history preservation",
+      "Built a **local-first job-search platform** with a web tracker, **Python CLI**, **FastMCP server**, and shared **SQLite**-backed data and service layers",
+      "Automated job discovery with scheduled **Playwright** and **Browserbase** scans, dedicated ATS adapters, **LangGraph** orchestration, deterministic scoring, LLM fallback assessment, and schema.org JobPosting extraction",
+      "Implemented company tiers, career links, role intake, configurable filters, notes, scan history, and **application lifecycle workflows** with durable status transitions",
+      "Created an **AI application workspace** that indexes source materials and applicant details to generate, revise, and bulk-regenerate tailored resumes, cover letters, PDFs, application answers, and grounded role Q&A",
+      "Developed a **Firebase Central service** for company reconciliation, passkey-gated private role feeds, privacy-safe scan telemetry, and an aggregate metrics dashboard while preserving local application data",
     ],
     links: [
       {
@@ -944,6 +944,7 @@ export class Project {
 
   name: string;
   date: string;
+  // Wrap text in **double asterisks** to render it in bold.
   description: Array<string>;
   links: Array<{ name: string; link: string }>;
   imageBasePath: string;
