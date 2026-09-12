@@ -1,7 +1,6 @@
 import React from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { theme } from "./App";
-import LocationOn from "@mui/icons-material/LocationOn";
 import { Avatar } from "@mui/material";
 import { Paper, IconButton, Tooltip } from "@mui/material";
 import Mail from "@mui/icons-material/Mail";
@@ -45,12 +44,6 @@ export const TitleCard = (props: {
                   Fourth Year Computer Science & Statistics Major at the
                   University of British Columbia
                 </p>
-              </div>
-              <div className="row justify-content-center">
-                <Avatar className="col-auto my-auto">
-                  <LocationOn />
-                </Avatar>
-                <p className="col-auto my-auto">Vancouver + Calgary</p>
               </div>
               <Paper className="row-auto my-4 justify-content-center">
                 <Tooltip className="col-auto px-2" title="Github">
