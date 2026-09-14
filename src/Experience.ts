@@ -353,11 +353,13 @@ export const AllSkills: Array<Skill> = SkillCategories.reduce<Array<Skill>>(
 export class EmploymentRole {
   static readonly TeslaEmbeddedAiIntern: EmploymentRole = new EmploymentRole({
     company: "Tesla AI",
-    role: "Embedded AI Software Engineer Intern",
+    role: "Embedded Systems Software Engineer Intern",
     dates: "Jan 2027",
     location: "Palo Alto, California, USA",
     logoSrc: "/img/companylogos/tesla.webp",
-    bullets: ["Offer accepted, incoming January"],
+    bullets: [
+      "Incoming on AI Platforms team, supporting Optimus & Tesla AP in January 2027",
+    ],
     skills: [],
   });
 
