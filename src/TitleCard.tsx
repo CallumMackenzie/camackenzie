@@ -5,6 +5,7 @@ import { Avatar } from "@mui/material";
 import { Paper, IconButton, Tooltip } from "@mui/material";
 import Mail from "@mui/icons-material/Mail";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import { EmploymentRole } from "./Experience";
 
 const openGithub = () => {
   window.open("https://github.com/CallumMackenzie");
@@ -36,13 +37,14 @@ export const TitleCard = (props: {
                 " container text-center mx-auto"
               }
             >
-              <div className="row">
+              <div>
                 <h1 className="display-1">Callum Mackenzie</h1>
               </div>
-              <div className="row">
+              <div>
                 <p className="h4">
-                  Fourth Year Computer Science & Statistics Major at the
-                  University of British Columbia
+                  Software Engineer
+                  <br />
+                  Computer Science and Statistics at UBC
                 </p>
               </div>
               <Paper className="row-auto my-4 justify-content-center">
@@ -69,12 +71,16 @@ export const TitleCard = (props: {
                 </Tooltip>
               </Paper>
             </div>
-            <div className={smallScreen ? "col-10" : "col-6"}>
+            <div
+              className={
+                (smallScreen ? "col-11 mt-4" : "col-6") + " title-photo-column"
+              }
+            >
               <img
-                className="title-photo img-fluid mx-auto px-5"
+                className="title-photo img-fluid mx-auto"
                 alt="Callum Mackenzie"
                 loading="eager"
-                src="img/callum-mackenzie.jpg"
+                src="/img/callum-mackenzie.jpg"
                 onLoad={(e) => (e.currentTarget.style.animation = "")}
                 style={{
                   borderRadius: "50%",
@@ -83,6 +89,18 @@ export const TitleCard = (props: {
                   minHeight: "100px",
                 }}
               />
+              <div
+                className="title-company-logos"
+                aria-label="Companies I've worked with"
+              >
+                {EmploymentRole.All.map((job) => (
+                  <Tooltip key={job.company} title={job.company} arrow>
+                    <span className="title-company-logo">
+                      <img src={job.logoSrc} alt={`${job.company} logo`} />
+                    </span>
+                  </Tooltip>
+                ))}
+              </div>
             </div>
           </div>
           <div className="row justify-content-center py-3">

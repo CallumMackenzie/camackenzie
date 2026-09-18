@@ -58,8 +58,8 @@ export const AboutCard = (props: {
               }}
             >
               <li>Embedded Systems</li>
-              <li>Data Science & Statistics</li>
-              <li>Biotechnology & Bioinformatics</li>
+              <li>Machine Learning & Statistics</li>
+              <li>Robotics & Biotechnology</li>
               <li>Fitness & Nutrition</li>
               <li>Backpacking & Traveling</li>
               <li>Motorsport</li>

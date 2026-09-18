@@ -366,7 +366,7 @@ export class EmploymentRole {
   static readonly AmazonSdeIntern: EmploymentRole = new EmploymentRole({
     company: "Amazon",
     role: "Software Development Engineer Intern",
-    dates: "May 2026 - Aug 2026",
+    dates: "May - Aug 2026",
     location: "Vancouver, BC, Canada",
     logoSrc: "/img/companylogos/amazon.webp",
     bullets: [
