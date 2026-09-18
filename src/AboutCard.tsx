@@ -4,6 +4,7 @@ import { Divider, Paper } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { theme } from "./App";
 import { AboutRaceLane } from "./AboutRaceLane";
+import { isPrerendering } from "./prerender";
 
 export const AboutCard = (props: {
   aboutCardRef: React.RefObject<HTMLDivElement>;
@@ -29,7 +30,7 @@ export const AboutCard = (props: {
                 background: "white",
               }}
             />
-            <p
+            <div
               className="text-start py-1"
               style={{
                 fontSize: "large",
@@ -50,7 +51,7 @@ export const AboutCard = (props: {
                 />
               </div>
               My interests and passions include:
-            </p>
+            </div>
             <ul
               className="text-start"
               style={{
@@ -77,7 +78,9 @@ export const AboutCard = (props: {
                 className="about-photo img-fluid m-auto"
                 alt="Callum Mackenzie"
                 src="img/callum-mackenzie-motorbike.webp"
-                onLoad={(e) => (e.currentTarget.style.animation = "")}
+                onLoad={(e) => {
+                  if (!isPrerendering()) e.currentTarget.style.animation = "";
+                }}
                 style={{
                   borderRadius: "50%",
                   animation: "image-preload 5s infinite",

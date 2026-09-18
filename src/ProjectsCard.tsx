@@ -6,6 +6,7 @@ import { Masonry } from "@mui/lab";
 import React, { useEffect, useRef, useState } from "react";
 import { Project, Skill, skillImageSrc, skillInitials } from "./Experience";
 import { BoldText } from "./BoldText";
+import { isPrerendering } from "./prerender";
 
 export const ProjectsCard = (props: {
 	projectRefs: ProjectRefs,
@@ -116,6 +117,7 @@ const ProjectSkillIconRow = ({ skills }: { skills: Array<Skill> }) => {
 	const gap = 8;
 
 	useEffect(() => {
+		if (isPrerendering()) return;
 		const row = rowRef.current;
 		if (!row) return;
 

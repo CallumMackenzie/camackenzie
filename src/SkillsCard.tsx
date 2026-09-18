@@ -4,6 +4,7 @@ import { EmploymentRoleRefs, ProjectRefs, theme } from './App';
 import React, { useEffect, useRef, useState } from 'react';
 import { EmploymentRole, lastYearInDateRange, Project, shouldDisplaySkill, Skill, SkillCategories, skillImageSrc, skillInitials, sortSkillsByUsage } from './Experience';
 import { ArrowBack, FolderOutlined, WorkOutline } from '@mui/icons-material';
+import { isPrerendering } from './prerender';
 
 
 export const SkillsCard = (props: {
@@ -17,6 +18,7 @@ export const SkillsCard = (props: {
 	const [listPanelHeight, setListPanelHeight] = useState<number | undefined>();
 
 	useEffect(() => {
+		if (isPrerendering()) return;
 		const listPanel = listPanelRef.current;
 		if (!listPanel) return;
 

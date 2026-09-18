@@ -16,6 +16,7 @@ import { SkillsCard } from './SkillsCard';
 import { EmploymentRole, Project } from './Experience';
 import { NavigationBar } from './NavigationBar';
 import { ExperienceCard } from './ExperienceCard';
+import { isPrerendering, isPrerenderValidation } from './prerender';
 
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_apiKey,
@@ -29,7 +30,9 @@ const firebaseConfig = {
 
 
 const app = initializeApp(firebaseConfig);
-getAnalytics(app);
+if (!isPrerendering() && !isPrerenderValidation()) {
+	getAnalytics(app);
+}
 
 export const theme = createTheme({
 	palette: {

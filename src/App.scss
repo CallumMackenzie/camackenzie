@@ -40,16 +40,6 @@ body,
 	box-shadow: 0 24px 70px rgba(0, 0, 0, 0.48);
 }
 
-.title-content::before {
-	content: "";
-	position: absolute;
-	inset: 0;
-	pointer-events: none;
-	background:
-		linear-gradient(115deg, transparent 0 70%, rgba(210, 106, 46, 0.22) 70% 72%, transparent 72%),
-		linear-gradient(115deg, transparent 0 78%, rgba(159, 183, 170, 0.18) 78% 79%, transparent 79%);
-}
-
 .title-content > * {
 	position: relative;
 }

@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import tree from "./tree.svg";
 import { theme } from "./App";
 import { useMediaQuery } from "@mui/material";
+import { isPrerendering } from "./prerender";
 
 export const TreeScrollBackground = () => {
 	const getStableMobileHeight = () =>
@@ -28,6 +29,7 @@ export const TreeScrollBackground = () => {
 	const [stableMobileHeight, setStableMobileHeight] = useState(getStableMobileHeight());
 
 	useEffect(() => {
+		if (isPrerendering()) return;
 		const newWid = computeTreeGridWidth();
 		setTreeGridWidth(newWid);
 		setNTrees(treeGridHeight * newWid);
@@ -37,6 +39,7 @@ export const TreeScrollBackground = () => {
 	const [randomRotationSpeeds, setRandomRotationSpeeds] = useState<undefined | number[]>(undefined);
 
 	useEffect(() => {
+		if (isPrerendering()) return;
 		const offsets = [];
 		const rotationSpeeds = [];
 		for (let i = 0; i < nTrees; i++) {
@@ -48,6 +51,7 @@ export const TreeScrollBackground = () => {
 	}, [nTrees]);
 
 	useEffect(() => {
+		if (isPrerendering()) return;
 		const updateStableMobileHeight = () => {
 			if (!isMobile) return;
 			const widthChanged = Math.abs(window.innerWidth - viewportWidthRef.current) > 80;
@@ -65,6 +69,7 @@ export const TreeScrollBackground = () => {
 	}, [isMobile]);
 
 	useEffect(() => {
+		if (isPrerendering()) return;
 		if (isMobile) return;
 		if (randomOffSets === undefined) return;
 		if (randomRotationSpeeds === undefined) return;
@@ -111,7 +116,9 @@ export const TreeScrollBackground = () => {
 			<img src="img/landscape-bg-comp.jpg"
 				loading='eager'
 				alt="Landscape background"
-				onLoad={e => e.currentTarget.style.animation = ""}
+				onLoad={e => {
+					if (!isPrerendering()) e.currentTarget.style.animation = "";
+				}}
 				style={{
 					objectFit: "cover",
 					width: isMobile ? "100vw" : "100%",

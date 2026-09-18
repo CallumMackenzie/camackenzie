@@ -6,6 +6,7 @@ import { Paper, IconButton, Tooltip } from "@mui/material";
 import Mail from "@mui/icons-material/Mail";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { EmploymentRole } from "./Experience";
+import { isPrerendering } from "./prerender";
 
 const openGithub = () => {
   window.open("https://github.com/CallumMackenzie");
@@ -81,7 +82,9 @@ export const TitleCard = (props: {
                 alt="Callum Mackenzie"
                 loading="eager"
                 src="/img/callum-mackenzie.jpg"
-                onLoad={(e) => (e.currentTarget.style.animation = "")}
+                onLoad={(e) => {
+                  if (!isPrerendering()) e.currentTarget.style.animation = "";
+                }}
                 style={{
                   borderRadius: "50%",
                   overflow: "hidden",
