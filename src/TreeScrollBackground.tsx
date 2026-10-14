@@ -5,6 +5,10 @@ import tree from "./tree.svg";
 import { theme } from "./App";
 import { useMediaQuery } from "@mui/material";
 import { isPrerendering } from "./prerender";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const TreeScrollBackground = () => {
 	const getStableMobileHeight = () =>
@@ -73,38 +77,58 @@ export const TreeScrollBackground = () => {
 		if (isMobile) return;
 		if (randomOffSets === undefined) return;
 		if (randomRotationSpeeds === undefined) return;
-		const treeRotateOnScroll = () => {
-			if (treeRefs.current === null) return;
-			treeRefs.current.forEach((treeRef, i) => {
-				if (treeRef === null) return;
-				treeRef.style.width = `${1 / treeGridWidth * 50}%`;
+		const trees = treeRefs.current.slice(0, nTrees);
+		let pageHeight = 0;
+		let treeHeights: number[] = [];
+		const motions = trees.map(el => el ? {
+			rotation: gsap.quickTo(el, 'rotation', { duration: 0.25, ease: 'power2.out' }),
+			opacity: gsap.quickTo(el, 'opacity', { duration: 0.25, ease: 'power2.out' }),
+		} : null);
 
-				const body = document.body,
-					html = document.documentElement,
-					height = Math.max(body.scrollHeight, body.offsetHeight,
-						html.clientHeight, html.scrollHeight, html.offsetHeight);
-				const scrollPos = window.scrollY / window.innerHeight;
-
-				const gridY = Math.floor(i / treeGridWidth), gridX = i - gridY * treeGridWidth;
-
-				const rotate = scrollPos * randomRotationSpeeds[i] + randomOffSets[i];
-				const x = (gridX + 0.25) / treeGridWidth * window.innerWidth;
-				let y = window.scrollY + gridY / treeGridHeight * window.innerHeight * 1.5;
-
-				if (y < 5) y = 5;
-
-				const lowestTreePlacement = height - treeRef.height * 1.8;
-				treeRef.style.opacity = `${Math.pow(0.99, y - lowestTreePlacement)}`;
-				if (y < lowestTreePlacement)
-					treeRef.style.transform = `translate(${x}px, ${y}px) rotate(${rotate}deg)`;
-				else
-					treeRef.style.transform = `translate(${x}px, ${lowestTreePlacement}px) rotate(${rotate}deg)`;
+		const updateTrees = (trigger: ScrollTrigger) => {
+			const scrollY = trigger.scroll();
+			const { innerHeight } = window;
+			const scrollPos = scrollY / innerHeight;
+			trees.forEach((el, i) => {
+				const motion = motions[i];
+				if (!el || !motion) return;
+				const gridY = Math.floor(i / treeGridWidth);
+				const documentY = scrollY + gridY / treeGridHeight * innerHeight * 1.5;
+				const fadeStart = pageHeight - treeHeights[i] * 1.8;
+				motion.rotation(scrollPos * randomRotationSpeeds[i] + randomOffSets[i]);
+				motion.opacity(Math.min(1, Math.pow(0.99, documentY - fadeStart)));
 			});
 		};
-		window.removeEventListener('scroll', treeRotateOnScroll);
-		window.addEventListener('scroll', treeRotateOnScroll);
-		treeRotateOnScroll();
-		return () => window.removeEventListener('scroll', treeRotateOnScroll);
+		const measureTrees = (trigger: ScrollTrigger) => {
+			// Measure before animating; GSAP only updates composited properties on scroll.
+			const body = document.body;
+			const html = document.documentElement;
+			pageHeight = Math.max(body.scrollHeight, body.offsetHeight,
+				html.clientHeight, html.scrollHeight, html.offsetHeight);
+			treeHeights = trees.map(el => el?.offsetHeight ?? 0);
+			updateTrees(trigger);
+		};
+
+		const trigger = ScrollTrigger.create({
+			start: 0,
+			end: () => ScrollTrigger.maxScroll(window),
+			onUpdate: updateTrees,
+			onRefresh: measureTrees,
+		});
+		// Lazy images and expanding content can change the layout after initial render.
+		const observer = new ResizeObserver(() => ScrollTrigger.refresh());
+		observer.observe(document.body);
+		const onTreeLoad = () => ScrollTrigger.refresh();
+		trees.forEach(el => el?.addEventListener('load', onTreeLoad));
+		return () => {
+			trigger.kill();
+			observer.disconnect();
+			trees.forEach(el => el?.removeEventListener('load', onTreeLoad));
+			motions.forEach(motion => {
+				motion?.rotation.tween.kill();
+				motion?.opacity.tween.kill();
+			});
+		};
 	}, [isMobile, randomOffSets, randomRotationSpeeds, treeGridWidth, nTrees, treeGridHeight]);
 
 	return (<>
@@ -131,11 +155,14 @@ export const TreeScrollBackground = () => {
 					overflow: 'hidden'
 				}} />
 			{[...Array(nTrees)].map((x, i) => {
+				const gridY = Math.floor(i / treeGridWidth);
+				const gridX = i % treeGridWidth;
 				return <img key={i}
 					style={{
-						transitionProperty: "transform",
-						transitionDuration: "100ms",
-						position: "absolute",
+						width: `${50 / treeGridWidth}vw`,
+						position: "fixed",
+						left: `${(gridX + 0.25) / treeGridWidth * 100}vw`,
+						top: `max(5px, ${gridY / treeGridHeight * 150}vh)`,
 						zIndex: "-6",
 						overflow: 'hidden'
 					}}
